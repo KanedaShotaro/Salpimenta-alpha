@@ -21,7 +21,29 @@ if (!isset($_SESSION[usuario])) {
             <li><a href="#"> Mi Salpimenta </a></li>
             <li><a href="#"> Explora </a></li>
             <li><a href="#"> Blogs </a></li>
-            <li><a href="/Salpimenta-backend/mvc/Vista/registroReceta.php">Subir Receta</a></li>
+            <li><a href="/Salpimenta-backend/mvc/Vista/registro-receta.php">Subir Receta</a></li>
+        </ul>
+        <h2> panel Usuario </h2>
+        <ul>
+            <li><a href="#"> ajustes </a></li>
+            <li><a href="#"> mi ficha </a></li>
+            <li><a href="#"> ver/editar mis recetas </a></li>          
+        </ul>
+
+        <h2>Secciones mi salpimenta</h2>
+        <ul>
+            <li><a href="#"> Aperitivos </a></li>
+            <li><a href="#"> Ensaladas y verduras </a></li>
+            <li><a href="#"> rroces y cereales </a></li> 
+            <li><a href="#"> Sopas y cremas </a></li>
+            <li><a href="#"> Pastas y pizzas </a></li>
+            <li><a href="#"> legumbres </a></li> 
+            <li><a href="#"> Carnes </a></li> 
+            <li><a href="#"> Pescados y mariscos </a></li>
+            <li><a href="#"> Huevos </a></li>
+            <li><a href="#"> Setas y hongos </a></li> 
+            <li><a href="#"> Salsas </a></li>
+            <li><a href="#"> Postres </a></li> 
         </ul>
     </body>
 </html>

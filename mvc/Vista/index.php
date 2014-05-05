@@ -1,9 +1,16 @@
+<?php
+echo "inicio.php/";
+include '/var/www/Salpimenta-backend/mvc/Modelo/Usuario.php';
+
+session_start();
+
+if (isset($_SESSION[usuario])) {
+    header("Location: /Salpimenta-backend/mvc/Vista/mi-salpimenta.php");
+}
+?>
+
+
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -12,22 +19,7 @@ and open the template in the editor.
     <body>
         <h1>SalPimenta.net</h1>
         <fieldset>
-            <legend>Registro de Usuario</legend>
-            <form action="/Salpimenta-backend/mvc/Controlador/controlRegistroUsuario.php" method="post">
-                <input type="hidden" name="regus" value="regus">
-                <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre" placeholder="Nombre de Usuario"  ><br/>
-                <label for="apellido1">Apellido1: </label><input type="text" name="apellido1" id="apellido1" placeholder="Primer Apellido"  ><br/>
-                <label for="apellido2">Apellido2: </label><input type="text" name="apellido2" id="apellido2" placeholder="Segundo Apellido"  ><br/>
-                <label for="password">Contraseña: </label><input type="password" name="password" id="password" placeholder="******"  ><br/>
-                <label for="email">Email: </label><input type="email" name="email" id="email" placeholder="Correo Electronico"  ><br>
-                <label for="platoFav">Plato favorito: </label><input type="text" name="platoFav" id="platoFav" placeholder="Tu plato favorito"  ><br/>
-                <label for="fecha">Fecha de Nacimiento: </label><input type="date" name="fecha" id="fecha"><br/>
-                <input type="submit" value="Registrate !">
-            </form>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Login Usuario</legend>
+            <legend>Entra</legend>
             <form action="/Salpimenta-backend/mvc/Controlador/controlLoginUsuario.php" method="POST">
                 <table>
                     <tr>
@@ -39,7 +31,7 @@ and open the template in the editor.
                         <td><input type="password" name="password" id="password"></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="Inicias Sesion"></td>
+                        <td colspan="2"><input type="submit" value="Entrar"></td>
                     </tr>
                 </table>
             </form>          

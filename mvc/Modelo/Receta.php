@@ -11,22 +11,62 @@ class Receta {
    private $sugerencia;
    private $valoracion;
    private $temporada;
-   private $urlImagen;
+   private $urlReceta;
    private $fechaEntrada;
+   private $categoriaReceta;
+   // variables imagen de la receta
+   private $imagen;
+   private $nombreImg;
+   private $tipoImg;
    
-   function __construct($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia, $valoracion, $temporada, $urlImagen, $fechaEntrada) {
+   function __construct($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia,$temporada,$categoriaReceta) {
        $this->codigoReceta = gen_chars_no_dup($long = 25);
        $this->nombreReceta = $nombreReceta;
        $this->autorReceta = $autorReceta;
        $this->elaboracion = $elaboracion;
        $this->ingredientes = $ingredientes;
        $this->sugerencia = $sugerencia;
-       $this->valoracion = $valoracion;
+       $this->valoracion = 0;
        $this->temporada = $temporada;
-       $this->urlImagen = crearUrlUnica($nombreReceta); 
+       $this->urlReceta = crearUrlUnica($nombreReceta); 
        $this->fechaEntrada = date("Y-m-d");
+       $this->categoriaReceta = $categoriaReceta;
+   }
+   
+   public function getImagen() {
+       return $this->imagen;
    }
 
+   public function getNombreImg() {
+       return $this->nombreImg;
+   }
+
+   public function getTipoImg() {
+       return $this->tipoImg;
+   }
+
+   public function setImagen($imagen) {
+       $this->imagen = $imagen;
+   }
+
+   public function setNombreImg($nombreImg) {
+       $this->nombreImg = $nombreImg;
+   }
+
+   public function setTipoImg($tipoImg) {
+       $this->tipoImg = $tipoImg;
+   }
+
+      
+   public function getCategoriaReceta() {
+       return $this->categoriaReceta;
+   }
+
+   public function setCategoriaReceta($categoriaReceta) {
+       $this->categoriaReceta = $categoriaReceta;
+   }
+
+   
    public function getCodigoReceta() {
        return $this->codigoReceta;
    }
@@ -59,8 +99,12 @@ class Receta {
        return $this->temporada;
    }
 
-   public function getUrlImagen() {
-       return $this->urlImagen;
+   public function getUrlReceta() {
+       return $this->urlReceta;
+   }
+
+   public function getFechaEntrada() {
+       return $this->fechaEntrada;
    }
 
    public function setCodigoReceta($codigoReceta) {
@@ -95,9 +139,15 @@ class Receta {
        $this->temporada = $temporada;
    }
 
-   public function setUrlImagen($urlImagen) {
-       $this->urlImagen = $urlImagen;
+   public function setUrlReceta($urlReceta) {
+       $this->urlReceta = $urlReceta;
    }
+
+   public function setFechaEntrada($fechaEntrada) {
+       $this->fechaEntrada = $fechaEntrada;
+   }
+
+
 
 
 }

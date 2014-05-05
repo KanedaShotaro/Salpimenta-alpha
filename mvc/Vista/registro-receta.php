@@ -11,11 +11,11 @@ session_start();
     <body>
         <fieldset>
             <legend>Subir Receta</legend>
-            <form action="/DescuentingBeta1/mvc/Controlador/controlRegistroReceta.php" enctype="multipart/form-data" method="post">
-                <label for="titulo">Nombre: </label><input type="text" name="nombre" id="nombre"  placeholder="Titulo de tu Receta"><br/>
+            <form action="/Salpimenta-backend/mvc/Controlador/controlRegistroReceta.php" enctype="multipart/form-data" method="post">
+                <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre"  placeholder="Titulo de tu Receta"><br/>
                 <label for="descripcion1">Ingredientes: </label><textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes"></textarea><br/>
                 <label for="descripcion2">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta"></textarea><br/>
-                <label for="condiciones">Segerencias: </label><textarea name="segerencias" id="Segerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="30" rows="10"></textarea><br/>
+                <label for="sugerencias">Segerencias: </label><textarea name="sugerencias" id="Sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="30" rows="10"></textarea><br/>
                 <label for="img">Sube tu Imagen: </label><input type="file" name="img" id="img"><br/>
                <input type="hidden" name="emailUsuario" id="emailUsuario" value="<?php echo $_SESSION[usuario][0]->getEmail(); ?>">       
                 <b> Temporada de tu Receta </b><br>
@@ -36,10 +36,9 @@ session_start();
                 <label for="10">setas y hongos:</label> <input type="checkbox" name="seccion" id="10" value="10"><br>
                 <label for="11">salsas:</label> <input type="checkbox" name="seccion" id="11" value="11"><br>
                 <label for="12">postres:</label> <input type="checkbox" name="seccion" id="12" value="12"><br>
-                
+                <label for="tags">introduce etiquetas </label><input type="text" name="tags" id="tags">
                 <input type="submit" value="Subir Recetas">
             </form>
-            <button></button>
         </fieldset>
     </body>
 </html>

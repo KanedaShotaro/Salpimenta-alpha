@@ -1,20 +1,20 @@
 <?php
 
-echo "controlRegistroOferta/";
+echo "controlRegistroReceta/";
 //include '/var/www/DescuentingBeta1/mvc/Vista/funcionesVista.php';
 include '/var/www/Salpimenta-backend/mvc/Modelo/BaseDatos.php';
-include '/var/www/Salpimenta-backend/mvc/Modelo/Oferta.php';
+include '/var/www/Salpimenta-backend/mvc/Modelo/Receta.php';
 
 
-if (!empty($_POST[titulo])) {
+if (!empty($_POST[nombre])) {
     // creamos el objeto base de datos
     $bd = poolBBDD();
     // establecemos conexión
     if ($bd->establecer_conexion()) {
         echo "conexion establecida <br/>";
         //creamos el objeto Oferta con los datos
-        $oferta = new Receta($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia, $valoracion, $temporada, $urlImagen, $fechaEntrada);
-
+        $receta = new Receta($_POST[nombre], $_POST[emailUsuario], $_POST[elaboracion], $_POST[ingredientes], $_POST[sugerencias], $_POST[temporada],$_POST[seccion]);
+  
         $nombre = $_FILES['img']['name'];
         $imagen_temporal = $_FILES['img']['tmp_name'];
         $type = $_FILES['img']['type'];
@@ -27,18 +27,19 @@ if (!empty($_POST[titulo])) {
         $imagen = mysql_real_escape_string($imagen);
 
 
-        $oferta->setImagen($imagen);
-        $oferta->setNombreImagen($nombre);
-        $oferta->setTipoImg($type);
+        $receta->setImagen($imagen);
+        $receta->setNombreImg($nombre);
+        $receta->setTipoImg($type);
 
-        if ($bd->insertar_oferta($oferta)) {
-            if ($bd->insertar_tags_oferta($_POST[tags], $oferta->getCodigo())) {
-                header("Location: /DescuentingBeta1/mvc/Vista/index.php");
+        if ($bd->insertar_Receta($receta)) {
+            echo "... aki ...";
+            if ($bd->insertar_tags_receta($_POST[tags], $receta->getCodigoReceta())) {
+                header("Location: /Salpimenta-backend/mvc/Vista/mi-salpimenta.php");
             } else {
-                alert("danger", "ERROR", "Oferta no introducida");
+               echo "Oferta no introducida";
             }
         } else {
-            alert("danger", "ERROR", "Oferta no introducida");
+            echo "Oferta no introducida";
         }
     } else {
         echo "fallo en la conexión";
