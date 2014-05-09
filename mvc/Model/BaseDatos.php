@@ -1,7 +1,7 @@
 <?php
 
 echo "BaseDatos/";
-require_once '/var/www/Salpimenta-backend/mvc/Modelo/funcionesModelo.php';
+require_once '/var/www/Salpimenta-backend/mvc/Model/funcionesModelo.php';
 
 class BaseDatos {
 
@@ -74,21 +74,31 @@ class BaseDatos {
         $resultado->close();
     }
 
-    /* Funciones oferta**** */
+    /* Funciones receta**** */
 
     function insertar_receta($receta) {
 
         /* Funcion para insertar una receta en la base de datos */
-        $query = 'INSERT INTO RECETA (CODRE,NOMRE,AUTORE,ELABRE,INGRE,SUGER,VALRE,TEMRE,URL,FECHEN) VALUES("' . $receta->getCodigoReceta() . '","' . $receta->getNombreReceta() . '","' . $receta->getAutorReceta() . '","' . $receta->getElaboracion() . '","' . $receta->getIngredientes() . '","' . $receta->getSugerencia() . '","' . $receta->getValoracion() . '","' . $receta->getTemporada() . '","' . $receta->getUrlReceta() . '","' . $receta->getFechaEntrada() . '");';
+        $query = 'INSERT INTO RECETA (CODRE,NOMRE,AUTORE,ELABRE,INGRE,SUGER,VALRE,TEMRE,URL,FECHEN) VALUES("' . $receta->getCodigoReceta() . '","' . $receta->getNombreReceta() . '","' . $receta->getAutorReceta() . '","' . htmlspecialchars($receta->getElaboracion()) . '","' . htmlspecialchars($receta->getIngredientes()) . '","' . htmlspecialchars($receta->getSugerencia()) . '","' . $receta->getValoracion() . '","' . $receta->getTemporada() . '","' . $receta->getUrlReceta() . '","' . $receta->getFechaEntrada() . '");';
         $insertado = ($resultado = $this->conexion->query($query)) ? true : false;
+        if (!$insertado) {
+            echo "<pre>";
+            echo "query receta".$this->conexion->error;
+            echo "</pre>";
+        }
         $query2 = 'INSERT INTO SECREC (CATREC,CODRE) VALUES ("' . $receta->getCategoriaReceta() . '","' . $receta->getCodigoReceta() . '");';
         $insertado = ($resultado = $this->conexion->query($query2)) ? true : false;
+        if (!$insertado) {
+            echo "<pre>";
+            echo "query seccion".$this->conexion->error;
+            echo "</pre>";
+        }
         $query3 = 'INSERT INTO IMGRE (ID, NOMIMG, IMG, TIPOIMG, CODRE) VALUES("0","' . $receta->getNombreImg() . '","' . $receta->getImagen() . '","' . $receta->getTipoImg() . '","' . $receta->getCodigoReceta() . '");';
-        if ($this->conexion->query($query3)) {
-            $insertado = true;
-        } else {
-            echo $this->conexion->error;
-            $insertado = false;
+        $insertado = ($resultado = $this->conexion->query($query3)) ? true : false;
+        if (!$insertado) {
+            echo "<pre>";
+            echo "query imagen".$this->conexion->error;
+            echo "</pre>";
         }
         return $insertado;
     }
@@ -96,14 +106,33 @@ class BaseDatos {
     function insertar_tags_receta($tags, $codigoReceta) {
         // Esta funcion inserta tags relacionados con un codigo de Receta en la BBDD
         $array_tags = explode(' ', $tags);
-        echo "<pre>";
-        var_dump($array_tags);
-        echo "<pre>";
         for ($x = 0; $x < count($array_tags); $x++) {
             $query = 'INSERT INTO TAGRE (CODRE, NOMTAG) VALUES ("' . $codigoReceta . '","' . $array_tags[$x] . '");';
             $insertado = ($resultado = $this->conexion->query($query)) ? true : false;
         }
         return $insertado;
+    }
+
+    function recuperar_receta_seccion($seccion) {
+        /* funcion para recuperar una receta de la base de datos buscando por seccion */
+        $array_recetas = array();
+        $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, IMGRE M WHERE R.CODRE = S.CODRE AND S.CODRE = M.CODRE AND S.CATREC = "' . $seccion . '" ORDER BY R.FECHEN DESC;';
+        if ($resultado = $this->conexion->query($query)) {
+            $array_recetas = crearArrayRecetas($resultado);
+            return $array_recetas;
+        } else {
+            echo "no ha entrado";
+            return $array_recetas;
+        }
+    }
+
+    function cerrar_conexion() {
+        // cierra la conexion
+        if ($this->conexion->close()) {
+            
+        } else {
+            echo "NO SE HA CERRADO";
+        }
     }
 
 }

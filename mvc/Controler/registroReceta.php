@@ -1,19 +1,15 @@
 <?php
 
 echo "controlRegistroReceta/";
-//include '/var/www/DescuentingBeta1/mvc/Vista/funcionesVista.php';
-include '/var/www/Salpimenta-backend/mvc/Modelo/BaseDatos.php';
-include '/var/www/Salpimenta-backend/mvc/Modelo/Receta.php';
 
-
-if (!empty($_POST[nombre])) {
+if (!empty($_POST["nombre"])) {
     // creamos el objeto base de datos
     $bd = poolBBDD();
     // establecemos conexión
     if ($bd->establecer_conexion()) {
-        echo "conexion establecida <br/>";
         //creamos el objeto Oferta con los datos
-        $receta = new Receta($_POST[nombre], $_POST[emailUsuario], $_POST[elaboracion], $_POST[ingredientes], $_POST[sugerencias], $_POST[temporada],$_POST[seccion]);
+        $receta = new Receta();
+        $receta->newReceta($_POST["nombre"], $_POST["emailUsuario"], $_POST["elaboracion"], $_POST["ingredientes"], $_POST["sugerencias"], $_POST["temporada"],$_POST["seccion"]);
   
         $nombre = $_FILES['img']['name'];
         $imagen_temporal = $_FILES['img']['tmp_name'];
@@ -32,9 +28,9 @@ if (!empty($_POST[nombre])) {
         $receta->setTipoImg($type);
 
         if ($bd->insertar_Receta($receta)) {
-            echo "... aki ...";
-            if ($bd->insertar_tags_receta($_POST[tags], $receta->getCodigoReceta())) {
-                header("Location: /Salpimenta-backend/mvc/Vista/mi-salpimenta.php");
+            if ($bd->insertar_tags_receta($_POST["tags"], $receta->getCodigoReceta())) {
+                //tuReceta='.$receta->getUrlReceta().'
+                //header('Location: /Salpimenta-backend/mvc/Controler/index.php');
             } else {
                echo "Oferta no introducida";
             }

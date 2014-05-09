@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <?php
-include '/var/www/Salpimenta-backend/mvc/Modelo/Usuario.php';
-session_start();
+echo "registroView.php/";
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <script src="/Salpimenta-backend/mvc/View/js/nicEdit.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            bkLib.onDomLoaded(function() {
+                new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('ingredientes');
+                new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('elaboracion');
+                new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('sugerencias');
+            });
+        </script>
+
+        <script type="text/javascript">
+            function Ok()
+            {
+                nicEditors.findEditor('ingredientes').saveContent();
+                nicEditors.findEditor('elaboracion').saveContent();
+                nicEditors.findEditor('sugerencias').saveContent();
+                document.formReceta.submit();
+            }</script>
     </head>
     <body>
         <fieldset>
             <legend>Subir Receta</legend>
-            <form action="/Salpimenta-backend/mvc/Controlador/controlRegistroReceta.php" enctype="multipart/form-data" method="post">
+            <form action="/Salpimenta-backend/mvc/Controler/index.php?url=registroReceta" enctype="multipart/form-data" method="post" name="formReceta">
                 <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre"  placeholder="Titulo de tu Receta"><br/>
-                <label for="descripcion1">Ingredientes: </label><textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes"></textarea><br/>
-                <label for="descripcion2">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta"></textarea><br/>
-                <label for="sugerencias">Segerencias: </label><textarea name="sugerencias" id="Sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="30" rows="10"></textarea><br/>
+                <label for="ingredientes">Ingredientes: </label><textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes"></textarea><br/>
+                <label for="elaboracion">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta"></textarea><br/>
+                <label for="sugerencias">Segerencias: </label><textarea name="sugerencias" id="sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="30" rows="10"></textarea><br/>
                 <label for="img">Sube tu Imagen: </label><input type="file" name="img" id="img"><br/>
-               <input type="hidden" name="emailUsuario" id="emailUsuario" value="<?php echo $_SESSION[usuario][0]->getEmail(); ?>">       
+                <input type="hidden" name="emailUsuario" id="emailUsuario" value="<?php echo $_SESSION[usuario][0]->getEmail(); ?>">       
                 <b> Temporada de tu Receta </b><br>
                 <label for="V">Verano:</label> <input type="checkbox" name="temporada" id="V" value="V"><br>
                 <label for="I">Invierno:</label> <input type="checkbox" name="temporada" id="I" value="I"><br>
@@ -37,7 +53,7 @@ session_start();
                 <label for="11">salsas:</label> <input type="checkbox" name="seccion" id="11" value="11"><br>
                 <label for="12">postres:</label> <input type="checkbox" name="seccion" id="12" value="12"><br>
                 <label for="tags">introduce etiquetas </label><input type="text" name="tags" id="tags">
-                <input type="submit" value="Subir Recetas">
+                <input type="submit" onclick="Ok();" value="Subir Recetas">
             </form>
         </fieldset>
     </body>

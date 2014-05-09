@@ -1,10 +1,5 @@
 <?php
-echo "controlRegistroUsuario/";
-session_start();
-//include '/var/www/DescuentingBeta1/mvc/Vista/funcionesVista.php';
-include '/var/www/Salpimenta-backend/mvc/Modelo/BaseDatos.php';
-include '/var/www/Salpimenta-backend/mvc/Modelo/Usuario.php';
-
+echo "RegistroUsuario/";
 
 if (!empty($_POST[email]) && !empty($_POST[password]) && !empty($_POST[nombre])) {
     // creamos el objeto base de datos
@@ -18,7 +13,7 @@ if (!empty($_POST[email]) && !empty($_POST[password]) && !empty($_POST[nombre]))
         
         if ($bd->insertar_usuario($usuario)) {
             $_SESSION[usuario][0] = $usuario;
-            header("Location: /Salpimenta-backend/mvc/Vista/mi-salpimenta.php");
+             header("Location: /Salpimenta-backend/mvc/Controler/index.php?url=miSalpimenta");
         } else {
            echo "Usuario no introducido";
         }

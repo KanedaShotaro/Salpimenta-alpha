@@ -1,15 +1,6 @@
 <?php
-echo "inicio.php/";
-include '/var/www/Salpimenta-backend/mvc/Modelo/Usuario.php';
-
-session_start();
-
-if (isset($_SESSION[usuario])) {
-    header("Location: /Salpimenta-backend/mvc/Vista/mi-salpimenta.php");
-}
+echo "homeView.php/";
 ?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +11,7 @@ if (isset($_SESSION[usuario])) {
         <h1>SalPimenta.net</h1>
         <fieldset>
             <legend>Entra</legend>
-            <form action="/Salpimenta-backend/mvc/Controlador/controlLoginUsuario.php" method="POST">
+            <form action="/Salpimenta-backend/mvc/Controler/index.php?url=loginUsuario" method="POST">
                 <table>
                     <tr>
                         <td><label for="email">Correo Electronico: </label></td>

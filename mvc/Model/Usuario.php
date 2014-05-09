@@ -1,7 +1,10 @@
 <?php
+
 echo "Usuario/";
-require_once '/var/www/Salpimenta-backend/mvc/Controlador/funcionesControlador.php';
+
+//require_once '/var/www/Salpimenta-backend/mvc/Controlador/funcionesControlador.php';
 class Usuario {
+
     private $codigoUsuario;
     private $nombre;
     private $apellido1;
@@ -12,20 +15,52 @@ class Usuario {
     private $fechaNacimiento;
     private $platoFavorito;
     private $recetasMax;
-    
-    function __construct($nombre, $apellido1, $apellido2, $password, $email,$fechaNacimiento, $platoFavorito) {
-        $this->codigoUsuario = gen_chars_no_dup($long = 25);
+
+    function __construct() {
+        
+    }
+
+    function newUsuario($nombre, $apellido1, $apellido2, $password, $email, $fechaNacimiento, $platoFavorito) {
+        $this->codigoUsuario = $this->genCharsNoDup(25);
         $this->nombre = strtoupper($nombre);
         $this->apellido1 = strtoupper($apellido1);
         $this->apellido2 = strtoupper($apellido2);
         $this->password = $password;
         $this->email = strtoupper($email);
         $this->fechaIngreso = date("Y-m-d");
-        $this->fechaNacimiento = convertirFechaAMysql($fechaNacimiento);
+        $this->fechaNacimiento = $this->convertirFechaAMysql($fechaNacimiento);
         $this->platoFavorito = strtoupper($platoFavorito);
         $this->recetasMax = 5;
     }
-    
+
+    function genCharsNoDup($long) {
+        /* Funcion que crea un codigo unico de 25 caracteres de longitud */
+        $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        mt_srand((double) microtime() * 1000000);
+        $i = 0;
+        $pass = null;
+        while ($i != $long) {
+            $rand = mt_rand() % strlen($chars);
+            $tmp = $chars[$rand];
+            $pass = $pass . $tmp;
+            $chars = str_replace($tmp, "", $chars);
+            $i++;
+        }
+        return strrev($pass);
+    }
+
+    function convertirFechaAMysql($fecha) {
+        /* Convierte la fecha pasada a formato Mysql */
+        if ($fecha != null) {
+            $objetoFecha = DateTime::createFromFormat("d/m/Y", $fecha);
+            $fecha = $objetoFecha->format("Y-m-d");
+            return $fecha;
+        } else {
+            return $fecha;
+        }
+    }
+
     public function getCodigoUsuario() {
         return $this->codigoUsuario;
     }
@@ -105,7 +140,5 @@ class Usuario {
     public function setRecetasMax($recetasMax) {
         $this->recetasMax = $recetasMax;
     }
-
-
 
 }
