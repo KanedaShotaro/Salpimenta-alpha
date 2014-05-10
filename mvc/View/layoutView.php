@@ -1,5 +1,5 @@
 <?php
-echo "aperitivos.php/";
+echo "headerView.php/";
 ?>
 
 <!DOCTYPE html>
@@ -39,25 +39,16 @@ echo "aperitivos.php/";
             <li><a href="/Salpimenta-backend/mvc/Controler/index.php?url=seccion&seccion=salsas"> Salsas </a></li>
             <li><a href="/Salpimenta-backend/mvc/Controler/index.php?url=seccion&seccion=postres"> Postres </a></li> 
         </ul>
-        
-        <h2><?=$seccion?></h2>
-        
+
+        <?= $tpl_content ?>
+
         <?php
-                
-                for ($x = 0; $x < count($array_recetas); $x++) {
-      
-                    ?>
-                    <article>
-                        <h3> <?= $array_recetas[$x]->getNombreReceta() ?></h3>
-                        <figure><a href="/Salpimenta-backend/mvc/Controler/index.php?url=<?= $array_recetas[$x]->getUrlReceta() ?>"><img src="data:image/jpeg;base64,<?= $array_ofertas[$x]->getImagen() ?>" alt=""></a></figure>
-                        <p> <?= $array_recetas[$x]->getValoracion() ?></p>
-                        <p> añadir a favoritos </p>
-                    </article>
-                    <?php
-                }
-                ?>     
+        echo "footerView.php/";
+        ?>
+        <footer>
+            <p> Salpimenta 2014 </P>
+        </footer>
     </body>
 </html>
-
 
 

@@ -16,6 +16,7 @@ class Receta {
     private $urlReceta;
     private $fechaEntrada;
     private $categoriaReceta;
+    private $valUsuario;
     // variables imagen de la receta
     private $imagen;
     private $nombreImg;
@@ -64,7 +65,16 @@ class Receta {
         $url .= "/" . $codigo;
         return $url;
     }
+    
+    public function getValUsuario() {
+        return $this->valUsuario;
+    }
 
+    public function setValUsuario($valUsuario) {
+        $this->valUsuario = $valUsuario;
+    }
+
+    
     public function getImagen() {
         return $this->imagen;
     }

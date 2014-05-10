@@ -68,4 +68,11 @@ function obtenerRecetasSeccion($seccion) {
 
 $array_recetas = obtenerRecetasSeccion($seccion);
 
-include '/var/www/Salpimenta-backend/mvc/View/secciones/' . $_GET["seccion"] . '.php';
+//include '/var/www/Salpimenta-backend/mvc/View/secciones/' . $_GET["seccion"] . '.php';
+
+
+
+ob_start();
+include '/var/www/Salpimenta-backend/mvc/View/seccionView.php';
+$tpl_content = ob_get_clean();
+require '/var/www/Salpimenta-backend/mvc/View/layoutView.php';

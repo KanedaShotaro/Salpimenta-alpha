@@ -30,10 +30,7 @@ class BaseDatos {
     }
 
     function insertar_usuario($usuario) {
-        /* funcion para insertar usuario en la base de datos
-         * la funcion devuelve true si se ha insertado correctamente o false 
-         * si no se ha insertado correctamente
-         */
+        
         $query = 'INSERT INTO USUARIO (EMAIL,CODUS,NOMUS,APUS1,APUS2,CLAVEUS,FECING,FECNAC,PLATFAV,MAXREC) VALUES("' . $usuario->getEmail() . '","' . $usuario->getCodigoUsuario() . '","' . $usuario->getNombre() . '","' . $usuario->getApellido1() . '","' . $usuario->getApellido2() . '","' . $usuario->getPassword() . '","' . $usuario->getFechaIngreso() . '","' . $usuario->getFechaNacimiento() . '","' . $usuario->getPlatoFavorito() . '","' . $usuario->getRecetasMax() . '");';
         if ($resultado = $this->conexion->query($query)) {
             return true;
@@ -55,7 +52,6 @@ class BaseDatos {
         } else {
             return false;
         }
-        $resultado->close();
     }
 
     function obtener_usuario($email, $password) {
@@ -83,21 +79,21 @@ class BaseDatos {
         $insertado = ($resultado = $this->conexion->query($query)) ? true : false;
         if (!$insertado) {
             echo "<pre>";
-            echo "query receta".$this->conexion->error;
+            echo "query receta" . $this->conexion->error;
             echo "</pre>";
         }
         $query2 = 'INSERT INTO SECREC (CATREC,CODRE) VALUES ("' . $receta->getCategoriaReceta() . '","' . $receta->getCodigoReceta() . '");';
         $insertado = ($resultado = $this->conexion->query($query2)) ? true : false;
         if (!$insertado) {
             echo "<pre>";
-            echo "query seccion".$this->conexion->error;
+            echo "query seccion" . $this->conexion->error;
             echo "</pre>";
         }
         $query3 = 'INSERT INTO IMGRE (ID, NOMIMG, IMG, TIPOIMG, CODRE) VALUES("0","' . $receta->getNombreImg() . '","' . $receta->getImagen() . '","' . $receta->getTipoImg() . '","' . $receta->getCodigoReceta() . '");';
         $insertado = ($resultado = $this->conexion->query($query3)) ? true : false;
         if (!$insertado) {
             echo "<pre>";
-            echo "query imagen".$this->conexion->error;
+            echo "query imagen" . $this->conexion->error;
             echo "</pre>";
         }
         return $insertado;
@@ -124,6 +120,48 @@ class BaseDatos {
             echo "no ha entrado";
             return $array_recetas;
         }
+    }
+
+    function comprobarRecetaUrl($url) {
+        /* Esta funcion selectiona el codigo de oferta correspondiente a la url del navegador
+          recogiendo la ultima parte que corresponde con lo insertado en el campo de la base de datos */
+        //$array_url = explode("/", $url);
+        //$array_url2 = explode(".", $array_url[count($array_url) - 1]);
+        //$url = $array_url[count($array_url) - 2] . "/" . $array_url2[0];
+        $query = 'SELECT CODRE FROM RECETA WHERE URL = "' . $url . '";';
+        if ($resultado = $this->conexion->query($query)) {
+            while ($fila = $resultado->fetch_row()) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    function recuperarOfertaUrl($url) {
+        /* Funcion para recuperar una oferta de la base de datos buscando por url */
+        $array_url = explode("/", $url);
+        $array_url2 = explode(".", $array_url[count($array_url) - 1]);
+        $url = $array_url[count($array_url) - 2] . "/" . $array_url2[0];
+        //$query = 'SELECT * FROM OFERTA WHERE URL = "' . $url . '";';
+        $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, IMGRE M WHERE R.CODRE = S.CODRE AND S.CODRE = M.CODRE AND R.URL = "' . $url . '" ORDER BY R.FECHEN DESC;';
+        if ($resultado = $this->conexion->query($query)) {
+            $array_recetas = crearArrayRecetas($resultado);
+            return $array_recetas;
+        } else {
+            echo "no ha entrado";
+            return $array_recetas;
+        }
+    }
+
+    function recuperarValUsuario($codigoReceta, $codigoUsuario) {
+        $query = 'SELECT VALUS FROM VALORUS WHERE CODUS = "' . $codigoUsuario . '" AND CODRE = "' . $codigoUsuario . '" ;';
+        if ($resultado = $this->conexion->query($query)) {
+            while ($fila = $resultado->fetch_row()) {
+                $valUsuario = $fila;
+            }
+        }        
+        return $valUsuario;
     }
 
     function cerrar_conexion() {

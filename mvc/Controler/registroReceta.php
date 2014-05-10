@@ -31,6 +31,7 @@ if (!empty($_POST["nombre"])) {
             if ($bd->insertar_tags_receta($_POST["tags"], $receta->getCodigoReceta())) {
                 //tuReceta='.$receta->getUrlReceta().'
                 //header('Location: /Salpimenta-backend/mvc/Controler/index.php');
+                echo "receta insertada";
             } else {
                echo "Oferta no introducida";
             }

@@ -2,14 +2,16 @@
 echo "miSalpimentaView.php/";
 ?>
 
-<!DOCTYPE html>
+<p> Estas en miSalpimenta </p>
+
+<!--<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
-        <h2> Estas en Mi Salpimenta <?php echo $_SESSION["usuario"][0]->getNombre(); ?></h2>
+        <h2> Estas en Mi Salpimenta <?php //echo $_SESSION["usuario"][0]->getNombre(); ?></h2>
 
         <ul>
             <li><a href="#"> Mi Salpimenta </a></li>
@@ -40,4 +42,4 @@ echo "miSalpimentaView.php/";
             <li><a href="/Salpimenta-backend/mvc/Controler/index.php?url=seccion&seccion=postres"> Postres </a></li> 
         </ul>
     </body>
-</html>
+</html>-->
