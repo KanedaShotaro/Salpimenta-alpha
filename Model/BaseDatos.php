@@ -1,7 +1,7 @@
 <?php
 
 echo "BaseDatos/";
-require_once '/var/www/Salpimenta-backend/mvc/Model/funcionesModelo.php';
+require_once '/var/www/Salpimenta-backend/Model/funcionesModelo.php';
 
 class BaseDatos {
 
@@ -30,7 +30,7 @@ class BaseDatos {
     }
 
     function insertar_usuario($usuario) {
-        
+
         $query = 'INSERT INTO USUARIO (EMAIL,CODUS,NOMUS,APUS1,APUS2,CLAVEUS,FECING,FECNAC,PLATFAV,MAXREC) VALUES("' . $usuario->getEmail() . '","' . $usuario->getCodigoUsuario() . '","' . $usuario->getNombre() . '","' . $usuario->getApellido1() . '","' . $usuario->getApellido2() . '","' . $usuario->getPassword() . '","' . $usuario->getFechaIngreso() . '","' . $usuario->getFechaNacimiento() . '","' . $usuario->getPlatoFavorito() . '","' . $usuario->getRecetasMax() . '");';
         if ($resultado = $this->conexion->query($query)) {
             return true;
@@ -66,8 +66,16 @@ class BaseDatos {
             echo "no ha entrado";
             return $array_usuario;
         }
+    }
 
-        $resultado->close();
+    function countRecetasUsuario($codigoUsuario) {
+        $query = 'SELECT count(*) FROM RECETA where CODUS = "' . $codigoUsuario . '" ;';
+        if ($resultado = $this->conexion->query($query)) {
+            while ($fila = $resultado->fetch_row()) {
+                $FilasOfertas = $fila;
+            }
+        }
+        return $FilasOfertas;
     }
 
     /* Funciones receta**** */
@@ -75,7 +83,7 @@ class BaseDatos {
     function insertar_receta($receta) {
 
         /* Funcion para insertar una receta en la base de datos */
-        $query = 'INSERT INTO RECETA (CODRE,NOMRE,AUTORE,ELABRE,INGRE,SUGER,VALRE,TEMRE,URL,FECHEN) VALUES("' . $receta->getCodigoReceta() . '","' . $receta->getNombreReceta() . '","' . $receta->getAutorReceta() . '","' . htmlspecialchars($receta->getElaboracion()) . '","' . htmlspecialchars($receta->getIngredientes()) . '","' . htmlspecialchars($receta->getSugerencia()) . '","' . $receta->getValoracion() . '","' . $receta->getTemporada() . '","' . $receta->getUrlReceta() . '","' . $receta->getFechaEntrada() . '");';
+        $query = 'INSERT INTO RECETA (CODRE,CODUS,NOMRE,AUTORE,ELABRE,INGRE,SUGER,VALRE,TEMRE,URL,FECHEN) VALUES("' . $receta->getCodigoReceta() . '","' . $receta->getCodigoUsuario() . '","' . $receta->getNombreReceta() . '","' . $receta->getAutorReceta() . '","' . htmlspecialchars($receta->getElaboracion()) . '","' . htmlspecialchars($receta->getIngredientes()) . '","' . htmlspecialchars($receta->getSugerencia()) . '","' . $receta->getValoracion() . '","' . $receta->getTemporada() . '","' . $receta->getUrlReceta() . '","' . $receta->getFechaEntrada() . '");';
         $insertado = ($resultado = $this->conexion->query($query)) ? true : false;
         if (!$insertado) {
             echo "<pre>";
@@ -160,8 +168,20 @@ class BaseDatos {
             while ($fila = $resultado->fetch_row()) {
                 $valUsuario = $fila;
             }
-        }        
+        }
         return $valUsuario;
+    }
+
+    function recuperarAutorReceta($codigoReceta) {
+        $query = 'SELECT * FROM USUARIO U, RECETA R where U.CODUS = R.CODUS and R.CODRE = "' . $codigoReceta . '" ; ';
+
+        if ($resultado = $this->conexion->query($query)) {
+            $array_usuario = crearArrayUsuario($resultado);
+            return $array_usuario;
+        } else {
+            echo "no ha entrado";
+            return $array_usuario;
+        }
     }
 
     function cerrar_conexion() {

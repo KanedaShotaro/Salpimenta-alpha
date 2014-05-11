@@ -53,6 +53,8 @@ function crearArrayRecetas($resultado) {
         $receta = new Receta();
         $receta->setCodigoReceta($fila[$x]);
         $x++;
+        $receta->setCodigoUsuario($fila[$x]);
+        $x++;
         $receta->setNombreReceta($fila[$x]);
         $x++;
         $receta->setAutorReceta($fila[$x]);

@@ -7,7 +7,7 @@ echo "recetaDetalleView.php/";
 <p> <?= $receta->getValoracion() ?></p>
 <p> <?= $receta->getValUsuario() ?></p>
 
-<h3><?= $usuario->getNombre() ?></h3>
+<h3><?= $autor->getNombre() ?></h3>
 <p>IMAGEN USUARIO</p>
 
 <h2>Ingredientes</h2>

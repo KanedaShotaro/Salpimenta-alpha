@@ -28,14 +28,24 @@ function obtenerValoracionUsuario(&$receta, $usuario) {
         $receta->setValUsuario($valusuario[0]);
     }
 }
-$seccion = $_GET["seccion"];
-$usuario = $_SESSION["usuario"][0];
+
+function obtenerAutorReceta($codigoReceta) {
+    $bd = poolBBDD();
+    if ($bd->establecer_conexion()) {
+        $array_autor = $bd->recuperarAutorReceta($codigoReceta);
+        $autor = $array_autor[0];
+        $bd->cerrar_conexion();
+        return $autor;
+    }
+}
+
 $receta = obtenerDetalleReceta($_GET["urlReceta"]);
-obtenerValoracionUsuario($receta, $usuario);
+$seccion = $_GET["seccion"];
+$autor = obtenerAutorReceta($receta->getCodigoReceta());
+obtenerValoracionUsuario($receta, $_SESSION['usuario'][0]);
 
 
-ob_start();
-include '/var/www/Salpimenta-backend/mvc/View/recetaDetalleView.php';
-$tpl_content = ob_get_clean();
-require '/var/www/Salpimenta-backend/mvc/View/layoutView.php';
+$view = new View("recetaDetalleView", array('seccion' => $seccion, 'autor' => $autor, 'receta' => $receta));
+$view->execute();
+
 

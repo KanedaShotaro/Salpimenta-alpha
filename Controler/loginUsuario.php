@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     unset($_SESSION['tiempo_fuera'], $_SESSION['intentos']);
                     $_SESSION['usuario'] = obtenerUsuario($email, $password);
                     $bd->cerrar_conexion();
-                     header("Location: /Salpimenta-backend/mvc/Controler/index.php?");
+                     header("Location: /Salpimenta-backend/index.php?");
                     //die("Login correcto");
                 } else {
                     $_SESSION['intentos'] = $intentos;

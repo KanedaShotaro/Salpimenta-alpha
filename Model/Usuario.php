@@ -2,7 +2,7 @@
 
 echo "Usuario/";
 
-//require_once '/var/www/Salpimenta-backend/mvc/Controlador/funcionesControlador.php';
+//require_once '/var/www/Salpimenta-backend/Controlador/funcionesControlador.php';
 class Usuario {
 
     private $codigoUsuario;

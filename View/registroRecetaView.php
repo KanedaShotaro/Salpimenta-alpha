@@ -6,7 +6,7 @@ echo "registroView.php/";
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <script src="/Salpimenta-backend/mvc/View/js/nicEdit.js" type="text/javascript"></script>
+        <script src="/Salpimenta-backend/View/js/nicEdit.js" type="text/javascript"></script>
         <script type="text/javascript">
             bkLib.onDomLoaded(function() {
                 new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('ingredientes');
@@ -27,13 +27,13 @@ echo "registroView.php/";
     <body>
         <fieldset>
             <legend>Subir Receta</legend>
-            <form action="/Salpimenta-backend/mvc/Controler/index.php?url=registroReceta" enctype="multipart/form-data" method="post" name="formReceta">
+            <form action="/Salpimenta-backend/index.php?url=registroReceta" enctype="multipart/form-data" method="post" name="formReceta">
                 <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre"  placeholder="Titulo de tu Receta"><br/>
                 <label for="ingredientes">Ingredientes: </label><textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes"></textarea><br/>
                 <label for="elaboracion">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta"></textarea><br/>
                 <label for="sugerencias">Segerencias: </label><textarea name="sugerencias" id="sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="30" rows="10"></textarea><br/>
                 <label for="img">Sube tu Imagen: </label><input type="file" name="img" id="img"><br/>
-                <input type="hidden" name="emailUsuario" id="emailUsuario" value="<?php echo $_SESSION[usuario][0]->getEmail(); ?>">       
+                <input type="hidden" name="autor" id="autor" value="<?php echo $_SESSION["usuario"][0]->getNombre(); ?>">       
                 <b> Temporada de tu Receta </b><br>
                 <label for="V">Verano:</label> <input type="checkbox" name="temporada" id="V" value="V"><br>
                 <label for="I">Invierno:</label> <input type="checkbox" name="temporada" id="I" value="I"><br>

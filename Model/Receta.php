@@ -2,12 +2,13 @@
 
 echo "Receta/";
 
-//require_once '/var/www/Salpimenta-backend/mvc/Controlador/funcionesControlador.php';
+//require_once '/var/www/Salpimenta-backend/Controlador/funcionesControlador.php';
 class Receta {
 
     private $codigoReceta;
     private $nombreReceta;
     private $autorReceta;
+    private $codigoUsuario;
     private $elaboracion;
     private $ingredientes;
     private $sugerencia;
@@ -66,6 +67,15 @@ class Receta {
         return $url;
     }
     
+    public function getCodigoUsuario() {
+        return $this->codigoUsuario;
+    }
+
+    public function setCodigoUsuario($codigoUsuario) {
+        $this->codigoUsuario = $codigoUsuario;
+    }
+
+        
     public function getValUsuario() {
         return $this->valUsuario;
     }

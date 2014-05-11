@@ -11,7 +11,7 @@ echo "homeView.php/";
         <h1>SalPimenta.net</h1>
         <fieldset>
             <legend>Entra</legend>
-            <form action="/Salpimenta-backend/mvc/Controler/index.php?url=loginUsuario" method="POST">
+            <form action="/Salpimenta-backend/index.php?url=loginUsuario" method="POST">
                 <table>
                     <tr>
                         <td><label for="email">Correo Electronico: </label></td>
