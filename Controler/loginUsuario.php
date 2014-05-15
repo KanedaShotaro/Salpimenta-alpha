@@ -1,15 +1,9 @@
 <?php
 
-echo "loginUsuario.php/";
-
-
 function obtenerUsuario($email, $password) {
-    $bd = poolBBDD();
-    if ($bd->establecer_conexion()) {
-        $arrayUsuario = $bd->obtener_usuario($email, $password);
-        $bd->cerrar_conexion();
-        return $arrayUsuario;
-    }
+    $usuarioBd = new UsuarioBd();
+    $arrayUsuario = $usuarioBd->obtener_usuario($email, $password);
+    return $arrayUsuario;
 }
 
 //PRIMERO VERIFICAMOS SI PUEDE SEGUIR LOGUEANDOSE O DEBE ESPERAR ALGUN TIEMPO
@@ -44,29 +38,26 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         die('Debes esperar ' . $tiempo_restante . ' segundos para poder intentar el login de nuevo <br /><br /><a href="controlLogin.php">Recargar pagina</a>');
     } else { //Si no ha sobre pasado el numereo de intentos
         $intentos++;
-        $bd = poolBBDD();
+        $usuarioBd = new UsuarioBd();
         if (!empty($_POST["email"]) && !empty($_POST["password"])) {
             $email = strtoupper($_POST['email']);
             $password = strtoupper($_POST['password']);
-            if ($bd->establecer_conexion()) {
-                if ($bd->comprobar_usuario($email, $password)) {
-                    //Borramos las variables de session de intentos y tiempo  y redirigir a la bienvenida
-                    unset($_SESSION['tiempo_fuera'], $_SESSION['intentos']);
-                    $_SESSION['usuario'] = obtenerUsuario($email, $password);
-                    $bd->cerrar_conexion();
-                     header("Location: /Salpimenta-backend/index.php?");
-                    //die("Login correcto");
-                } else {
-                    $_SESSION['intentos'] = $intentos;
-                    //alert("danger", "Error", "El usuario o la clave son incorrectos Intentalo Otra vez");
-                    //alert("info", "INFO", "Llevas " . $intentos . " Intentos");
-                    //form_login();
-                }
+
+            if ($usuarioBd->comprobar_usuario($email, $password)) {
+                //Borramos las variables de session de intentos y tiempo  y redirigir a la bienvenida
+                unset($_SESSION['tiempo_fuera'], $_SESSION['intentos']);
+                $_SESSION['usuario'] = obtenerUsuario($email, $password);
+                
+                header("Location: /Salpimenta-backend/index.php?");
+                
+            } else {
+                $_SESSION['intentos'] = $intentos;
+                
             }
         } else {
-            //form_login();
+           
         }
     }
 } else {
-    //form_login();
+   
 }

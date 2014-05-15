@@ -1,7 +1,7 @@
 <?php
 
-echo "seccion.php/";
 $seccion = $_GET["seccion"];
+$zona = $_GET["zona"];
 
 function activo($seccion, $sitio) {
     $activo = "activo-";
@@ -53,31 +53,31 @@ function numero_seccion($nombreSeccion) {
             break;
     }
 }
+
+function obtenerRecetasSeccionUsuario($seccion, $codigoUsuario) {
+    $array_recetas = array();
+    $numSec = numero_seccion($seccion);
+    $RecetaBd = new RecetaBd();
+
+    $array_recetas = $RecetaBd->recuperar_receta_seccion_usuario($numSec, $codigoUsuario);
+    return $array_recetas;
+}
+
 function obtenerRecetasSeccion($seccion) {
     $array_recetas = array();
     $numSec = numero_seccion($seccion);
-    $bd = poolBBDD();
-    if ($bd->establecer_conexion()) {
-        $array_recetas = $bd->recuperar_receta_seccion($numSec);
-        $bd->cerrar_conexion();
-        return $array_recetas;
-    } else {
-        echo "fallo en la conexión";
-    }
+    $RecetaBd = new RecetaBd();
+
+    $array_recetas = $RecetaBd->recuperar_receta_seccion($numSec);
+    return $array_recetas;
 }
 
-$recetas = obtenerRecetasSeccion($seccion);
+if ($_GET["zona"] == "misalpimenta") {
+    $recetas = obtenerRecetasSeccionUsuario($seccion, $_SESSION["usuario"][0]->getCodigoUsuario());
+} else {
+    $recetas = obtenerRecetasSeccion($seccion);
+}
 
-//include '/var/www/Salpimenta-backend/View/secciones/' . $_GET["seccion"] . '.php';
-
-//ob_start();
-//include '/var/www/Salpimenta-backend/View/seccionView.php';
-//$tpl_content = ob_get_clean();
-//ob_start();
-//require '/var/www/Salpimenta-backend/View/alertsView.php';
-//$alerts_content = ob_get_clean();
-//require '/var/www/Salpimenta-backend/View/layoutView.php';
-
-
-$view = new View("seccionView", array('seccion' => $seccion, 'recetas' => $recetas));
+$view = new View("seccionDetalleView", array('seccion' => $seccion, 'recetas' => $recetas,'zona' => $zona));
 $view->execute();
+

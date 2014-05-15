@@ -46,12 +46,21 @@ class View {
         call_user_func(function () use ($template, $vars, $layoutDefault) {
             extract($vars);
 
+//            if (isset($vars["zona"])) {
+//                $mandarGetZona = '?&zona=' . $zona . '';
+//            } else {
+//                $mandarGetZona = "";
+//            }  
+            
             ob_start();
             include $template;
             $tpl_content = ob_get_clean();
             ob_start();
             require '/var/www/Salpimenta-backend/View/alertsView.php';
             $alerts_content = ob_get_clean();
+            ob_start();
+            require '/var/www/Salpimenta-backend/View/menuView.php';
+            $menu_content = ob_get_clean();
             require '/var/www/Salpimenta-backend/View/' . $layoutDefault . '.php';
         });
     }

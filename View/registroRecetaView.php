@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php
-echo "registroView.php/";
-?>
 <html>
     <head>
         <meta charset="UTF-8">

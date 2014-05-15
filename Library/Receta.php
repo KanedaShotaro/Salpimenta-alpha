@@ -1,7 +1,5 @@
 <?php
 
-echo "Receta/";
-
 //require_once '/var/www/Salpimenta-backend/Controlador/funcionesControlador.php';
 class Receta {
 
