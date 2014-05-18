@@ -1,7 +1,7 @@
 <?php
 
 //require_once '/var/www/Salpimenta-backend/Controlador/funcionesControlador.php';
-class Usuario {
+class Usuario extends AbstractFun {
 
     private $codigoUsuario;
     private $nombre;
@@ -13,6 +13,10 @@ class Usuario {
     private $fechaNacimiento;
     private $platoFavorito;
     private $recetasMax;
+    
+    private $imagen;
+    private $nombreImg;
+    private $tipoImg;
 
     function __construct() {
         
@@ -31,23 +35,17 @@ class Usuario {
         $this->recetasMax = 5;
     }
 
-    function genCharsNoDup($long) {
-        /* Funcion que crea un codigo unico de 25 caracteres de longitud */
-        $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        mt_srand((double) microtime() * 1000000);
-        $i = 0;
-        $pass = null;
-        while ($i != $long) {
-            $rand = mt_rand() % strlen($chars);
-            $tmp = $chars[$rand];
-            $pass = $pass . $tmp;
-            $chars = str_replace($tmp, "", $chars);
-            $i++;
-        }
-        return strrev($pass);
+    function updateUsuario($nombre, $apellido1, $apellido2, $password, $email, $fechaNacimiento, $platoFavorito) {
+        $this->nombre = strtoupper($nombre);
+        $this->apellido1 = strtoupper($apellido1);
+        $this->apellido2 = strtoupper($apellido2);
+        $this->password = $password;
+        $this->email = strtoupper($email);
+        $this->fechaIngreso = date("Y-m-d");
+        $this->fechaNacimiento = $this->convertirFechaAMysql($fechaNacimiento);
+        $this->platoFavorito = strtoupper($platoFavorito);
     }
-
+    
     function convertirFechaAMysql($fecha) {
         /* Convierte la fecha pasada a formato Mysql */
         if ($fecha != null) {
@@ -58,7 +56,32 @@ class Usuario {
             return $fecha;
         }
     }
+    
+    public function getImagen() {
+        return $this->imagen;
+    }
 
+    public function getNombreImg() {
+        return $this->nombreImg;
+    }
+
+    public function getTipoImg() {
+        return $this->tipoImg;
+    }
+
+    public function setImagen($imagen) {
+        $this->imagen = $imagen;
+    }
+
+    public function setNombreImg($nombreImg) {
+        $this->nombreImg = $nombreImg;
+    }
+
+    public function setTipoImg($tipoImg) {
+        $this->tipoImg = $tipoImg;
+    }
+
+    
     public function getCodigoUsuario() {
         return $this->codigoUsuario;
     }

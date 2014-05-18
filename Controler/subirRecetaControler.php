@@ -9,11 +9,13 @@ function contadorOfertasUsuario() {
 }
 
 if (contadorOfertasUsuario() >= $_SESSION["usuario"][0]->getRecetasMax()) {
-    alerts("danger", "Alto!", "As excedido tu numero maximo de recetas, invita a un amigo y conseguiras 5 recetas màs!");
-    $view = new View("seccionesView");
+    $alert = new Alerts("danger", "Alto!", "As excedido tu numero maximo de recetas, invita a un amigo y conseguiras 5 recetas màs!");
+    $view = new View("seccionesView",array("alert" => $alert));
     $view->execute();
 } else {
-    include '/var/www/Salpimenta-backend/View/registroRecetaView.php';
+    //include '/var/www/Salpimenta-backend/View/registroRecetaView.php';
+    $view = new View("registroRecetaView");
+    $view->execute();
 }
 
 

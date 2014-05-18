@@ -3,23 +3,31 @@
 class SeccionDetalle {
 
     protected $zona;
-    protected $recetas;
     protected $seccion;
-    protected $OfertaBd;
+    protected $RecetaBd;
+    protected $codigoUsuario;
 
-    function __construct($zona, $recetas, $seccion, $OfertaBd) {
+    function __construct($zona, $seccion) {
         $this->zona = $zona;
-        $this->recetas = $recetas;
         $this->seccion = $seccion;
-        $this->OfertaBd = $OfertaBd;
+        $this->codigoUsuario = $_SESSION["usuario"][0]->getCodigoUsuario();
+        $this->RecetaBd = new RecetaBd();
     }
 
-    public function execute() {
-        
-        
-        
-        $view = new View("seccionDetalleView", array('seccion' => $seccion, 'recetas' => $recetas));
-        $view->execute();
+    public function getZona() {
+        return $this->zona;
+    }
+
+    public function getSeccion() {
+        return $this->seccion;
+    }
+
+    public function getRecetaBd() {
+        return $this->RecetaBd;
+    }
+
+    public function getCodigoUsuario() {
+        return $this->codigoUsuario;
     }
 
     function activo($seccion, $sitio) {
@@ -32,7 +40,7 @@ class SeccionDetalle {
         }
     }
 
-    function numero_seccion($nombreSeccion) {
+    function numeroSeccion($nombreSeccion) {
         switch ($nombreSeccion) {
             case "aperitivos":
                 return 1;
@@ -74,21 +82,38 @@ class SeccionDetalle {
     }
 
     function obtenerRecetasSeccionUsuario($seccion, $codigoUsuario) {
-        $array_recetas = array();
-        $numSec = numero_seccion($seccion);
-        $RecetaBd = new RecetaBd();
+        $arrayRecetas = array();
+        $numSec = $this->numeroSeccion($seccion);
 
-        $array_recetas = $RecetaBd->recuperar_receta_seccion_usuario($numSec, $codigoUsuario);
-        return $array_recetas;
+        $arrayRecetas = $this->RecetaBd->recuperarRecetaSeccionUsuario($numSec, $codigoUsuario);
+        return $arrayRecetas;
     }
 
     function obtenerRecetasSeccion($seccion) {
-        $array_recetas = array();
-        $numSec = numero_seccion($seccion);
-        $RecetaBd = new RecetaBd();
+        $arrayRecetas = array();
+        $numSec = $this->numeroSeccion($seccion);
 
-        $array_recetas = $RecetaBd->recuperar_receta_seccion($numSec);
-        return $array_recetas;
+        $arrayRecetas = $this->RecetaBd->recuperarRecetaSeccion($numSec);
+        return $arrayRecetas;
+    }
+
+    function recuperarRecetas() {
+        if ($this->zona == "misalpimenta") {
+            $recetas = $this->obtenerRecetasSeccionUsuario($this->seccion, $_SESSION["usuario"][0]->getCodigoUsuario());
+        } else {
+            $recetas = $this->obtenerRecetasSeccion($this->seccion);
+        }
+
+        return $recetas;
+    }
+
+    public function execute() {
+        $recetas = $this->recuperarRecetas();
+        $seccion = $this->getSeccion();
+        $zona = $this->getZona();
+
+        $view = new View("seccionDetalleView", array('seccion' => $seccion, 'recetas' => $recetas, 'zona' => $zona));
+        $view->execute();
     }
 
 }

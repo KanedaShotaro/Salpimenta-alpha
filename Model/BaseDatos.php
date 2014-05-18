@@ -32,6 +32,12 @@ class BaseDatos {
         return $this->conexion;
     }
 
+    public function error() {
+        echo "<pre>";
+        echo "query seccion" . $this->conexion->error;
+        echo "</pre>";
+    }
+
     function cerrar_conexion() {
         if ($this->conexion->close()) {
             

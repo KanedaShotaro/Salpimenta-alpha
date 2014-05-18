@@ -2,7 +2,7 @@
 
 function obtenerUsuario($email, $password) {
     $usuarioBd = new UsuarioBd();
-    $arrayUsuario = $usuarioBd->obtener_usuario($email, $password);
+    $arrayUsuario = $usuarioBd->obtenerUsuario($email, $password);
     return $arrayUsuario;
 }
 
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $email = strtoupper($_POST['email']);
             $password = strtoupper($_POST['password']);
 
-            if ($usuarioBd->comprobar_usuario($email, $password)) {
+            if ($usuarioBd->comprobarUsuario($email, $password)) {
                 //Borramos las variables de session de intentos y tiempo  y redirigir a la bienvenida
                 unset($_SESSION['tiempo_fuera'], $_SESSION['intentos']);
                 $_SESSION['usuario'] = obtenerUsuario($email, $password);

@@ -1,4 +1,3 @@
-
 <?php if ($zona == "misalpimenta" or $_GET["zona"] == "misalpimenta") { ?>
 <div class="container">
     <div class="row">

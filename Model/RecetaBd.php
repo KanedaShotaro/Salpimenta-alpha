@@ -48,7 +48,7 @@ class RecetaBd extends AbstractBD {
         return $insertado;
     }
 
-    function recuperar_receta_seccion($seccion) {
+    function recuperarRecetaSeccion($seccion) {
         $this->open();
         /* funcion para recuperar una receta de la base de datos buscando por seccion */
         $array_recetas = array();
@@ -113,7 +113,7 @@ class RecetaBd extends AbstractBD {
 
     
 
-    function recuperar_receta_seccion_usuario($seccion, $codigoUsuario) {
+    function recuperarRecetaSeccionUsuario($seccion, $codigoUsuario) {
         $this->open();
         $array_recetas = array();
         $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, IMGRE M, RECFAV F WHERE R.CODRE = S.CODRE AND S.CODRE = M.CODRE AND S.CODRE = F.CODRE AND S.CATREC = "' . $seccion . '" AND F.CODUS = "' . $codigoUsuario . '"  ORDER BY R.FECHEN DESC;';
@@ -125,6 +125,18 @@ class RecetaBd extends AbstractBD {
             $this->close();
             return $array_recetas;
         }
+    }
+    
+    function countRecetasUsuario($codigoUsuario) {
+         $this->open();
+        $query = 'SELECT count(*) FROM RECETA where CODUS = "' . $codigoUsuario . '" ;';
+        if ($resultado = $this->obtenerFilas($query)) {
+            while ($fila = $resultado->fetch_row()) {
+                $FilasOfertas = $fila;
+            }
+        }
+        $this->close();
+        return $FilasOfertas;
     }
 
     function crearArrayRecetas($resultado) {

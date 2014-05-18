@@ -1,11 +1,11 @@
 
 
 <?php
-if (!empty($_GET["typeAlert"])) {
+if (!empty($alert)) {
     ?>
-    <div class="alert alert-<?= $_GET["typeAlert"] ?>">
-        <strong><?= $_GET["titleAlert"] ?></strong>
-        <?= $_GET["contentAlert"] ?>
+    <div class="alert alert-<?= $alert->getTypeAlert() ?>">
+        <strong><?= $alert->getTitleAlert() ?></strong>
+        <?= $alert->getContentAlert() ?>
     </div>
     <?php
 }

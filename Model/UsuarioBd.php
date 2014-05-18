@@ -8,18 +8,19 @@ class UsuarioBd extends AbstractBD {
         $this->crearBd($this->bd);
     }
 
-    function insertar_usuario($usuario) {
+    function insertarUsuario($usuario) {
         $this->open();
         $query = 'INSERT INTO USUARIO (EMAIL,CODUS,NOMUS,APUS1,APUS2,CLAVEUS,FECING,FECNAC,PLATFAV,MAXREC) VALUES("' . $usuario->getEmail() . '","' . $usuario->getCodigoUsuario() . '","' . $usuario->getNombre() . '","' . $usuario->getApellido1() . '","' . $usuario->getApellido2() . '","' . $usuario->getPassword() . '","' . $usuario->getFechaIngreso() . '","' . $usuario->getFechaNacimiento() . '","' . $usuario->getPlatoFavorito() . '","' . $usuario->getRecetasMax() . '");';
         if ($resultado = $this->obtenerFilas($query)) {
+            $resultado->close();
             return true;
         } else {
+            $resultado->close();
             return false;
         }
-        $resultado->close();
     }
 
-    function comprobar_usuario($email, $password) {
+    function comprobarUsuario($email, $password) {
         $this->open();
         /* Funcion para comprobar si el usuario se encuentra en la base de datos
          * devuelve true si existe, o false si no existe */
@@ -36,7 +37,7 @@ class UsuarioBd extends AbstractBD {
         }
     }
 
-    function obtener_usuario($email, $password) {
+    function obtenerUsuario($email, $password) {
         $this->open();
         /* devuelve un array con los datos del usuario */
         $array_usuario = array();
@@ -51,7 +52,7 @@ class UsuarioBd extends AbstractBD {
             return $array_usuario;
         }
     }
-    
+
     function recuperarAutorReceta($codigoReceta) {
         $this->open();
         $query = 'SELECT * FROM USUARIO U, RECETA R where U.CODUS = R.CODUS and R.CODRE = "' . $codigoReceta . '" ; ';
@@ -77,40 +78,50 @@ class UsuarioBd extends AbstractBD {
         $this->close();
         return $FilasRecetas;
     }
-    
-    function crearArrayUsuario($resultado) {
-    $array_usuario = array();
-    $i = 0;
 
-    while ($fila = $resultado->fetch_row()) {
-        $x = 0;
-        
-        $usuario = new Usuario();
-        $usuario->setEmail($fila[$x]);
-        $x++;
-        $usuario->setCodigoUsuario($fila[$x]);
-        $x++;
-        $usuario->setNombre($fila[$x]);
-        $x++;
-        $usuario->setApellido1($fila[$x]);
-        $x++;
-        $usuario->setApellido2($fila[$x]);
-        $x++;
-        $usuario->setPassword($fila[$x]);
-        $x++;
-        $usuario->setFechaNacimiento($fila[$x]);
-        $x++;
-        $usuario->setFechaIngreso($fila[$x]);
-        $x++;
-        $usuario->setPlatoFavorito($fila[$x]);
-        $x++;
-        $usuario->setRecetasMax($fila[$x]);
-        $x++;
-
-        $array_usuario[$i] = $usuario;
-        $i++;
+    function updateUsuario($usuario) {
+        $this->open();
+        $query = 'UPDATE USUARIO SET EMAIL = "' . $usuario->getEmail() . '", NOMUS = "' . $usuario->getNombre() . '", APUS1 = "' . $usuario->getApellido1() . '", APUS2 = "' . $usuario->getApellido2() . '", CLAVEUS = "' . $usuario->getPassword() . '", FECNAC = "' . $usuario->getFechaNacimiento() . '", PLATFAV = "' . $usuario->getPlatoFavorito() . '" WHERE CODUS = "' . $usuario->getCodigoUsuario() . '" ;';
+        $actualizado = ($resultado = $this->obtenerFilas($query)) ? true : false;
+        $query2 = 'INSERT INTO IMGUS (ID, NOMIMG, IMG, TIPOIMG, CODUS) VALUES("0","' . $usuario->getNombreImg() . '","' . $usuario->getImagen() . '","' . $usuario->getTipoImg() . '","' . $usuario->getCodigoUsuario() . '");';
+        $insertado = ($resultado = $this->obtenerFilas($query2)) ? true : false;
+        $this->close();
+        return $actualizado;
     }
-    return $array_usuario;
-}
+
+    function crearArrayUsuario($resultado) {
+        $array_usuario = array();
+        $i = 0;
+
+        while ($fila = $resultado->fetch_row()) {
+            $x = 0;
+
+            $usuario = new Usuario();
+            $usuario->setEmail($fila[$x]);
+            $x++;
+            $usuario->setCodigoUsuario($fila[$x]);
+            $x++;
+            $usuario->setNombre($fila[$x]);
+            $x++;
+            $usuario->setApellido1($fila[$x]);
+            $x++;
+            $usuario->setApellido2($fila[$x]);
+            $x++;
+            $usuario->setPassword($fila[$x]);
+            $x++;
+            $usuario->setFechaNacimiento($fila[$x]);
+            $x++;
+            $usuario->setFechaIngreso($fila[$x]);
+            $x++;
+            $usuario->setPlatoFavorito($fila[$x]);
+            $x++;
+            $usuario->setRecetasMax($fila[$x]);
+            $x++;
+
+            $array_usuario[$i] = $usuario;
+            $i++;
+        }
+        return $array_usuario;
+    }
 
 }

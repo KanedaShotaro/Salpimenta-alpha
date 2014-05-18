@@ -4,7 +4,7 @@ class Request {
 
     protected $url;
     protected $controller;
-    protected $defaultUrl = 'home';
+    protected $defaultUrl = 'homeControler';
     protected $defaultAction = 'index';
 
     public function __construct($url) {

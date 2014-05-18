@@ -30,11 +30,11 @@
                             <li><a href="/Salpimenta-backend/index.php?url=secciones"><h4>Explora</h4></a></li>
                             <li><a href="#"><h4>Blogs</h4></a></li>
 
-                            <li><a href="/Salpimenta-backend/index.php?url=subirReceta&zona=misalpimenta">Subir Receta</a></li>
-                            <li><a href="#">ajuestes</a></li>
+                            <li><a href="/Salpimenta-backend/index.php?url=subirRecetaControler&zona=misalpimenta">Subir Receta</a></li>
+                            <li><a href="/Salpimenta-backend/index.php?url=ajustesControler&zona=misalpimenta">ajustes</a></li>
                             <li><a href="#">mi Ficha</a></li>
                             <li><a href="#">ver/editar recetas</a></li>
-                            <li><a href="/Salpimenta-backend/index.php?url=salirSesion&zona=misalpimenta">Descunectarse</a></li>
+                            <li><a href="/Salpimenta-backend/index.php?url=salirSesionControler&zona=misalpimenta">Descunectarse</a></li>
                         </ul>
                     </div><!-- /.nav-collapse -->
                 </div><!-- /.container -->
@@ -60,11 +60,11 @@
                             <li><a href="/Salpimenta-backend/index.php?url=secciones"><h4>Explora</h4></a></li>
                             <li><a href="#"><h4>Blogs</h4></a></li>
 
-                            <li><a href="/Salpimenta-backend/index.php?url=subirReceta">Subir Receta</a></li>
-                            <li><a href="#">ajuestes</a></li>
+                            <li><a href="/Salpimenta-backend/index.php?url=subirRecetaControler">Subir Receta</a></li>
+                            <li><a href="/Salpimenta-backend/index.php?url=ajustesControler">ajuestes</a></li>
                             <li><a href="#">mi Ficha</a></li>
                             <li><a href="#">ver/editar recetas</a></li>
-                            <li><a href="/Salpimenta-backend/index.php?url=salirSesion">Descunectarse</a></li>
+                            <li><a href="/Salpimenta-backend/index.php?url=salirSesionControler">Descunectarse</a></li>
                         </ul>
                     </div><!-- /.nav-collapse -->
                 </div><!-- /.container -->

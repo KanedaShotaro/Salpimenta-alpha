@@ -1,7 +1,7 @@
 <?php
 
 //require_once '/var/www/Salpimenta-backend/Controlador/funcionesControlador.php';
-class Receta {
+class Receta extends AbstractFun {
 
     private $codigoReceta;
     private $nombreReceta;
@@ -25,7 +25,8 @@ class Receta {
         
     }
 
-    function newReceta($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia, $temporada, $categoriaReceta) {
+    function newReceta($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia, $temporada, $categoriaReceta, $img) {
+
         $this->codigoReceta = $this->genCharsNoDup(25);
         $this->nombreReceta = $nombreReceta;
         $this->autorReceta = $autorReceta;
@@ -37,23 +38,8 @@ class Receta {
         $this->urlReceta = $this->crearUrlUnica($nombreReceta);
         $this->fechaEntrada = date("Y-m-d");
         $this->categoriaReceta = $categoriaReceta;
-    }
 
-    function genCharsNoDup($long) {
-        /* Funcion que crea un codigo unico de 25 caracteres de longitud */
-        $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        mt_srand((double) microtime() * 1000000);
-        $i = 0;
-        $pass = null;
-        while ($i != $long) {
-            $rand = mt_rand() % strlen($chars);
-            $tmp = $chars[$rand];
-            $pass = $pass . $tmp;
-            $chars = str_replace($tmp, "", $chars);
-            $i++;
-        }
-        return strrev($pass);
+        $this->introducirImg($img);
     }
 
     function crearUrlUnica($nombre) {
@@ -64,7 +50,7 @@ class Receta {
         $url .= "/" . $codigo;
         return $url;
     }
-    
+
     public function getCodigoUsuario() {
         return $this->codigoUsuario;
     }
@@ -73,7 +59,6 @@ class Receta {
         $this->codigoUsuario = $codigoUsuario;
     }
 
-        
     public function getValUsuario() {
         return $this->valUsuario;
     }
@@ -82,7 +67,6 @@ class Receta {
         $this->valUsuario = $valUsuario;
     }
 
-    
     public function getImagen() {
         return $this->imagen;
     }

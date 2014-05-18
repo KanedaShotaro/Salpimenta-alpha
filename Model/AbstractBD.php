@@ -19,4 +19,8 @@ abstract class AbstractBD {
         $this->bd->cerrar_conexion();
     }
 
+    protected function error() {
+        $this->bd->error();
+    }
+
 }

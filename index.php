@@ -7,11 +7,17 @@ include '/var/www/Salpimenta-backend/Model/BaseDatos.php';
 include '/var/www/Salpimenta-backend/Model/AbstractBD.php';
 include '/var/www/Salpimenta-backend/Model/RecetaBd.php';
 include '/var/www/Salpimenta-backend/Model/UsuarioBd.php';
+include '/var/www/Salpimenta-backend/Library/AbstractFun.php';
 include '/var/www/Salpimenta-backend/Library/Usuario.php';
 include '/var/www/Salpimenta-backend/Library/Receta.php';
 include '/var/www/Salpimenta-backend/Library/View.php';
 include '/var/www/Salpimenta-backend/Library/Request.php';
 include '/var/www/Salpimenta-backend/Library/RecetaDetalle.php';
+include '/var/www/Salpimenta-backend/Library/Ajustes.php';
+include '/var/www/Salpimenta-backend/Library/RegistroReceta.php';
+include '/var/www/Salpimenta-backend/Library/RegistroUsuario.php';
+include '/var/www/Salpimenta-backend/Library/SeccionDetalle.php';
+include '/var/www/Salpimenta-backend/Library/Alerts.php';
 
 session_start();
 

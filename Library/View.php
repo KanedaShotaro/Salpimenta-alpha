@@ -45,12 +45,6 @@ class View {
 
         call_user_func(function () use ($template, $vars, $layoutDefault) {
             extract($vars);
-
-//            if (isset($vars["zona"])) {
-//                $mandarGetZona = '?&zona=' . $zona . '';
-//            } else {
-//                $mandarGetZona = "";
-//            }  
             
             ob_start();
             include $template;

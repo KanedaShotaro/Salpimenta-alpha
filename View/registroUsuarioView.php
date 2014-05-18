@@ -8,7 +8,7 @@
        <h1>SalPimenta.net</h1>
         <fieldset>
             <legend>Registro de Usuario</legend>
-            <form action="/Salpimenta-backend/index.php?url=registroUsuario" method="post">
+            <form action="/Salpimenta-backend/index.php?url=registroUsuarioControler" method="post">
                 <input type="hidden" name="regus" value="regus">
                 <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre" placeholder="Nombre de Usuario"  ><br/>
                 <label for="apellido1">Apellido1: </label><input type="text" name="apellido1" id="apellido1" placeholder="Primer Apellido"  ><br/>
