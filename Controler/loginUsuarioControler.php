@@ -1,8 +1,8 @@
 <?php
 
-function obtenerUsuario($email, $password) {
+function obtenerUsuario($email) {
     $usuarioBd = new UsuarioBd();
-    $arrayUsuario = $usuarioBd->obtenerUsuario($email, $password);
+    $arrayUsuario = $usuarioBd->obtenerUsuario($email);
     return $arrayUsuario;
 }
 
@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $usuarioBd = new UsuarioBd();
         if (!empty($_POST["email"]) && !empty($_POST["password"])) {
             $email = strtoupper($_POST['email']);
-            $password = strtoupper($_POST['password']);
+            $password = $_POST['password'];
 
             if ($usuarioBd->comprobarUsuario($email, $password)) {
                 //Borramos las variables de session de intentos y tiempo  y redirigir a la bienvenida
                 unset($_SESSION['tiempo_fuera'], $_SESSION['intentos']);
-                $_SESSION['usuario'] = obtenerUsuario($email, $password);
+                $_SESSION['usuario'] = obtenerUsuario($email);
                 
                 header("Location: /Salpimenta-backend/index.php?");
                 

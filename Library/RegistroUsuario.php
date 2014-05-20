@@ -22,16 +22,16 @@ class Registrousuario {
 
     public function execute() {
         $usuarioBd = $this->getUsuarioBd();
-        $usuario = $this->usuario;
+        $usuario = $this->getUsuario();
 
         if ($usuarioBd->insertarUsuario($usuario)) {
             $_SESSION['usuario'][0] = $usuario;
-            $view = new View("homeView");
-            $view->execute();
+            new NewAlert("success", "Bienvenido!",' '.$usuario->getNombre().', gracias por haberte registrado en SalPimenta!');
+            $request = new Request("home");
+            $request->execute();
         } else {
-            //alerts("danger", "Error", "Usuario no introducido");
-            $view = new View("registroUsuarioView");
-            $view->execute();
+            new NewAlert("danger", "error", "El usuario ya existe!");
+            include "/var/www/Salpimenta-backend/View/registroUsuarioView.php";
         }
     }
 

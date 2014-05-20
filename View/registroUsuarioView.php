@@ -3,9 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="/Salpimenta-backend/View/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/Salpimenta-backend/View/css/offcanvas.css">
     </head>
     <body>
-       <h1>SalPimenta.net</h1>
+        <h1>SalPimenta.net</h1>
+        <?php
+        if (isset($_SESSION["alert"])) {
+            $alert = $_SESSION["alert"][0];
+            ?>
+            <div class="alert alert-<?= $alert->getTypeAlert() ?>">
+                <strong><?= $alert->getTitleAlert() ?></strong>
+                <?= $alert->getContentAlert() ?>
+            </div>
+            <?php
+            unset($_SESSION["alert"]);
+        }
+        ?>
         <fieldset>
             <legend>Registro de Usuario</legend>
             <form action="/Salpimenta-backend/index.php?url=registroUsuarioControler" method="post">

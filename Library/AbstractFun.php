@@ -1,6 +1,6 @@
 <?php
 
-class AbstractFun {
+abstract class AbstractFun {
 
     function genCharsNoDup($long) {
         /* Funcion que crea un codigo unico de 25 caracteres de longitud */

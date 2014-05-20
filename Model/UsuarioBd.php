@@ -12,10 +12,10 @@ class UsuarioBd extends AbstractBD {
         $this->open();
         $query = 'INSERT INTO USUARIO (EMAIL,CODUS,NOMUS,APUS1,APUS2,CLAVEUS,FECING,FECNAC,PLATFAV,MAXREC) VALUES("' . $usuario->getEmail() . '","' . $usuario->getCodigoUsuario() . '","' . $usuario->getNombre() . '","' . $usuario->getApellido1() . '","' . $usuario->getApellido2() . '","' . $usuario->getPassword() . '","' . $usuario->getFechaIngreso() . '","' . $usuario->getFechaNacimiento() . '","' . $usuario->getPlatoFavorito() . '","' . $usuario->getRecetasMax() . '");';
         if ($resultado = $this->obtenerFilas($query)) {
-            $resultado->close();
+            $this->close();
             return true;
         } else {
-            $resultado->close();
+            $this->close();
             return false;
         }
     }
@@ -24,12 +24,15 @@ class UsuarioBd extends AbstractBD {
         $this->open();
         /* Funcion para comprobar si el usuario se encuentra en la base de datos
          * devuelve true si existe, o false si no existe */
-        $query = "SELECT EMAIL, CLAVEUS FROM USUARIO where EMAIL = '$email' and CLAVEUS = '$password' ; ";
+        $query = "SELECT CLAVEUS FROM USUARIO where EMAIL = '$email'; ";
 //$query = 'SELECT EMAILUS, CLAVEUS FROM USUARIO where EMAILUS = "' . $email . '" and CLAVEUS = "' . $password . '" ; ';
         if ($resultado = $this->obtenerFilas($query)) {
             while ($fila = $resultado->fetch_row()) {
-                $this->close();
+                $passDesencriptado = Encryptar::decrypt($fila[0]);
+                if ($password == $passDesencriptado) {
+                     $this->close();
                 return true;
+                }
             }
         } else {
             $this->close();
@@ -37,11 +40,11 @@ class UsuarioBd extends AbstractBD {
         }
     }
 
-    function obtenerUsuario($email, $password) {
+    function obtenerUsuario($email) {
         $this->open();
         /* devuelve un array con los datos del usuario */
         $array_usuario = array();
-        $query = 'SELECT * FROM USUARIO where EMAIL = "' . $email . '" and CLAVEUS = "' . $password . '" ; ';
+        $query = 'SELECT * FROM USUARIO where EMAIL = "' . $email . '";';
 
         if ($resultado = $this->obtenerFilas($query)) {
             $array_usuario = $this->crearArrayUsuario($resultado);
@@ -97,23 +100,23 @@ class UsuarioBd extends AbstractBD {
             $x = 0;
 
             $usuario = new Usuario();
-            $usuario->setEmail($fila[$x]);
+            $usuario->setEmail(strtolower($fila[$x]));
             $x++;
             $usuario->setCodigoUsuario($fila[$x]);
             $x++;
-            $usuario->setNombre($fila[$x]);
+            $usuario->setNombre(ucfirst(strtolower($fila[$x])));
             $x++;
-            $usuario->setApellido1($fila[$x]);
+            $usuario->setApellido1(ucfirst(strtolower($fila[$x])));
             $x++;
-            $usuario->setApellido2($fila[$x]);
+            $usuario->setApellido2(ucfirst(strtolower($fila[$x])));
             $x++;
-            $usuario->setPassword($fila[$x]);
+            $usuario->setPassword(Encryptar::decrypt($fila[$x]));
             $x++;
             $usuario->setFechaNacimiento($fila[$x]);
             $x++;
             $usuario->setFechaIngreso($fila[$x]);
             $x++;
-            $usuario->setPlatoFavorito($fila[$x]);
+            $usuario->setPlatoFavorito(ucfirst(strtolower($fila[$x])));
             $x++;
             $usuario->setRecetasMax($fila[$x]);
             $x++;

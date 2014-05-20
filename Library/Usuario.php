@@ -13,7 +13,6 @@ class Usuario extends AbstractFun {
     private $fechaNacimiento;
     private $platoFavorito;
     private $recetasMax;
-    
     private $imagen;
     private $nombreImg;
     private $tipoImg;
@@ -45,7 +44,7 @@ class Usuario extends AbstractFun {
         $this->fechaNacimiento = $this->convertirFechaAMysql($fechaNacimiento);
         $this->platoFavorito = strtoupper($platoFavorito);
     }
-    
+
     function convertirFechaAMysql($fecha) {
         /* Convierte la fecha pasada a formato Mysql */
         if ($fecha != null) {
@@ -56,7 +55,17 @@ class Usuario extends AbstractFun {
             return $fecha;
         }
     }
-    
+
+    function cambiaFechaANormal($fecha) {
+        if ($fecha != null) {
+            $objetoFecha = DateTime::createFromFormat("Y-m-d", $fecha);
+            $fecha = $objetoFecha->format("d/m/Y");
+            return $fecha;
+        } else {
+            return $fecha;
+        }
+    }
+
     public function getImagen() {
         return $this->imagen;
     }
@@ -81,7 +90,6 @@ class Usuario extends AbstractFun {
         $this->tipoImg = $tipoImg;
     }
 
-    
     public function getCodigoUsuario() {
         return $this->codigoUsuario;
     }
@@ -151,7 +159,7 @@ class Usuario extends AbstractFun {
     }
 
     public function setFechaNacimiento($fechaNacimiento) {
-        $this->fechaNacimiento = $fechaNacimiento;
+        $this->fechaNacimiento = $this->cambiaFechaANormal($fechaNacimiento);
     }
 
     public function setPlatoFavorito($platoFavorito) {

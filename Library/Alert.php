@@ -1,6 +1,6 @@
 <?php
 
-class Alerts {
+class Alert {
 
     protected $typeAlert;
     protected $titleAlert;
