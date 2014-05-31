@@ -22,8 +22,8 @@
         ?>
         <fieldset>
             <legend>Registro de Usuario</legend>
-            <form action="/Salpimenta-backend/index.php?url=registroUsuarioControler" method="post">
-                <input type="hidden" name="regus" value="regus">
+            <form action="/Salpimenta-backend/index.php?url=registroUsuarioControler" enctype="multipart/form-data" method="post">
+                <label for="img">Sube tu Imagen: </label><input type="file" name="img" id="img"><br/>                
                 <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre" placeholder="Nombre de Usuario"  ><br/>
                 <label for="apellido1">Apellido1: </label><input type="text" name="apellido1" id="apellido1" placeholder="Primer Apellido"  ><br/>
                 <label for="apellido2">Apellido2: </label><input type="text" name="apellido2" id="apellido2" placeholder="Segundo Apellido"  ><br/>

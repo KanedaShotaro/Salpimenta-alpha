@@ -5,12 +5,12 @@ class SeccionDetalle {
     protected $zona;
     protected $seccion;
     protected $RecetaBd;
-    protected $codigoUsuario;
+    //protected $codigoUsuario;
 
     function __construct($zona, $seccion) {
         $this->zona = $zona;
         $this->seccion = $seccion;
-        $this->codigoUsuario = $_SESSION["usuario"][0]->getCodigoUsuario();
+        //$this->codigoUsuario = $_SESSION["usuario"][0]->getCodigoUsuario();
         $this->RecetaBd = new RecetaBd();
     }
 
@@ -26,9 +26,9 @@ class SeccionDetalle {
         return $this->RecetaBd;
     }
 
-    public function getCodigoUsuario() {
-        return $this->codigoUsuario;
-    }
+//    public function getCodigoUsuario() {
+//        return $this->codigoUsuario;
+//    }
 
     function activo($seccion, $sitio) {
         $activo = "activo-";

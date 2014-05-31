@@ -7,7 +7,7 @@ function alerts($typeAlert,$titleAlert,$contentAlert){
 }
 
 function varDum($var){
-    echo "<br>";
+    echo "<pre>";
     var_dump($var);
-    echo "</br>";
+    echo "</pre>";
 }

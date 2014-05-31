@@ -42,16 +42,16 @@ class RegistroReceta {
 
         if ($recetaBd->insertar_Receta($receta)) {
             if ($recetaBd->insertar_tags_receta($tags, $receta->getCodigoReceta())) {
-                $alert = new Alerts("success", "Exito", "Tu receta a sido introducida!");
+                AlertAction::create("success", "Exito", "Tu receta a sido introducida!");
                 $view = new View("seccionesView", array("alert" => $alert));
                 $view->execute();
             } else {
-                $alert = new Alerts("danger", "Error", "Oferta no introducida");
+                AlertAction::create("warning", "Error", "Los tags no se ha introducido correctamente");
                 $view = new View("seccionesView", array("alert" => $alert));
                 $view->execute();
             }
         } else {
-            $alert = new Alerts("danger", "Error", "Oferta no introducida");
+            AlertAction::create("danger", "Error", "Oferta no introducida");
             $view = new View("seccionesView", array("alert" => $alert));
             $view->execute();
         }

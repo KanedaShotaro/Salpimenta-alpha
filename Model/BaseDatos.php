@@ -28,14 +28,26 @@ class BaseDatos {
         return $this->conexion->host_info;
     }
 
-    public function getConexion() {
-        return $this->conexion;
-    }
-
     public function error() {
         echo "<pre>";
         echo "query seccion" . $this->conexion->error;
         echo "</pre>";
+    }
+
+    public function getConexion() {
+        return $this->conexion;
+    }
+
+    public function autoComit($boolean) {
+        $this->conexion->autocommit($boolean);
+    }
+
+    public function rollBack() {
+        $this->conexion->rollback();
+    }
+
+    public function commit() {
+        $this->conexion->commit();
     }
 
     function cerrar_conexion() {

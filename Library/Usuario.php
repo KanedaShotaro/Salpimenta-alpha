@@ -21,7 +21,7 @@ class Usuario extends AbstractFun {
         
     }
 
-    function newUsuario($nombre, $apellido1, $apellido2, $password, $email, $fechaNacimiento, $platoFavorito) {
+    function newUsuario($nombre, $apellido1, $apellido2, $password, $email, $fechaNacimiento, $platoFavorito, $datosImagen) {
         $this->codigoUsuario = $this->genCharsNoDup(25);
         $this->nombre = strtoupper($nombre);
         $this->apellido1 = strtoupper($apellido1);
@@ -32,9 +32,10 @@ class Usuario extends AbstractFun {
         $this->fechaNacimiento = $this->convertirFechaAMysql($fechaNacimiento);
         $this->platoFavorito = strtoupper($platoFavorito);
         $this->recetasMax = 5;
+        $this->introducirImg($datosImagen);
     }
 
-    function updateUsuario($nombre, $apellido1, $apellido2, $password, $email, $fechaNacimiento, $platoFavorito) {
+    function updateUsuario($nombre, $apellido1, $apellido2, $password, $email, $fechaNacimiento, $platoFavorito, $datosImagen) {
         $this->nombre = strtoupper($nombre);
         $this->apellido1 = strtoupper($apellido1);
         $this->apellido2 = strtoupper($apellido2);
@@ -43,6 +44,33 @@ class Usuario extends AbstractFun {
         $this->fechaIngreso = date("Y-m-d");
         $this->fechaNacimiento = $this->convertirFechaAMysql($fechaNacimiento);
         $this->platoFavorito = strtoupper($platoFavorito);
+
+        $this->introducirImg($datosImagen);
+    }
+
+    function dataBaseArray($vars = array()) {
+        $x = 0;
+        
+        $this->setEmail(strtolower($vars[$x]));
+        $x++;
+        $this->setCodigoUsuario($vars[$x]);
+        $x++;
+        $this->setNombre(ucfirst(strtolower($vars[$x])));
+        $x++;
+        $this->setApellido1(ucfirst(strtolower($vars[$x])));
+        $x++;
+        $this->setApellido2(ucfirst(strtolower($vars[$x])));
+        $x++;
+        $this->setPassword(Encryptar::decrypt($vars[$x]));
+        $x++;
+        $this->setFechaNacimiento($vars[$x]);
+        $x++;
+        $this->setFechaIngreso($vars[$x]);
+        $x++;
+        $this->setPlatoFavorito(ucfirst(strtolower($vars[$x])));
+        $x++;
+        $this->setRecetasMax($vars[$x]);
+        $x++;
     }
 
     function convertirFechaAMysql($fecha) {

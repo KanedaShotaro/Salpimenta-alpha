@@ -10,7 +10,7 @@
         <title></title>
 
         <link rel="stylesheet" href="/Salpimenta-backend/View/css/bootstrap.min.css">
-         <link rel="stylesheet" href="/Salpimenta-backend/View/css/signin.css">
+        <link rel="stylesheet" href="/Salpimenta-backend/View/css/signin.css">
 
 
 
@@ -18,7 +18,21 @@
 
     <body>
 
+
+
         <div class="container">
+            <?php
+            if (isset($_SESSION["alert"])) {
+                $alert = $_SESSION["alert"][0];
+                ?>
+                <div class="alert alert-<?= $alert->getTypeAlert() ?>">
+                    <strong><?= $alert->getTitleAlert() ?></strong>
+                    <?= $alert->getContentAlert() ?>
+                </div>
+                <?php
+                unset($_SESSION["alert"]);
+            }
+            ?>
 
             <form action="/Salpimenta-backend/index.php?url=loginUsuarioControler" method="POST" class="form-signin" role="form">
                 <h2 class="form-signin-heading">Please sign in</h2>

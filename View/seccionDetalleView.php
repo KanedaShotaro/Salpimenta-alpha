@@ -1,4 +1,12 @@
-<?php if ($zona == "misalpimenta" or $_GET["zona"] == "misalpimenta") { ?>
+<?php
+if (isset($_GET["zona"])) {
+    $zona = $_GET["zona"];
+}else{
+    $zona = "explora";
+}
+?>
+
+<?php if ($zona == "misalpimenta") { ?>
 <div class="container">
     <div class="row">
         <h1><?= $seccion ?></h1>

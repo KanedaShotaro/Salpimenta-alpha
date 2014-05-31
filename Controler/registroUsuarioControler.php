@@ -4,7 +4,7 @@ include_once '/var/www/Salpimenta-backend/Library/Alert.php';
 include_once '/var/www/Salpimenta-backend/Library/NewAlert.php';
 
 if (!empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["nombre"])) {
-    
+
     $registroUsuario = new Registrousuario(
             array(
         "nombre" => $_POST["nombre"],
@@ -13,9 +13,10 @@ if (!empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["nomb
         "password" => Encryptar::encrypt($_POST["password"]),
         "email" => $_POST["email"],
         "fechaNacimiento" => $_POST["fecha"],
-        "platoFavorito" => $_POST["platoFav"]
+        "platoFavorito" => $_POST["platoFav"],
+        "img" => $_FILES["img"],
     ));
-    $registroUsuario->execute();  
+    $registroUsuario->execute();
 } else {
     new NewAlert("info", "Atencion", "Rellena todos los campos");
     include "/var/www/Salpimenta-backend/View/registroUsuarioView.php";

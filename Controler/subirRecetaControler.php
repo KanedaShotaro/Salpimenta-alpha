@@ -9,7 +9,7 @@ function contadorOfertasUsuario() {
 }
 
 if (contadorOfertasUsuario() >= $_SESSION["usuario"][0]->getRecetasMax()) {
-    new NewAlert("danger", "Alto!", "As excedido tu numero maximo de recetas, invita a un amigo y conseguiras 5 recetas màs!");
+    AlertAction::create("danger", "Alto!", "As excedido tu numero maximo de recetas, invita a un amigo y conseguiras 5 recetas màs!");
     $view = new View("seccionesView");
     $view->execute();
 } else {

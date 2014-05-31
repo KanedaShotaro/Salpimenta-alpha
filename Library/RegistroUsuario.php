@@ -9,7 +9,7 @@ class Registrousuario {
         extract($vars);
         $this->usuarioBd = new UsuarioBd();
         $this->usuario = new Usuario();
-        $this->usuario->newUsuario($nombre, $apellido1, $apellido2, $password, $email, $fechaNacimiento, $platoFavorito);
+        $this->usuario->newUsuario($nombre, $apellido1, $apellido2, $password, $email, $fechaNacimiento, $platoFavorito, $img);
     }
 
     public function getUsuarioBd() {
@@ -23,7 +23,7 @@ class Registrousuario {
     public function execute() {
         $usuarioBd = $this->getUsuarioBd();
         $usuario = $this->getUsuario();
-
+        
         if ($usuarioBd->insertarUsuario($usuario)) {
             $_SESSION['usuario'][0] = $usuario;
             new NewAlert("success", "Bienvenido!",' '.$usuario->getNombre().', gracias por haberte registrado en SalPimenta!');

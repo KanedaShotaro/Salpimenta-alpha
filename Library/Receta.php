@@ -25,7 +25,7 @@ class Receta extends AbstractFun {
         
     }
 
-    function newReceta($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia, $temporada, $categoriaReceta, $img) {
+    function newReceta($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia, $temporada, $categoriaReceta, $datosImagen) {
 
         $this->codigoReceta = $this->genCharsNoDup(25);
         $this->nombreReceta = $nombreReceta;
@@ -39,7 +39,41 @@ class Receta extends AbstractFun {
         $this->fechaEntrada = date("Y-m-d");
         $this->categoriaReceta = $categoriaReceta;
 
-        $this->introducirImg($img);
+        $this->introducirImg($datosImagen);
+    }
+
+    function dataBaseArray($vars = array()) {
+        $x = 0;
+        $this->setCodigoReceta($vars[$x]);
+        $x++;
+        $this->setCodigoUsuario($vars[$x]);
+        $x++;
+        $this->setNombreReceta($vars[$x]);
+        $x++;
+        $this->setAutorReceta($vars[$x]);
+        $x++;
+        $this->setElaboracion(htmlspecialchars_decode($vars[$x]));
+        $x++;
+        $this->setIngredientes(htmlspecialchars_decode($vars[$x]));
+        $x++;
+        $this->setSugerencia(htmlspecialchars_decode($vars[$x]));
+        $x++;
+        $this->setValoracion($vars[$x]);
+        $x++;
+        $this->setTemporada($vars[$x]);
+        $x++;
+        $this->setUrlReceta($vars[$x]);
+        $x++;
+        $this->setFechaEntrada($vars[$x]);
+        $x++;
+        $this->setNombreImg($vars[$x]);
+        $x++;
+        $this->setImagen($vars[$x]);
+        $x++;
+        $this->setTipoImg($vars[$x]);
+        $x++;
+        $this->setCategoriaReceta($vars[$x]);
+        $x++;
     }
 
     function crearUrlUnica($nombre) {
