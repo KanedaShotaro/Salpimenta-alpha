@@ -5,6 +5,7 @@ class SeccionDetalle {
     protected $zona;
     protected $seccion;
     protected $RecetaBd;
+
     //protected $codigoUsuario;
 
     function __construct($zona, $seccion) {
@@ -83,16 +84,16 @@ class SeccionDetalle {
 
     function obtenerRecetasSeccionUsuario($seccion, $codigoUsuario) {
         $arrayRecetas = array();
-        $numSec = $this->numeroSeccion($seccion);
-
+        //$numSec = $this->numeroSeccion();
+        $numSec = RecoverCat::numeroSeccion($seccion);
         $arrayRecetas = $this->RecetaBd->recuperarRecetaSeccionUsuario($numSec, $codigoUsuario);
         return $arrayRecetas;
     }
 
     function obtenerRecetasSeccion($seccion) {
         $arrayRecetas = array();
-        $numSec = $this->numeroSeccion($seccion);
-
+        //$numSec = $this->numeroSeccion($seccion);
+        $numSec = RecoverCat::numeroSeccion($seccion);
         $arrayRecetas = $this->RecetaBd->recuperarRecetaSeccion($numSec);
         return $arrayRecetas;
     }

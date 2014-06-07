@@ -1,8 +1,10 @@
 <?php
 
 if (!empty($_GET["form"])) {
+    
+ 
 
-    if (!empty($_FILES['img'])) {
+    if (!empty($_FILES['img'][name])) {
         $imgNuevo = $_FILES['img'];
     } else {
         $imgNuevo = "";
@@ -27,7 +29,7 @@ if (!empty($_GET["form"])) {
     }
 
     if (!empty($_POST["password"])) {
-        $passwordNuevo = $_POST["password"];
+        $passwordNuevo = Encryptar::encrypt($_POST["password"]);
     } else {
         $passwordNuevo = $_SESSION["usuario"][0]->getPassword();
     }
@@ -51,8 +53,8 @@ if (!empty($_GET["form"])) {
     }
 
     $ajustes = new Ajustes(array("img" => $imgNuevo, "nombre" => $nombreNuevo, "apellido1" => $apellido1Nuevo
-            ,"apellido2" => $apellido2Nuevo, "password" => $passwordNuevo, "email" => $emailNuevo,"platoFav" => $platoFavNuevo
-            ,"fechaNacimiento" => $fechaNuevo));
+        , "apellido2" => $apellido2Nuevo, "password" => $passwordNuevo, "email" => $emailNuevo, "platoFav" => $platoFavNuevo
+        , "fechaNacimiento" => $fechaNuevo));
     $ajustes->execute();
 } else {
     $view = new View("ajustesView");

@@ -18,11 +18,10 @@ class UsuarioBd extends AbstractBD {
     function comprobarUsuario($email, $password) {
         /* Funcion para comprobar si el usuario se encuentra en la base de datos
          * devuelve true si existe, o false si no existe */
-
         $query = "SELECT CLAVEUS FROM USUARIO where EMAIL = '$email'; ";
         $resultado = $this->selectQuery($query);
-
-        if ($resultado[0] == $password) {
+        $passDecrypt = Encryptar::decrypt($resultado[0]);
+        if ($passDecrypt == $password) {
             return true;
         } else {
             return false;
@@ -31,19 +30,17 @@ class UsuarioBd extends AbstractBD {
 
     function obtenerUsuario($email) {
         /* devuelve un array con los datos del usuario */
-        $array_usuario = array();
-        $query = 'SELECT * FROM USUARIO where EMAIL = "' . $email . '";';
+        $query = 'SELECT U.*,M.NOMIMG,M.IMG,M.TIPOIMG FROM USUARIO U, IMGUS M WHERE U.CODUS = M.CODUS AND U.EMAIL = "' . $email . '";';
         return $this->selectQuery($query, $this->getObjectDefault());
     }
 
     function recuperarAutorReceta($codigoReceta) {
 
-        $query = 'SELECT U.* FROM USUARIO U, RECETA R where U.CODUS = R.CODUS and R.CODRE = "' . $codigoReceta . '" ; ';
+        $query = 'SELECT U.*,M.NOMIMG,M.IMG,M.TIPOIMG FROM USUARIO U, RECETA R,IMGUS M WHERE U.CODUS = M.CODUS AND M.CODUS = R.CODUS AND R.CODRE = "' . $codigoReceta . '" ; ';
         return $this->selectQuery($query, "Usuario");
     }
 
     function countRecetasUsuario($codigoUsuario) {
-        $this->open();
         $query = 'SELECT count(*) FROM RECETA where CODUS = "' . $codigoUsuario . '" ;';
         return $this->selectQuery($query);
     }

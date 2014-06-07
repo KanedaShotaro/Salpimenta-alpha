@@ -58,6 +58,12 @@ class RecetaBd extends AbstractBD {
         $resultado = $this->selectQuery($query);
         return $resultado[0];
     }
+    
+    function recuperarRecetasUsuario($codigoUsuario) {
+        $query = 'SELECT * FROM RECETA where CODUS = "' . $codigoUsuario . '" ;';
+        $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, IMGRE M WHERE R.CODRE = S.CODRE AND S.CODRE = M.CODRE AND R.CODUS = "' . $codigoUsuario . '" ORDER BY R.FECHEN DESC;';
+        return $this->selectQuery($query,"Receta");
+    }
 
     function recuperarRecetaSeccionUsuario($seccion, $codigoUsuario) {
 

@@ -13,6 +13,7 @@ class Usuario extends AbstractFun {
     private $fechaNacimiento;
     private $platoFavorito;
     private $recetasMax;
+    private $datosImagen;
     private $imagen;
     private $nombreImg;
     private $tipoImg;
@@ -45,12 +46,14 @@ class Usuario extends AbstractFun {
         $this->fechaNacimiento = $this->convertirFechaAMysql($fechaNacimiento);
         $this->platoFavorito = strtoupper($platoFavorito);
 
-        $this->introducirImg($datosImagen);
+        if ($datosImagen != "") {
+            $this->introducirImg($datosImagen);
+        }
     }
 
     function dataBaseArray($vars = array()) {
         $x = 0;
-        
+
         $this->setEmail(strtolower($vars[$x]));
         $x++;
         $this->setCodigoUsuario($vars[$x]);
@@ -70,6 +73,12 @@ class Usuario extends AbstractFun {
         $this->setPlatoFavorito(ucfirst(strtolower($vars[$x])));
         $x++;
         $this->setRecetasMax($vars[$x]);
+        $x++;
+        $this->setNombreImg($vars[$x]);
+        $x++;
+        $this->setImagen($vars[$x]);
+        $x++;
+        $this->setTipoImg($vars[$x]);
         $x++;
     }
 
@@ -92,6 +101,14 @@ class Usuario extends AbstractFun {
         } else {
             return $fecha;
         }
+    }
+
+    public function getDatosImagen() {
+        return $this->datosImagen;
+    }
+
+    public function setDatosImagen($datosImagen) {
+        $this->datosImagen = $datosImagen;
     }
 
     public function getImagen() {

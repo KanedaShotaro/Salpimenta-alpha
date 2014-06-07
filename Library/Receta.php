@@ -130,6 +130,7 @@ class Receta extends AbstractFun {
     }
 
     public function setCategoriaReceta($categoriaReceta) {
+//        $this->categoriaReceta =  RecoverCat::nombreSeccion($categoriaReceta);
         $this->categoriaReceta = $categoriaReceta;
     }
 

@@ -7,6 +7,7 @@ include '/var/www/Salpimenta-backend/Library/Alert.php';
 include '/var/www/Salpimenta-backend/Library/AlertAction.php';
 include '/var/www/Salpimenta-backend/Library/Encryptar.php';
 include '/var/www/Salpimenta-backend/Library/Prevent.php';
+include '/var/www/Salpimenta-backend/Library/RecoverCat.php';
 
 include '/var/www/Salpimenta-backend/Model/BaseDatos.php';
 include '/var/www/Salpimenta-backend/Model/AbstractBD.php';
