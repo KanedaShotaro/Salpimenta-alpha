@@ -1,5 +1,5 @@
 <?php
-
+Block::test();
 $seccion = $_GET["seccion"];
 
 if (empty($_GET["zona"])) {

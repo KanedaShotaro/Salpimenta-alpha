@@ -1,35 +1,43 @@
 <?php
 
-
 class Blog extends AbstractFun {
+
     protected $titulo;
+    protected $codigoUsuario;
     protected $codigo;
     protected $link;
     protected $autor;
     protected $descripcion;
     protected $categoria;
+    protected $fechaEntrada;
+    protected $valoracion;
     
     private $imagen;
     private $nombreImg;
     private $tipoImg;
-    
+
     function __construct() {
         
     }
 
-    function NewBlog($titulo, $codigo, $link, $autor, $descripcion) {
+    function NewBlog($titulo, $codigoUsuario, $link, $autor, $descripcion, $categoria, $img) {
         $this->titulo = $titulo;
-        $this->codigo = $codigo;
+        $this->codigo = $this->genCharsNoDup(25);
+        $this->codigoUsuario = $codigoUsuario;
         $this->link = $link;
         $this->autor = $autor;
         $this->descripcion = $descripcion;
+        $this->categoria = $categoria;
+        $this->introducirImg($img);
     }
-    
-     function dataBaseArray($vars = array()){
-          $x = 0;
+
+    function dataBaseArray($vars = array()) {
+        $x = 0;
         $this->setTitulo($vars[$x]);
         $x++;
         $this->setCodigo($vars[$x]);
+        $x++;
+        $this->setCodigoUsuario($vars[$x]);
         $x++;
         $this->setLink($vars[$x]);
         $x++;
@@ -47,80 +55,103 @@ class Blog extends AbstractFun {
         $x++;
         $this->setCategoria($vars[$x]);
         $x++;
-     }
-     
-     public function getCategoria() {
-         return $this->categoria;
-     }
-
-     public function setCategoria($categoria) {
-         $this->categoria = $categoria;
-     }
+    }
     
-     public function getTitulo() {
-         return $this->titulo;
-     }
+    public function getValoracion() {
+        return $this->valoracion;
+    }
 
-     public function getCodigo() {
-         return $this->codigo;
-     }
+    public function setValoracion($valoracion) {
+        $this->valoracion = $valoracion;
+    }
 
-     public function getLink() {
-         return $this->link;
-     }
+    
+    public function getFechaEntrada() {
+        return $this->fechaEntrada;
+    }
 
-     public function getAutor() {
-         return $this->autor;
-     }
+    public function setFechaEntrada($fechaEntrada) {
+        $this->fechaEntrada = $fechaEntrada;
+    }
 
-     public function getDescripcion() {
-         return $this->descripcion;
-     }
+    public function getCodigoUsuario() {
+        return $this->codigoUsuario;
+    }
 
-     public function getImagen() {
-         return $this->imagen;
-     }
+    public function setCodigoUsuario($codigoUsuario) {
+        $this->codigoUsuario = $codigoUsuario;
+    }
 
-     public function getNombreImg() {
-         return $this->nombreImg;
-     }
+    public function getCategoria() {
+        return $this->categoria;
+    }
 
-     public function getTipoImg() {
-         return $this->tipoImg;
-     }
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
+    }
 
-     public function setTitulo($titulo) {
-         $this->titulo = $titulo;
-     }
+    public function getTitulo() {
+        return $this->titulo;
+    }
 
-     public function setCodigo($codigo) {
-         $this->codigo = $codigo;
-     }
+    public function getCodigo() {
+        return $this->codigo;
+    }
 
-     public function setLink($link) {
-         $this->link = $link;
-     }
+    public function getLink() {
+        return $this->link;
+    }
 
-     public function setAutor($autor) {
-         $this->autor = $autor;
-     }
+    public function getAutor() {
+        return $this->autor;
+    }
 
-     public function setDescripcion($descripcion) {
-         $this->descripcion = $descripcion;
-     }
+    public function getDescripcion() {
+        return $this->descripcion;
+    }
 
-     public function setImagen($imagen) {
-         $this->imagen = $imagen;
-     }
+    public function getImagen() {
+        return $this->imagen;
+    }
 
-     public function setNombreImg($nombreImg) {
-         $this->nombreImg = $nombreImg;
-     }
+    public function getNombreImg() {
+        return $this->nombreImg;
+    }
 
-     public function setTipoImg($tipoImg) {
-         $this->tipoImg = $tipoImg;
-     }
+    public function getTipoImg() {
+        return $this->tipoImg;
+    }
 
+    public function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
 
+    public function setCodigo($codigo) {
+        $this->codigo = $codigo;
+    }
+
+    public function setLink($link) {
+        $this->link = $link;
+    }
+
+    public function setAutor($autor) {
+        $this->autor = $autor;
+    }
+
+    public function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+    }
+
+    public function setImagen($imagen) {
+        $this->imagen = $imagen;
+    }
+
+    public function setNombreImg($nombreImg) {
+        $this->nombreImg = $nombreImg;
+    }
+
+    public function setTipoImg($tipoImg) {
+        $this->tipoImg = $tipoImg;
+    }
 
 }

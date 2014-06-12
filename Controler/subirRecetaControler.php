@@ -1,5 +1,5 @@
 <?php
-
+Block::test();
 function contadorOfertasUsuario() {
     $RecetaBd = new RecetaBd();
 

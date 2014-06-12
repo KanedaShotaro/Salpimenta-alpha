@@ -5,7 +5,7 @@ class Request {
     protected $url;
     protected $controller;
     protected $defaultUrl = 'homeControler';
-    protected $defaultAction = 'index';
+    //protected $defaultAction = 'index';
 
     public function __construct($url) {
         $this->url = $url;

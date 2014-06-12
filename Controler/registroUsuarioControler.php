@@ -1,5 +1,5 @@
 <?php
-
+Block::test();
 include_once '/var/www/Salpimenta-backend/Library/Alert.php';
 include_once '/var/www/Salpimenta-backend/Library/NewAlert.php';
 

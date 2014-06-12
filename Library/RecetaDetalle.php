@@ -81,10 +81,11 @@ class RecetaDetalle {
 
     function obtenerValoracionUsuario(&$receta, $usuario) {
         $valusuario = $this->recetaBd->recuperarValUsuario($receta->getCodigoReceta(), $usuario->getCodigoUsuario());
-        if ($valusuario[0] == null) {
-            $valusuario[0] = "Sin valorar";
+        
+        if ($valusuario == null) {
+            $valusuario = "Sin valorar";
         }
-        $receta->setValUsuario($valusuario[0]);
+        $receta->setValUsuario($valusuario);
     }
 
     function obtenerAutorReceta($codigoReceta) {

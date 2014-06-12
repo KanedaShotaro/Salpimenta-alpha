@@ -13,6 +13,9 @@ class Usuario extends AbstractFun {
     private $fechaNacimiento;
     private $platoFavorito;
     private $recetasMax;
+    
+    protected $idSession;
+    
     private $datosImagen;
     private $imagen;
     private $nombreImg;
@@ -74,6 +77,8 @@ class Usuario extends AbstractFun {
         $x++;
         $this->setRecetasMax($vars[$x]);
         $x++;
+        $this->setIdSession($vars[$x]);
+        $x++;
         $this->setNombreImg($vars[$x]);
         $x++;
         $this->setImagen($vars[$x]);
@@ -102,7 +107,16 @@ class Usuario extends AbstractFun {
             return $fecha;
         }
     }
+    
+    public function getIdSession() {
+        return $this->idSession;
+    }
 
+    public function setIdSession($idSession) {
+        $this->idSession = $idSession;
+    }
+
+    
     public function getDatosImagen() {
         return $this->datosImagen;
     }

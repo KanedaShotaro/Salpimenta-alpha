@@ -1,8 +1,10 @@
 <?php
 
+Block::test();
 $seccion = $_GET["seccion"];
- $zona = $_GET["zona"];
+$zona = $_GET["zona"];
 
-$seccionDetalle = new SeccionDetalle($zona, $seccion);
+$seccionDetalle = new SeccionBlogDetalle($zona,$seccion);
 $seccionDetalle->execute();
+
 

@@ -84,6 +84,28 @@ class RecoverCat {
         }
     }
 
+    public static function numeroSeccionBlog($nombreSec) {
+        switch ($nombreSec) {
+            case "blogs":
+                return 1;
+                break;
+            case "vblogs":
+                return 2;
+                break;
+        }
+    }
+
+    public static function nombreSeccionBlog($numSec) {
+        switch ($numSec) {
+            case 1:
+                return "blogs";
+                break;
+            case 2:
+                return "vblogs";
+                break;
+        }
+    }
+
     public static function checkedSeccion($nombreSeccion) {
         $checked = array();
         switch ($nombreSeccion) {

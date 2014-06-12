@@ -35,6 +35,14 @@ class RecetaBd extends AbstractBD {
         return $this->selectQuery($query, $this->getObjetDefault());
     }
 
+    function actualizarValoracion($codigoReceta) {
+        $query = 'SELECT VALUS FROM VALORUS WHERE CODRE = "' . $codigoReceta . '";';
+        $valoraciones = $this->selectQuery($query);
+        $valorFinal = array_sum($valoraciones) / count($valoraciones);
+        $query2 = 'UPDATE RECETA SET VALRE = "' . $valorFinal . '" WHERE CODRE = "' . $codigoReceta . '";';
+        return $this->updateQuery($query2);
+    }
+
     function comprobarRecetaUrl($url) {
         /* Esta funcion selectiona el codigo de oferta correspondiente a la url del navegador
           recogiendo la ultima parte que corresponde con lo insertado en el campo de la base de datos */
@@ -54,15 +62,15 @@ class RecetaBd extends AbstractBD {
     }
 
     function recuperarValUsuario($codigoReceta, $codigoUsuario) {
-        $query = 'SELECT VALUS FROM VALORUS WHERE CODUS = "' . $codigoUsuario . '" AND CODRE = "' . $codigoUsuario . '" ;';
+        $query = 'SELECT VALUS FROM VALORUS WHERE CODUS = "' . $codigoUsuario . '" AND CODRE = "' . $codigoReceta . '" ;';
         $resultado = $this->selectQuery($query);
         return $resultado[0];
     }
-    
+
     function recuperarRecetasUsuario($codigoUsuario) {
         $query = 'SELECT * FROM RECETA where CODUS = "' . $codigoUsuario . '" ;';
         $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, IMGRE M WHERE R.CODRE = S.CODRE AND S.CODRE = M.CODRE AND R.CODUS = "' . $codigoUsuario . '" ORDER BY R.FECHEN DESC;';
-        return $this->selectQuery($query,"Receta");
+        return $this->selectQuery($query, "Receta");
     }
 
     function recuperarRecetaSeccionUsuario($seccion, $codigoUsuario) {

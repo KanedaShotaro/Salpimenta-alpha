@@ -1,5 +1,5 @@
 <?php
-
+Block::test();
 $permitidos = 5;
 $tiempo = 20;
 $prevent = new Prevent($tiempo, $permitidos);

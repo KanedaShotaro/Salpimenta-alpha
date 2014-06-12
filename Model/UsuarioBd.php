@@ -31,7 +31,13 @@ class UsuarioBd extends AbstractBD {
     function obtenerUsuario($email) {
         /* devuelve un array con los datos del usuario */
         $query = 'SELECT U.*,M.NOMIMG,M.IMG,M.TIPOIMG FROM USUARIO U, IMGUS M WHERE U.CODUS = M.CODUS AND U.EMAIL = "' . $email . '";';
-        return $this->selectQuery($query, $this->getObjectDefault());
+        $query2 = 'UPDATE USUARIO SET IDSES = "' . session_id() . '" WHERE EMAIL = "' . $email . '" ;';
+        if ($this->updateQuery($query2)) {
+            return $this->selectQuery($query, $this->getObjectDefault());
+        }else{
+            return false;
+        }
+        
     }
 
     function recuperarAutorReceta($codigoReceta) {
@@ -45,6 +51,23 @@ class UsuarioBd extends AbstractBD {
         return $this->selectQuery($query);
     }
 
+    function valoracionUsuario($codReceta, $codUsuario, $valoracion) {
+
+        if ($this->comprobarValoracionUsuario($codReceta, $codUsuario, $valoracion)) {
+            $query = 'UPDATE VALORUS SET VALUS = "' . $valoracion . '" WHERE CODUS = "' . $codUsuario . '" AND CODRE = "' . $codReceta . '";';
+            return $this->updateQuery($query);
+        } else {
+            $query = 'INSERT INTO VALORUS (CODRE,CODUS,VALUS) VALUES("' . $codReceta . '","' . $codUsuario . '","' . $valoracion . '");';
+            return $this->insertQuery(array($query));
+        }
+    }
+
+    function comprobarValoracionUsuario($codReceta, $codUsuario, $valoracion) {
+        $query = 'SELECT * FROM VALORUS WHERE CODRE = "' . $codReceta . '" AND CODUS = "' . $codUsuario . '";';
+        $resultado = $this->selectQuery($query);
+        return count($resultado) > 0 ? true : false;
+    }
+
     function updateUsuario($usuario) {
 
         $query1 = 'UPDATE USUARIO SET EMAIL = "' . $usuario->getEmail() . '", NOMUS = "' . $usuario->getNombre() . '", APUS1 = "' . $usuario->getApellido1() . '", APUS2 = "' . $usuario->getApellido2() . '", CLAVEUS = "' . $usuario->getPassword() . '", FECNAC = "' . $usuario->getFechaNacimiento() . '", PLATFAV = "' . $usuario->getPlatoFavorito() . '" WHERE CODUS = "' . $usuario->getCodigoUsuario() . '" ;';
@@ -52,6 +75,13 @@ class UsuarioBd extends AbstractBD {
         $resultado = $this->updateQuery($query1);
         $resultado = $this->updateQuery($query2);
         return $resultado;
+    }
+    
+    function obtenerIdUsuario($email) {
+        $email = strtoupper($email);
+        $query = 'SELECT IDSES FROM USUARIO WHERE EMAIL = "' . $email . '" ; ';
+        $resultado = $this->selectQuery($query);
+        return $resultado[0];
     }
 
     function getObjectDefault() {

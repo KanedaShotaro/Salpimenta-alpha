@@ -40,10 +40,11 @@ abstract class AbstractBD {
     protected function selectQuery($query, $tipoObjeto = null) {
         $this->open();
         if ($tipoObjeto == null) {
+            $arrayResultado = array();
             if ($resultado = $this->obtenerFilas($query)) {
                 while ($fila = $resultado->fetch_row()) {
                     for ($x = 0; $x < count($fila); $x++) {
-                        $arrayResultado[$x] = $fila[$x];
+                       array_push($arrayResultado,$fila[$x]);
                     }
                 }
                 $this->close();

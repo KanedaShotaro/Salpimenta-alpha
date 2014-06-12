@@ -1,5 +1,5 @@
 <?php
-
+Block::test();
 if (!empty($_POST["nombre"])) {
 
     $registroReceta = new RegistroReceta(

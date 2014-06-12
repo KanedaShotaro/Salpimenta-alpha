@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <div class="container">
     <fieldset>
         <legend>Subir Receta</legend>

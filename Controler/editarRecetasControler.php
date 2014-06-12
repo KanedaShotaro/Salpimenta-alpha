@@ -1,8 +1,14 @@
 <?php
-
+Block::test();
 $usuario = $_SESSION["usuario"][0];
 $recetaBd = new RecetaBd();
 $totalSec = 12;
+
+if (empty($_GET["zona"])) {
+    $zona = "explora";
+} else {
+    $zona = $_GET["zona"];
+}
 
 $recetasUsuario = $recetaBd->recuperarRecetasUsuario($usuario->getCodigoUsuario());
 
@@ -23,6 +29,6 @@ for ($r = 0; $r < count($recetasOrdenadas); $r++) {
 }
 
 
-$view = new View("editarRecetaView", array("recetas" => $recetasOrdenadas));
+$view = new View("editarRecetaView", array("recetas" => $recetasOrdenadas,"zona" => $zona));
 $view->execute();
 

@@ -1,5 +1,5 @@
 <?php
-
+Block::test();
 if (!empty($_GET["form"])) {
     
  
