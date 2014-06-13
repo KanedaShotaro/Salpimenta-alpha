@@ -11,9 +11,9 @@ class RecetaBd extends AbstractBD {
 
     function insertar_receta($receta) {
         /* Funcion para insertar una receta en la base de datos */
-        $query1 = 'INSERT INTO RECETA (CODRE,CODUS,NOMRE,AUTORE,ELABRE,INGRE,SUGER,VALRE,TEMRE,URL,FECHEN) VALUES("' . $receta->getCodigoReceta() . '","' . $receta->getCodigoUsuario() . '","' . $receta->getNombreReceta() . '","' . $receta->getAutorReceta() . '","' . htmlspecialchars($receta->getElaboracion()) . '","' . htmlspecialchars($receta->getIngredientes()) . '","' . htmlspecialchars($receta->getSugerencia()) . '","' . $receta->getValoracion() . '","' . $receta->getTemporada() . '","' . $receta->getUrlReceta() . '","' . $receta->getFechaEntrada() . '");';
-        $query2 = 'INSERT INTO SECREC (CATREC,CODRE) VALUES ("' . $receta->getCategoriaReceta() . '","' . $receta->getCodigoReceta() . '");';
-        $query3 = 'INSERT INTO IMGRE (ID, NOMIMG, IMG, TIPOIMG, CODRE) VALUES("0","' . $receta->getNombreImg() . '","' . $receta->getImagen() . '","' . $receta->getTipoImg() . '","' . $receta->getCodigoReceta() . '");';
+        $query1 = 'INSERT INTO RECETA (CODRE,CODUS,NOMRE,AUTORE,ELABRE,INGRE,SUGER,VALRE,TEMRE,URL,FECHEN) VALUES("' . $receta->getCodigo() . '","' . $receta->getCodigoUsuario() . '","' . $receta->getNombreReceta() . '","' . $receta->getAutorReceta() . '","' . htmlspecialchars($receta->getElaboracion()) . '","' . htmlspecialchars($receta->getIngredientes()) . '","' . htmlspecialchars($receta->getSugerencia()) . '","' . $receta->getValoracion() . '","' . $receta->getTemporada() . '","' . $receta->getUrlReceta() . '","' . $receta->getFechaEntrada() . '");';
+        $query2 = 'INSERT INTO SECREC (CATREC,CODRE) VALUES ("' . $receta->getCategoriaReceta() . '","' . $receta->getCodigo() . '");';
+        $query3 = 'INSERT INTO IMGRE (ID, NOMIMG, IMG, TIPOIMG, CODRE) VALUES("0","' . $receta->getNombreImg() . '","' . $receta->getImagen() . '","' . $receta->getTipoImg() . '","' . $receta->getCodigo() . '");';
 
         return $this->insertQuery(array($query1, $query2, $query3));
     }
@@ -27,11 +27,17 @@ class RecetaBd extends AbstractBD {
         }
         return $this->insertQuery($query);
     }
+    
+    function recuperarObjetoPorTags($tag) {
+        /* funcion para recuperar una oferta de la BBDD buscando por sus tags */
+        $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, TAGRE T, IMGRE M WHERE R.CODRE = S.CODRE AND R.CODRE = T.CODRE AND R.CODRE = M.CODRE AND NOMTAG = "' . $tag . '";';
+        return $this->selectQuery($query, $this->getObjetDefault());
+    }
 
     function recuperarRecetaSeccion($seccion) {
         /* funcion para recuperar una receta de la base de datos buscando por seccion */
-        $array_recetas = array();
         $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, IMGRE M WHERE R.CODRE = S.CODRE AND S.CODRE = M.CODRE AND S.CATREC = "' . $seccion . '" ORDER BY R.FECHEN DESC;';
+        
         return $this->selectQuery($query, $this->getObjetDefault());
     }
 
@@ -42,7 +48,7 @@ class RecetaBd extends AbstractBD {
         $query2 = 'UPDATE RECETA SET VALRE = "' . $valorFinal . '" WHERE CODRE = "' . $codigoReceta . '";';
         return $this->updateQuery($query2);
     }
-
+    
     function comprobarRecetaUrl($url) {
         /* Esta funcion selectiona el codigo de oferta correspondiente a la url del navegador
           recogiendo la ultima parte que corresponde con lo insertado en el campo de la base de datos */
@@ -68,14 +74,12 @@ class RecetaBd extends AbstractBD {
     }
 
     function recuperarRecetasUsuario($codigoUsuario) {
-        $query = 'SELECT * FROM RECETA where CODUS = "' . $codigoUsuario . '" ;';
+        //$query = 'SELECT * FROM RECETA where CODUS = "' . $codigoUsuario . '" ;';
         $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, IMGRE M WHERE R.CODRE = S.CODRE AND S.CODRE = M.CODRE AND R.CODUS = "' . $codigoUsuario . '" ORDER BY R.FECHEN DESC;';
         return $this->selectQuery($query, "Receta");
     }
 
     function recuperarRecetaSeccionUsuario($seccion, $codigoUsuario) {
-
-        $array_recetas = array();
         $query = 'SELECT R.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATREC FROM RECETA R, SECREC S, IMGRE M, RECFAV F WHERE R.CODRE = S.CODRE AND S.CODRE = M.CODRE AND S.CODRE = F.CODRE AND S.CATREC = "' . $seccion . '" AND F.CODUS = "' . $codigoUsuario . '"  ORDER BY R.FECHEN DESC;';
         return $this->selectQuery($query, $this->getObjetDefault());
     }

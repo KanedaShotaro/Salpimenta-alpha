@@ -41,7 +41,7 @@ class RegistroReceta {
 
 
         if ($recetaBd->insertar_Receta($receta)) {
-            if ($recetaBd->insertar_tags_receta($tags, $receta->getCodigoReceta())) {
+            if ($recetaBd->insertar_tags_receta($tags, $receta->getCodigo())) {
                 AlertAction::create("success", "Exito", "Tu receta ha sido introducida!");
                 $view = new View("seccionesView");
                 $view->execute();

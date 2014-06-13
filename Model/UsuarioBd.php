@@ -34,10 +34,9 @@ class UsuarioBd extends AbstractBD {
         $query2 = 'UPDATE USUARIO SET IDSES = "' . session_id() . '" WHERE EMAIL = "' . $email . '" ;';
         if ($this->updateQuery($query2)) {
             return $this->selectQuery($query, $this->getObjectDefault());
-        }else{
+        } else {
             return false;
         }
-        
     }
 
     function recuperarAutorReceta($codigoReceta) {
@@ -51,9 +50,9 @@ class UsuarioBd extends AbstractBD {
         return $this->selectQuery($query);
     }
 
-    function valoracionUsuario($codReceta, $codUsuario, $valoracion) {
+    function valoracionRecetaUsuario($codReceta, $codUsuario, $valoracion) {
 
-        if ($this->comprobarValoracionUsuario($codReceta, $codUsuario, $valoracion)) {
+        if ($this->comprobarValoracionRecetaUsuario($codReceta, $codUsuario)) {
             $query = 'UPDATE VALORUS SET VALUS = "' . $valoracion . '" WHERE CODUS = "' . $codUsuario . '" AND CODRE = "' . $codReceta . '";';
             return $this->updateQuery($query);
         } else {
@@ -62,8 +61,35 @@ class UsuarioBd extends AbstractBD {
         }
     }
 
-    function comprobarValoracionUsuario($codReceta, $codUsuario, $valoracion) {
+    function favoritoRecetaUsuario($codReceta, $codUsuario) {
+
+        if (!$this->comprobarFavoritoRecetaUsuario($codReceta, $codUsuario)) {
+            $query = 'INSERT INTO RECFAV (CODRE,CODUS) VALUES("' . $codReceta . '","' . $codUsuario . '");';
+            return $this->insertQuery(array($query));
+        }
+    }
+
+    function quitarfavoritoRecetaUsuario($codReceta, $codUsuario) {
+
+
+        $query = 'DELETE FROM RECFAV WHERE CODRE = "' . $codReceta . '" AND CODUS = "' . $codUsuario . '" ;';
+        return $this->deleteQuery($query);
+    }
+
+    function comprobarValoracionRecetaUsuario($codReceta, $codUsuario) {
         $query = 'SELECT * FROM VALORUS WHERE CODRE = "' . $codReceta . '" AND CODUS = "' . $codUsuario . '";';
+        $resultado = $this->selectQuery($query);
+        return count($resultado) > 0 ? true : false;
+    }
+
+    function comprobarFavoritoBlogUsuario($codigo, $codigoUsuario) {
+        $query = 'SELECT * FROM RECFAV WHERE CODRE = "' . $codigo . '" AND CODUS = "' . $codigoUsuario . '";';
+        $resultado = $this->selectQuery($query);
+        return count($resultado) > 0 ? true : false;
+    }
+
+    function comprobarFavoritoRecetaUsuario($codigo, $codigoUsuario) {
+        $query = 'SELECT * FROM FAVRE WHERE CODRE = "' . $codigo . '" AND CODUS = "' . $codigoUsuario . '";';
         $resultado = $this->selectQuery($query);
         return count($resultado) > 0 ? true : false;
     }
@@ -76,7 +102,7 @@ class UsuarioBd extends AbstractBD {
         $resultado = $this->updateQuery($query2);
         return $resultado;
     }
-    
+
     function obtenerIdUsuario($email) {
         $email = strtoupper($email);
         $query = 'SELECT IDSES FROM USUARIO WHERE EMAIL = "' . $email . '" ; ';

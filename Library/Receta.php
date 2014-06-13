@@ -3,7 +3,7 @@
 //require_once '/var/www/Salpimenta-backend/Controlador/funcionesControlador.php';
 class Receta extends AbstractFun {
 
-    private $codigoReceta;
+    private $codigo;
     private $nombreReceta;
     private $autorReceta;
     private $codigoUsuario;
@@ -27,7 +27,7 @@ class Receta extends AbstractFun {
 
     function newReceta($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia, $temporada, $categoriaReceta, $datosImagen) {
 
-        $this->codigoReceta = $this->genCharsNoDup(25);
+        $this->codigo = $this->genCharsNoDup(25);
         $this->nombreReceta = $nombreReceta;
         $this->autorReceta = $autorReceta;
         $this->elaboracion = $elaboracion;
@@ -44,7 +44,7 @@ class Receta extends AbstractFun {
 
     function dataBaseArray($vars = array()) {
         $x = 0;
-        $this->setCodigoReceta($vars[$x]);
+        $this->setCodigo($vars[$x]);
         $x++;
         $this->setCodigoUsuario($vars[$x]);
         $x++;
@@ -134,8 +134,8 @@ class Receta extends AbstractFun {
         $this->categoriaReceta = $categoriaReceta;
     }
 
-    public function getCodigoReceta() {
-        return $this->codigoReceta;
+    public function getCodigo() {
+        return $this->codigo;
     }
 
     public function getNombreReceta() {
@@ -174,8 +174,8 @@ class Receta extends AbstractFun {
         return $this->fechaEntrada;
     }
 
-    public function setCodigoReceta($codigoReceta) {
-        $this->codigoReceta = $codigoReceta;
+    public function setCodigo($codigo) {
+        $this->codigo = $codigo;
     }
 
     public function setNombreReceta($nombreReceta) {

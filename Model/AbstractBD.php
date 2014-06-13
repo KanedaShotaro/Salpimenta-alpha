@@ -37,6 +37,13 @@ abstract class AbstractBD {
         return $arrayObjetos;
     }
 
+    protected function deleteQuery($query) {
+        $this->open();
+        $delete = ($resultado = $this->obtenerFilas($query)) ? true : false;
+        $this->close();
+        return $delete;
+    }
+
     protected function selectQuery($query, $tipoObjeto = null) {
         $this->open();
         if ($tipoObjeto == null) {
@@ -44,7 +51,7 @@ abstract class AbstractBD {
             if ($resultado = $this->obtenerFilas($query)) {
                 while ($fila = $resultado->fetch_row()) {
                     for ($x = 0; $x < count($fila); $x++) {
-                       array_push($arrayResultado,$fila[$x]);
+                        array_push($arrayResultado, $fila[$x]);
                     }
                 }
                 $this->close();

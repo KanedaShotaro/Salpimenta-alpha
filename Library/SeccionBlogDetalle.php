@@ -27,18 +27,31 @@ class SeccionBlogDetalle {
     public function recuperarBlogsSeccion($seccion) {
         $blogBd = $this->getBlogBd();
         $arrayBlogs = array();
+
         $numSecBlog = RecoverCat::numeroSeccionBlog($seccion);
-      
         $arrayBlogs = $blogBd->recuperarBlogSeccion($numSecBlog);
+        return $arrayBlogs;
+    }
+
+    public function recuperarBlogsUsuario($codigoUsuario) {
+        $blogBd = $this->getBlogBd();
+        $arrayBlogs = array();
+        $arrayBlogs = $blogBd->recuperarBlogFavUsuario($codigoUsuario);
         return $arrayBlogs;
     }
 
     public function execute() {
         $zona = $this->getZona();
         $seccion = $this->getSeccion();
-        $blogs = $this->recuperarBlogsSeccion($seccion);
-        
-         $view = new View("seccionBlogDetalleView", array('seccion' => $seccion, 'blogs' => $blogs, 'zona' => $zona));
+
+
+        if ($seccion == "misBlogs") {
+            $blogs = $this->recuperarBlogsUsuario($_SESSION["usuario"][0]->getCodigoUsuario());
+        } else {
+            $blogs = $this->recuperarBlogsSeccion($seccion);
+        }
+
+        $view = new View("seccionBlogDetalleView", array('seccion' => $seccion, 'blogs' => $blogs, 'zona' => $zona));
         $view->execute();
     }
 

@@ -13,9 +13,7 @@ class Usuario extends AbstractFun {
     private $fechaNacimiento;
     private $platoFavorito;
     private $recetasMax;
-    
     protected $idSession;
-    
     private $datosImagen;
     private $imagen;
     private $nombreImg;
@@ -52,6 +50,26 @@ class Usuario extends AbstractFun {
         if ($datosImagen != "") {
             $this->introducirImg($datosImagen);
         }
+    }
+
+    function comprobarFav($codigo) {
+
+        $usuarioBd = new UsuarioBd();
+        $codigUsuario = $this->getCodigoUsuario();
+       
+        if ($usuarioBd->comprobarFavoritoRecetaUsuario($codigo, $codigUsuario)) {
+            return true;
+        } else {
+            $favorito = false;
+        }
+
+        if ($usuarioBd->comprobarFavoritoBlogUsuario($codigo, $codigUsuario)) {
+            return true;
+        } else {
+            $favorito = false;
+        }
+
+        return $favorito;
     }
 
     function dataBaseArray($vars = array()) {
@@ -107,7 +125,7 @@ class Usuario extends AbstractFun {
             return $fecha;
         }
     }
-    
+
     public function getIdSession() {
         return $this->idSession;
     }
@@ -116,7 +134,6 @@ class Usuario extends AbstractFun {
         $this->idSession = $idSession;
     }
 
-    
     public function getDatosImagen() {
         return $this->datosImagen;
     }

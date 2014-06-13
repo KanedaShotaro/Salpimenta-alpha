@@ -34,8 +34,19 @@ class BlogBd extends AbstractBD {
 
     function recuperarBlogSeccion($seccion) {
         /* funcion para recuperar una receta de la base de datos buscando por seccion */
-        $array_recetas = array();
         $query = 'SELECT B.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATBLOG FROM SOCIALBLOG B, SECBLOG S, IMGBLOG M WHERE B.CODBLOG = S.CODBLOG AND S.CODBLOG = M.CODBLOG AND S.CATBLOG = "' . $seccion . '" ORDER BY B.FECHEN DESC;';
+        return $this->selectQuery($query, $this->getObjetDefault());
+    }
+    
+    function recuperarBlogFavUsuario($codigoUsuario) {
+        /* funcion para recuperar una receta de la base de datos buscando por seccion */
+        $query = 'SELECT B.*, M.NOMIMG, M.IMG, M.TIPOIMG, S.CATBLOG FROM SOCIALBLOG B, SECBLOG S, IMGBLOG M WHERE B.CODBLOG = S.CODBLOG AND S.CODBLOG = M.CODBLOG AND B.CODUS = "' . $codigoUsuario . '" ORDER BY B.FECHEN DESC;';
+        return $this->selectQuery($query, $this->getObjetDefault());
+    }
+    
+     function recuperarObjetoPorTags($tag) {
+        /* funcion para recuperar una oferta de la BBDD buscando por sus tags */
+        $query = 'SELECT B.*, M.NOMIMG, M.IMG, M.TIPOIMG,  S.CATBLOG FROM SOCIALBLOG B, SECBLOG S, TAGBLOG T, IMGBLOG M WHERE B.CODBLOG = S.CODBLOG AND B.CODBLOG = T.CODBLOG AND B.CODBLOG = M.CODBLOG AND NOMTAG = "' . $tag . '";';
         return $this->selectQuery($query, $this->getObjetDefault());
     }
 

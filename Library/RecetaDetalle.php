@@ -54,7 +54,7 @@ class RecetaDetalle {
         $zona = $this->getZona();
         $urlReceta = $this->getUrlReceta();
         $receta = $this->obtenerDetalleReceta($urlReceta);
-        $autor = $this->obtenerAutorReceta($receta->getCodigoReceta());
+        $autor = $this->obtenerAutorReceta($receta->getCodigo());
         $this->obtenerValoracionUsuario($receta, $usuario);
 
         if ($editar == "activo") {
@@ -80,7 +80,7 @@ class RecetaDetalle {
     }
 
     function obtenerValoracionUsuario(&$receta, $usuario) {
-        $valusuario = $this->recetaBd->recuperarValUsuario($receta->getCodigoReceta(), $usuario->getCodigoUsuario());
+        $valusuario = $this->recetaBd->recuperarValUsuario($receta->getCodigo(), $usuario->getCodigoUsuario());
         
         if ($valusuario == null) {
             $valusuario = "Sin valorar";

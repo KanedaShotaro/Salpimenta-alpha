@@ -7,10 +7,10 @@ $valor = $_POST["value"];
 $codigoUsuario = $_SESSION["usuario"][0]->getCodigoUsuario();
 $usuarioBd = new UsuarioBd();
 $recetaBd = new RecetaBd();
-$usuarioBd->valoracionRecetaUsuario($codigoReceta, $codigoUsuario, $valor);
-$recetaBd->actualizarValoracion($codigoReceta);
 
-
-
-
+if ($valor == 1) {
+    $usuarioBd->FavoritoRecetaUsuario($codigoReceta, $codigoUsuario);
+}else{
+    $usuarioBd->quitarFavoritoRecetaUsuario($codigoReceta, $codigoUsuario);
+}
 

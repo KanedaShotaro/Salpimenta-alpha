@@ -10,6 +10,8 @@ include '/var/www/Salpimenta-backend/Library/Encryptar.php';
 include '/var/www/Salpimenta-backend/Library/Prevent.php';
 include '/var/www/Salpimenta-backend/Library/RecoverCat.php';
 
+
+
 include '/var/www/Salpimenta-backend/Model/BaseDatos.php';
 include '/var/www/Salpimenta-backend/Model/AbstractBD.php';
 include '/var/www/Salpimenta-backend/Model/RecetaBd.php';
@@ -28,6 +30,8 @@ include '/var/www/Salpimenta-backend/Library/RegistroUsuario.php';
 include '/var/www/Salpimenta-backend/Library/SeccionDetalle.php';
 include '/var/www/Salpimenta-backend/Library/SeccionBlogDetalle.php';
 include '/var/www/Salpimenta-backend/Library/RegistroBlog.php';
+include '/var/www/Salpimenta-backend/Library/Buscador.php';
+
 
 
 session_start();
