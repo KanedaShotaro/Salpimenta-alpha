@@ -31,7 +31,7 @@ class Registrousuario {
             $request->execute();
         } else {
             new NewAlert("danger", "error", "El usuario ya existe!");
-            include "/View/registroUsuarioView.php";
+            include "./View/registroUsuarioView.php";
         }
     }
 

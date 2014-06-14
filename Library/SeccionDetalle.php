@@ -3,14 +3,14 @@
 class SeccionDetalle {
 
     protected $zona;
-    protected $seccion;
+    protected $seccionNombre;
     protected $RecetaBd;
 
     //protected $codigoUsuario;
 
-    function __construct($zona, $seccion) {
+    function __construct($zona, $seccionNombre) {
         $this->zona = $zona;
-        $this->seccion = $seccion;
+        $this->seccion = $seccionNombre;
         $this->RecetaBd = new RecetaBd();
     }
 
@@ -26,28 +26,28 @@ class SeccionDetalle {
         return $this->RecetaBd;
     }
 
-    function activo($seccion, $sitio) {
+    function activo($seccionNombre, $sitio) {
         $activo = "activo-";
         $hover = "hover-";
-        if ($sitio == $seccion) {
-            return $activo . $seccion;
+        if ($sitio == $seccionNombre) {
+            return $activo . $seccionNombre;
         } else {
             return $hover . $sitio;
         }
     }
 
-    function obtenerRecetasSeccionUsuario($seccion, $codigoUsuario) {
+    function obtenerRecetasSeccionUsuario($seccionNombre, $codigoUsuario) {
         $arrayRecetas = array();
         //$numSec = $this->numeroSeccion();
-        $numSec = RecoverCat::numeroSeccion($seccion);
+        $numSec = RecoverCat::numeroSeccion($seccionNombre);
         $arrayRecetas = $this->RecetaBd->recuperarRecetaSeccionUsuario($numSec, $codigoUsuario);
         return $arrayRecetas;
     }
 
-    function obtenerRecetasSeccion($seccion) {
+    function obtenerRecetasSeccion($seccionNombre) {
         $arrayRecetas = array();
-        //$numSec = $this->numeroSeccion($seccion);
-        $numSec = RecoverCat::numeroSeccion($seccion);
+        //$numSec = $this->numeroSeccion($seccionNombre);
+        $numSec = RecoverCat::numeroSeccion($seccionNombre);
         $arrayRecetas = $this->RecetaBd->recuperarRecetaSeccion($numSec);
         return $arrayRecetas;
     }
@@ -64,8 +64,11 @@ class SeccionDetalle {
 
     public function execute() {
         $recetas = $this->recuperarRecetas();
-        $seccion = $this->getSeccion();
+        $seccionNombre = $this->getSeccion();
         $zona = $this->getZona();
+        
+        $seccion = new Seccion(RecoverCat::numeroSeccion($seccionNombre));
+        
 
         $view = new View("seccionDetalleView", array('seccion' => $seccion, 'recetas' => $recetas, 'zona' => $zona));
         $view->execute();

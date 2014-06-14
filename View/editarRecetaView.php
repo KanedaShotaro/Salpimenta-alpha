@@ -10,15 +10,15 @@ while ($y < count($recetas)) {
     ?>
     <article class="box-my-recipe">
 
-        <header class="ensaladas-y-verduras text-ensaladas-y-verduras">
-            <h2><?= $recetas[$y][0]->getCategoriaReceta() ?></h2>
+        <header class="<?=$seccion[$y]->getCss()?> text-<?=$seccion[$y]->getCss()?>">
+            <h2><?= $seccion[$y]->getNombre() ?></h2>
         </header>
 
         <div class="wrap-boxes">
             <?php
             for ($x = 0; $x < count($recetas[$y]); $x++) {
                 ?>
-                <section class="box-receta aperitivos">
+                <section class="box-receta <?=$seccion[$y]->getCss()?>">
                     <header class="title-box ">
                         <h2><?= $recetas[$y][$x]->getNombreReceta() ?></h2>
                     </header>

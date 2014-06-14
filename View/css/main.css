@@ -215,13 +215,9 @@ a{
     width: 100%;
 }
 .user figure img{
-    border-radius: 50%;
-    box-shadow: 1px 3px 1px #D2691E;
-    display: inline;
-    height: 89px;
+    display: none;
     margin: 0;
     padding: 0;
-    width: 89px;
 }
 .user div{
     //border:1px solid;
@@ -423,7 +419,12 @@ nav>ul>li:hover a{
 .sopas-y-cremas{
     border-color: #dbb570 !important;
 }
-
+.text-preferencia{
+    color:#939598;
+}
+.preferencia{
+    border-color: #939598 !important;
+}
 /***BLOGS****/
 .blogs{
     border-color:#2e90c0 !important;
@@ -542,48 +543,51 @@ nav>ul>li:hover a{
 }
 .wrap-detail>.wrap-autor{
     border:1px solid blue;
-    //height: 600px;
 }
-.wrap-autor .image-receta{
-    border:1px solid red;
+.image-receta{
     display: inline-block;
     vertical-align: top;
-    width: 60%;
+    width: 570px;
 }
-.wrap-autor .box-autor{
-    border:1px solid red;
-    display: inline-block;
-    vertical-align: bottom;
-    height: 260px;
-}
-.wrap-autor .box-autor .title-autor{
-    border:1px solid;
-}
-.wrap-autor .box-autor .title-autor>span{
-    //border:1px solid;
-    display: block;
-    font-size: .7em;
-    font-weight: bold;
-}
-.wrap-autor .box-autor .title-autor h2>span{
-    opacity: 0.5;
-}
-.wrap-autor .box-autor .title-autor>h2{
-    border:1px solid;
-    line-height: 100%;
-    font-size: .9em;
+.image-receta figure{
     margin: 0;
 }
-.wrap-autor .box-autor .image-autor{
-    border-top: 1px solid ;
-}
-.wrap-autor .box-autor .image-autor figure{
-    margin: 5px 0 0 0;
+.image-receta figure img{
     width: 100%;
 }
+.box-autor{
+    //border:1px solid;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 0 100px;
+    width: 310px;
+}
+.box-autor>.rating-box{
+    text-align: right;
+}
+.voto-general{
+    font-size: 1.6em;
+    margin: 3px 8px 0 0;
+}
+.box-autor .title-autor>span{
+    color:#939598;
+    display: block;
+    font-size: 1.2em;
+}
+.box-autor .title-autor>h2{
+    font-size: 2em;
+    margin: 0 0 4px 0;
+}
+.box-autor .image-autor{
+    border-top: 1px solid ;
+}
+.box-autor .image-autor figure{
+    //border:1px solid;
+    margin: 5px 0 0 0;
+    //width: 100%;
+}
 .wrap-autor .box-autor .image-autor figure img{
-
-    border:4px solid;
+    width: 100%;
 }
 
 /******FIN DETALLE***********/
@@ -657,6 +661,147 @@ nav>ul>li:hover a{
 }
 
 /****/
+/**REGISTRO USUARIO**/
+.background-register{
+    background: #F58029;
+}
+.logo-register{
+    background:#fff;
+    border-radius: 0 0 8px 8px;
+}
+.logo-register h1{
+    color:#333;
+}
+.info-salpimenta{
+    color: #fff;
+    display: inline-block;
+    opacity: 0.7;
+    position: relative;
+    left: 590px;
+    text-align: right;
+    vertical-align: top;
+}
+.info-salpimenta h1{
+    margin: 0;
+}
+.info-salpimenta span{
+    font-size: 1.1em;
+}
+.info-salpimenta span:last-child{
+    font-size: 1.2em;
+}
+.wrap-form-register{
+    margin: 0 0 50px 0;
+    width: 100%;
+}
+.wrap-form-register>h3{
+    color:#FFF;;
+    //display: block;
+    margin: 5px 0 5px 0;
+    text-align: center;
+}
+.box-register{
+    background: #FFF;
+    border-radius: 8px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px 0 0 0;
+}
+.style-boxes-register{
+    color:#6d6e71;
+    margin-bottom: 12px;
+    text-align: center;
+}
+.style-boxes-register>h3{
+    margin:0;
+}
+.style-boxes-register>input{
+    background: #f3f3f4;
+    display: block;
+    border:none;
+    margin: 12px auto;
+    outline: none;
+    padding: 8px 0 8px 12px ;
+    width: 330px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+.style-boxes-register>input:focus{
+    box-shadow: 1px 1px 5px #333;
+}
+.style-boxes-conditions{
+    color:#6d6e71;
+    text-align: center;
+}
+.submit{
+    //margin: 15px 0 15px 0;
+    text-align: center;
+}
+.submit>input{
+    border:none;
+    border-radius: 6px;
+    box-shadow: 1px 2px 10px #999;
+    color: #FFF;
+    font-size: 1.4em;
+    margin: 25px;
+    outline:0;
+    width: 150px;
+}
+.submit>input[type="submit"]{
+    background:#109560;
+}
+
+.submit>input[type="submit"]:active{
+    box-shadow: -1px 2px 8px #333;;
+}
+.submit>input[type="button"]{
+    background: #be1e2d;
+}
+.submit>input[type="button"]:active{
+    box-shadow: -1px 2px 8px #333;;
+}
+/******/
+/******PANEL AJUSTES********/
+.panel-settings{
+    //border:1px solid;
+    margin: 0 auto 90px auto;
+    width: 92%;
+}
+.box-setting{
+    color: #939598;
+    margin: 25px 0;
+}
+.box-setting .title-setting{
+    border-bottom: 1px solid;
+    padding: 8px;
+    text-align: right;
+}
+.box-setting .title-setting>*{
+    display: inline-block;
+    vertical-align: bottom;
+}
+.box-setting .title-setting>h3{
+    margin: 0;
+    float: left;
+}
+.box-setting .title-setting>input{
+    background: #fcb249;
+    border:none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #b7b9bc;
+    color:#fff;
+    outline: none;
+}
+.box-setting .title-setting>input:active{
+    box-shadow: 2px 2px 10px #b7b9bc;
+}
+#desplegable1,#desplegable2,#desplegable3,#desplegable4,#desplegable5{
+    display: none;
+}
+/*************/
 .wrap-main .pagination{
     //border:1px solid;
     text-align: center;

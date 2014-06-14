@@ -11,6 +11,7 @@ class Blog extends AbstractFun {
     protected $categoria;
     protected $fechaEntrada;
     protected $valoracion;
+    protected $valoracionUsuario;
     
     private $imagen;
     private $nombreImg;
@@ -57,6 +58,15 @@ class Blog extends AbstractFun {
         $x++;
     }
     
+    public function getValoracionUsuario() {
+        return $this->valoracionUsuario;
+    }
+
+    public function setValoracionUsuario($valoracionUsuario) {
+        $this->valoracionUsuario = $valoracionUsuario;
+    }
+
+        
     public function getValoracion() {
         return $this->valoracion;
     }

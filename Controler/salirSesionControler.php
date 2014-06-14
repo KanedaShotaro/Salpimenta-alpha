@@ -2,5 +2,5 @@
 
 unset($_SESSION["usuario"]);
 
-include '/View/homeView.php';
+include './View/homeView.php';
 

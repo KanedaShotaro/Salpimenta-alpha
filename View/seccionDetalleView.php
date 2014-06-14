@@ -1,6 +1,6 @@
-<div class="info-section text-aperitivos">
+<div class="info-section text-<?= $seccion->getCss() ?>">
     <div class="title-section">
-        <h1><?= $seccion ?></h1>
+        <h1><?= $seccion->getNombre() ?></h1>
         <span><?= $zona ?></span>
     </div>
     <div class="sort">
@@ -19,13 +19,13 @@
     for ($x = 0; $x < count($recetas); $x++) {
         ?>
 
-        <section class="box-receta aperitivos">
+        <section class="box-receta <?= $seccion->getCss() ?>">
             <header class="title-box ">
                 <h2><?= $recetas[$x]->getNombreReceta() ?></h2>
             </header>
             <div class="image-box">
                 <figure>
-                    <a href="/index.php?url=recetaDetalleControler&seccion=<?= $seccion ?>&urlReceta=<?= $recetas[$x]->getUrlReceta() ?>&zona=<?= $zona ?>"><img src="data:image/jpeg;base64,<?= $recetas[$x]->getImagen() ?>" alt="">
+                    <a href="/index.php?url=recetaDetalleControler&seccion=<?= $seccion->getCss() ?>&urlReceta=<?= $recetas[$x]->getUrlReceta() ?>&zona=<?= $zona ?>"><img src="data:image/jpeg;base64,<?= $recetas[$x]->getImagen() ?>" alt="">
                     </a>
                 </figure>
             </div>

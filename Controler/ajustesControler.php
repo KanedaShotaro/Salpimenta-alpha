@@ -4,7 +4,7 @@ if (!empty($_GET["form"])) {
     
  
 
-    if (!empty($_FILES['img'][name])) {
+    if (!empty($_FILES['img']["name"])) {
         $imgNuevo = $_FILES['img'];
     } else {
         $imgNuevo = "";
