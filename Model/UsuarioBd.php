@@ -110,6 +110,12 @@ class UsuarioBd extends AbstractBD {
         return $resultado[0];
     }
 
+    function recuperarSeccionesUsuario($codigoUsuario) {
+        $query = 'SELECT DISTINCT S.CATREC FROM SECREC S, USUARIO U, RECFAV F WHERE S.CODRE = F.CODRE AND F.CODUS = U.CODUS AND U.CODUS = "' . $codigoUsuario . '" ORDER BY S.CATREC; ';
+        $resultado = $this->selectQuery($query);
+        return $resultado;
+    }
+
     function getObjectDefault() {
         return $this->ObjectDefault;
     }

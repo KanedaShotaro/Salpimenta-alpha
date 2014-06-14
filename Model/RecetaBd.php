@@ -89,6 +89,11 @@ class RecetaBd extends AbstractBD {
         $query = 'SELECT count(*) FROM RECETA where CODUS = "' . $codigoUsuario . '" ;';
         return $this->selectQuery($query);
     }
+    
+    function deleteReceta($codigoReceta){
+        $query = 'DELETE FROM RECETA WHERE CODRE = "' . $codigoReceta . '" ;';
+        return $this->deleteQuery($query);
+    }
 
     public function getObjetDefault() {
         return $this->ObjetDefault;

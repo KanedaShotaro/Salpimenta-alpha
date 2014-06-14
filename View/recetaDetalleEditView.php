@@ -55,13 +55,18 @@
         </form>
     </fieldset>
 
+    <form action="/Salpimenta-backend/index.php?url=deleteRecetaControler&codigo=<?=$receta->getCodigo()?>&nombre=<?=$receta->getNombreReceta()?>" method="post">
+        <label for="borrar"> Escribe el nombre de la Receta para borrarla </label><input type="text" name="borrar" id="borrar" ><br/>
+        <input type="submit" value="Eliminar Receta">
+    </form>
+
     <script src="/Salpimenta-backend/View/js/nicEdit.js" type="text/javascript"></script>
     <script type="text/javascript">
-                bkLib.onDomLoaded(function() {
-                    new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('ingredientes');
-                    new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('elaboracion');
-                    new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('sugerencias');
-                });
+            bkLib.onDomLoaded(function() {
+                new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('ingredientes');
+                new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('elaboracion');
+                new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('sugerencias');
+            });
     </script>
 
     <script type="text/javascript">

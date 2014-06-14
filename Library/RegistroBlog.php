@@ -43,16 +43,16 @@ class RegistroBlog {
         if ($blogBd->insertarBlog($blog)) {
             if ($blogBd->insertarTagsBlog($tags, $blog->getCodigo())) {
                 AlertAction::create("success", "Exito", "Tu Blog ha sido introducido!");
-                $view = new View("seccionesBlogDetalleView");
+                $view = new View("registroBlogView");
                 $view->execute();
             } else {
                 AlertAction::create("warning", "Error", "Los tags no se ha introducido correctamente");
-                $view = new View("seccionesBlogDetalleView");
+                $view = new View("registroBlogView");
                 $view->execute();
             }
         } else {
             AlertAction::create("danger", "Error", "Blog no introducido");
-            $view = new View("seccionesBlogDetalleView");
+            $view = new View("registroBlogView");
             $view->execute();
         }
     }

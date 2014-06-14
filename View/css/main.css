@@ -1,0 +1,889 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+.fondo-pantalla{
+    background: url("../img/cocina.jpg") no-repeat fixed center center;
+    background-size: cover;
+    //margin: 0;
+    //padding: 0;
+    height: 100%;
+}
+html,body{height: 100%;margin: 0;padding: 0;}
+body{
+    display: table;
+    font-family: Calibri;
+    font-size: 16px;
+    text-align: left;
+    width: 100%;
+}
+.wrap-header,.wrap-main,.wrap-footer{
+    margin: auto;
+    width: 1020px;
+}
+a{
+    text-decoration: none;
+}
+/*******HEADER******************/
+.header{
+    background-color: #F58029;
+    box-shadow: 0px 3px 3px #B1B1B2;
+    padding: 12px 0;
+    width: 100%;
+}
+.header a{
+    color: #FFF;
+    text-decoration: none;
+}
+.logo{
+    display: inline-block;
+    font-size: .8em;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    width: 20%;
+}
+.logo>figure{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    width: 45%;
+}
+.logo>figure img{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.logo>h1{
+    color: #FFF;
+    display: inline-block;
+    line-height: 90%;
+    margin: 0 0 0 0;
+    padding: 0;
+    vertical-align: bottom;
+    width: 45%;
+}
+.logo>h1>span{
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+.logo>h1>.beta{
+    display: inline-block;
+    font-size: .8em;
+    font-weight: normal;
+    left: 62px;
+    position: relative;
+    top: -12px;
+    vertical-align: top;
+    transform:rotate(-20deg);
+    -webkit-transform:rotate(-20deg);
+}
+.header .options{
+    display: inline-block;
+    margin: 22px 0 0 15px;
+    vertical-align: top;
+    width: 55%;
+}
+.header .options ul{
+    margin: 0;
+    padding: 0;
+}
+.header .options ul>li{
+    color: #FFF;
+    display: inline-block;
+    vertical-align: top;
+}
+.header .options ul>li:nth-child(2) span:before{
+    content: "|"
+}
+.header .options ul>li:nth-child(2) span{
+    margin: 0 7px 0 7px;
+}
+.header>.wrap-header>.options>.list-options>*{
+    display: inline-block;
+    vertical-align: top;
+}
+.header>.wrap-header>.options>.list-options>a{
+    float: right;
+}
+.header>.wrap-header>.options>.search{
+    margin: 12px 0 0 0;
+}
+.header>.wrap-header>.options>.search input{
+    background-color: rgba(255,255,255,0.4);
+    border: 1px solid white;
+    border-radius: 5px;
+    display: block;
+    padding: 2px 0 2px 8px;
+    width: 100%;
+}
+.header>.wrap-header>.options>.search>input:focus{
+    outline: none;
+}
+.header>.wrap-header>.options>.search input::-webkit-input-placeholder{
+    color: #FFF;
+}
+.header>.wrap-header>.options>.search input::-moz-placeholder{
+    color: #FFF;
+}
+
+/**USUARIO*/
+.header>.wrap-header>.user{
+    //border:1px solid;
+    color: #FFF;
+    display: inline-block;
+    float: right;
+    margin: 0 0 0 20px;
+    vertical-align: top;
+    width: 20%;
+}
+.header>.wrap-header>.user figure{
+    background-color: #FFF;
+    border-radius: 50%;
+    display: inline-block;
+    height: 90px;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    width: 45%;
+}
+.user figure>a{
+    margin: 0;
+    padding: 0;
+    color: black;
+    width: 100%;
+}
+.user figure img{
+    border-radius: 50%;
+    box-shadow: 1px 3px 1px #D2691E;
+    display: inline;
+    height: 89px;
+    margin: 0;
+    padding: 0;
+    width: 89px;
+}
+.user div{
+    //border:1px solid;
+    display: inline-block;
+    float: right;
+    margin: 20px 0 0 0;
+    padding: 0;
+    vertical-align: top;
+    width: 45%;
+}
+.user ul>li{
+    list-style: none;
+}
+.user ul>.user-perfil:hover .menu-perfil{
+    visibility: visible;
+    opacity:1;
+    transition-delay:0s;
+}
+.user .menu-perfil{
+    background: #FFC26B;
+    border-radius: 0 15px 15px 15px;
+    //box-shadow: 2px 4px 3px #B1B1B2;
+    position: absolute;
+    visibility: hidden;
+    opacity:0;
+    transition:visibility 0s linear 0.3s,opacity 0.5s linear;
+    z-index: 1;
+
+}
+.user .menu-perfil>li:first-child{
+    border-radius: 0 15px 0 0;
+}
+.user .menu-perfil>li{
+    border:1px solid #F58029;
+    list-style: none;
+    padding: 5px 15px;
+    text-align: center;
+}
+.user .menu-perfil>li:last-child{
+    border-radius: 0 0 15px 15px;
+    background:red;
+    color:#fff !important;
+}
+.user .menu-perfil a{
+    display: block;
+    color:#333;
+    margin: 0;
+}
+.user ul{
+    margin: 0;
+    padding: 0;
+}
+/**FIN USUARIO**/
+/*******FIN HEADER*********/
+
+
+/*******MENU ********/
+
+nav{
+    margin: 15px auto;
+    text-align: center;
+    width: 1020px;
+}
+nav a{
+    color: #939598;
+    text-decoration: none;
+}
+nav>ul{
+    margin: 0 0 8px 0;
+    padding: 0;
+}
+.menu>ul:last-child{
+    padding: 0;
+}
+nav>ul>li{
+    margin: 0 20px 0 0;
+    font-size: 1.1em;
+    display: inline-block;
+    vertical-align: top;
+    transform: translateZ(0px);
+    -webkit-transform: translateZ(0px);
+    -webkit-transition-duration: 0.3s ;
+    -webkit-transition-property: transform;
+    -moz-transform: translateZ(0px);
+    -moz-transition-duration: 0.3s ;
+    -moz-transition-property: transform;
+}
+.menu>ul>li:before{
+    content: "○ ";
+    color: #F7941E;
+}
+/*HOVER MENU*/
+nav>ul>li:hover{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform : scale(1.1);
+
+}
+nav>ul>li:hover a{
+    color:#333;
+}
+.menu-vblog span:before{
+    content:"|";
+}
+.menu-vblog{
+    font-size: 2em;
+}
+.menu-vblog a{
+    color:#333;
+}
+
+.wrap-main{
+
+}
+.wrap-main .name-page{
+    text-align: center;
+}
+.wrap-main>.name-page>h1{
+    border:1px solid;
+    font-size: 3em;
+    margin: 0;
+    opacity: 0.2;
+}
+.wrap-main>.section{
+    font-size: 1.5em;
+    height: 230px;
+    margin: 8px 0 45px 0 ;
+}
+.wrap-main>.section>.title{
+    border-right: 14px solid;
+    display: inline-block;
+    height: 100%;
+    margin: 0 8px 0 0;
+    vertical-align: top;
+    text-align: center;
+    width: 19%;
+}
+.wrap-main>.section>.title a{
+    color:#333;
+    display: block;
+    text-decoration: none;
+}
+.wrap-main>.section>.title h2{
+    font-weight: normal;
+    padding: 0;
+}
+
+.wrap-main>.section .image{
+    box-shadow: 2px 2px 8px #939598;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    width: 77%;
+}
+.wrap-main>.section .image:hover{
+    opacity: 0.4;
+}
+.wrap-main>.section .image figure{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.wrap-main>.section .image figure a{
+    display: inline-flex;
+}
+.wrap-main>.section .image figure img{
+    width: 100%;
+}
+.wrap-main>.section .image figure a:active{
+    filter:grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+}
+
+/********Colores de Seccion*********/
+/*****APERITIVOS******/
+.aperitivos{border-color: #F58029 !important;}
+.aperitivos *{border-color: #F58029 !important;}
+.text-aperitivos{color:#F58029 !important;}
+.aperitivos .icon-heart{color:#F58029 !important;}
+.aperitivos .icon-heart2{color:#F58029 !important;}
+/****ENSALADAS Y VERDURAS****/
+.ensaladas-y-verduras{
+    border-color: #8dc63f !important;
+}
+.text-ensaladas-y-verduras{color:#8dc63f !important;}
+.ensaladas-y-verduras *{
+    border-color: #8dc63f !important;
+}
+.ensaladas-y-verduras .icon-heart{color:#8dc63f !important;}
+.ensaladas-y-verduras .icon-heart2{color:#8dc63f !important;}
+/***********/
+.arroces-y-cereales{
+    border-color: #f5ee31 !important;
+}
+/*********/
+.sopas-y-cremas{
+    border-color: #dbb570 !important;
+}
+
+/***BLOGS****/
+.blogs{
+    border-color:#2e90c0 !important;
+}
+.text-blogs{
+    color:#2e90c0 !important;
+}
+.vlogs{
+    border-color: #cc262e !important;
+}
+/************FIN DE CLASES GENERICAS************
+
+/********Plantilla secciones****************/
+.info-section{
+    border-left: 35px solid;
+
+}
+.info-section .title-section{
+    display: inline-block;
+    margin: 0 0 0 15px;
+    padding: 5px;
+    text-align: right;
+    vertical-align: top;
+}
+.info-section .title-section h1{
+    font-weight: normal;
+    font-size: 2.7em;
+    margin: 0;
+    padding: 0;
+}
+.info-section .title-section span{
+    font-weight: bold;
+    float: right;
+    font-size: 1.2em;
+    margin: -12px 3px 0 0;
+    opacity: 0.4;
+}
+.info-section>.sort{
+    display: inline-block;
+    float: right;
+    vertical-align: bottom;
+}
+.info-section>.sort select{
+    border:none;
+    margin: 45px 0 0 0;
+}
+.wrap-boxes{
+    //border:1px solid red;
+    margin: 25px 0 0 0;
+}
+.box-receta{
+    display: inline-block;
+    height: 300px;
+    margin: 0 0 15px 30px;
+    vertical-align: top;
+    width: 300px;
+}
+.box-receta .title-box{
+    border-bottom:3px solid;
+    height: 47px;
+    overflow: hidden;
+    padding: 3px 0 5px 5px;
+}
+.box-receta .title-box h2{
+    color:grey;
+    font-weight: bold;
+    line-height: 100%;
+    margin: 0;
+}
+.box-receta .title-box h2>span{
+    opacity: 0.5;
+}
+.box-receta .image-box{
+    margin: 5px 0 0 0;
+    height: 200px;
+}
+.box-receta .image-box figure{
+    //border:1px solid red;
+    margin: 0;
+}
+.box-receta .image-box figure a{
+    display: inline-block;
+    margin: 0;
+}
+.box-receta .image-box figure img{
+    width: 100%;
+}
+.rating-box{
+    //border:1px solid red;
+    display: inline-block;
+    //vertical-align: top;
+    width: 100%;
+}
+.rating-box .rating{
+    //border:1px solid;
+    display: inline-block;
+    margin: 4px 0 0 0;
+    padding: 5px 3px 5px 8px;
+    vertical-align: top;
+}
+.rating-box .heart{
+    float: right;
+    margin: -20px -10px 0 0;
+}
+.rating-box .heart span{
+    background-color: #FFF;
+    border-radius: 50%;
+    border:1px solid ;
+    //color:#f1592a;
+    font-size: 25px;
+    padding: 5px;
+}
+/**DETALLE RECETA***/
+.wrap-detail{
+    border:1px solid;
+}
+.wrap-detail>.wrap-autor{
+    border:1px solid blue;
+    //height: 600px;
+}
+.wrap-autor .image-receta{
+    border:1px solid red;
+    display: inline-block;
+    vertical-align: top;
+    width: 60%;
+}
+.wrap-autor .box-autor{
+    border:1px solid red;
+    display: inline-block;
+    vertical-align: bottom;
+    height: 260px;
+}
+.wrap-autor .box-autor .title-autor{
+    border:1px solid;
+}
+.wrap-autor .box-autor .title-autor>span{
+    //border:1px solid;
+    display: block;
+    font-size: .7em;
+    font-weight: bold;
+}
+.wrap-autor .box-autor .title-autor h2>span{
+    opacity: 0.5;
+}
+.wrap-autor .box-autor .title-autor>h2{
+    border:1px solid;
+    line-height: 100%;
+    font-size: .9em;
+    margin: 0;
+}
+.wrap-autor .box-autor .image-autor{
+    border-top: 1px solid ;
+}
+.wrap-autor .box-autor .image-autor figure{
+    margin: 5px 0 0 0;
+    width: 100%;
+}
+.wrap-autor .box-autor .image-autor figure img{
+
+    border:4px solid;
+}
+
+/******FIN DETALLE***********/
+/*MIS-RECETAS*/
+.box-my-recipe{
+    //border:1px solid;
+}
+.box-my-recipe>header{
+    border-bottom: 1px solid;
+    margin: 0 0 0 30px;
+}
+.box-my-recipe>header h2{
+    margin-bottom: 0;
+}
+/***/
+
+/**MIS BLOGS**/
+.box-vblog{
+    display: inline-block;
+    margin: 12px 5px 8px 30px;
+    vertical-align: top;
+    width: 450px;
+}
+.box-vblog>header{
+    text-align: right;
+    border-bottom: 1px solid;
+}
+.box-vblog>header h3{
+    margin: 8px;
+}
+.box-vblog section{
+    //border:1px solid;
+    margin: 15px 0 0 0;
+    width: 100%;
+}
+.vblog-picture{
+    //border:1px solid;
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+}
+.vblog-picture figure{
+    height: 150px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.vblog-picture figure img{
+    width: 100%;
+}
+.vblog-description{
+    //border:1px solid;
+    display: inline-block;
+    vertical-align: top;
+    width: 49%;
+}
+.vblog-description p{
+    font-size: .9em;
+    height: 135px;
+    text-align: justify;
+    overflow: hidden;
+    margin: 2px 8px 0 8px;
+
+}
+.vblog-description a{
+    font-size: 1.2em;
+    font-weight: bold;
+    float: right;
+    margin: 10px 0 0 0;
+    padding: 3px;
+}
+
+/****/
+.wrap-main .pagination{
+    //border:1px solid;
+    text-align: center;
+    font-size: 2em;
+}
+.wrap-main .pagination a{
+    color:#333;
+}
+.wrap-main .pagination ul{
+    //border:1px solid;
+}
+.wrap-main .pagination ul:after{
+    color:#f1592a;
+    content: ">>";
+    font-size: .6em;
+}
+.wrap-main .pagination ul:before{
+    color:#f1592a;
+    content: "<<";
+    font-size: .6em;
+}
+.wrap-main .pagination ul>li{
+    display: inline-block;
+    vertical-align: top;
+}
+.wrap-main .pagination ul>li span:before{
+    content: "|";
+    color:#f1592a;
+}
+footer{
+    background-color: #E7E7E8;
+    color: #B1B1B2;
+    display: table-footer-group;
+    width: 100%;
+}
+footer>.wrap-footer{
+    //border: 1px solid;
+    text-align: center;
+}
+footer>.wrap-footer>.wrap-social{
+    display: inline-block;
+    margin: 20px 0 0 0;
+}
+footer>.wrap-footer>.wrap-social .followus{
+
+    display:inline-block;
+    margin: 0 12px 0 0;
+    vertical-align: top;
+}
+footer>.wrap-footer>.wrap-social>.icons-social{
+    border-left: 8px solid;
+    color: #B1B1B2;
+    display: inline-block;
+    vertical-align: top;
+}
+
+footer>.wrap-footer>.wrap-social>.icons-social>ul>li{
+    display: inline-block;
+    margin: 0 8px 0 0;
+    vertical-align: top;
+}
+footer .info-page{
+    color:#939598;
+}
+footer .info-page>ul>li{
+    display: inline-block;
+    margin: 0 5px 0 0;
+    vertical-align: top;
+}
+footer .info-page>ul>li span:before{
+    content: "|";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

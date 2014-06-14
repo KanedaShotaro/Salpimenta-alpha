@@ -7,8 +7,8 @@
         <h3><?= $seccion ?></h3>
         <figure><img src="data:image/jpeg;base64,<?= $receta->getImagen() ?>" alt=""></figure>
         <p> <?= $receta->getValoracion() ?></p>
-        <p> <?= $receta->getValUsuario() ?></p>
-        <div data-idreceta="<?= $receta->getCodigo() ?>" class="rateit" ></div>
+        <p> </p>
+        <div data-idreceta="<?= $receta->getCodigo() ?>" class="rateit" data-rateit-value="<?= $receta->getValUsuario() ?>" ></div>
         <?php
         if ($_SESSION["usuario"][0]->comprobarFav($receta->getCodigo())) {
             ?> 

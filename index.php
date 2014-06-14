@@ -18,6 +18,7 @@ include '/var/www/Salpimenta-backend/Model/RecetaBd.php';
 include '/var/www/Salpimenta-backend/Model/UsuarioBd.php';
 include '/var/www/Salpimenta-backend/Model/BlogBd.php';
 include '/var/www/Salpimenta-backend/Library/AbstractFun.php';
+include '/var/www/Salpimenta-backend/Library/Seccion.php';
 include '/var/www/Salpimenta-backend/Library/Usuario.php';
 include '/var/www/Salpimenta-backend/Library/Receta.php';
 include '/var/www/Salpimenta-backend/Library/Blog.php';
@@ -31,6 +32,7 @@ include '/var/www/Salpimenta-backend/Library/SeccionDetalle.php';
 include '/var/www/Salpimenta-backend/Library/SeccionBlogDetalle.php';
 include '/var/www/Salpimenta-backend/Library/RegistroBlog.php';
 include '/var/www/Salpimenta-backend/Library/Buscador.php';
+
 
 
 

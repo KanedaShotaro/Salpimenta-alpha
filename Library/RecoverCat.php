@@ -1,7 +1,8 @@
 <?php
 
 class RecoverCat {
-
+    
+    
     public static function numeroSeccion($nombreSeccion) {
         switch ($nombreSeccion) {
             case "aperitivos":
@@ -83,13 +84,54 @@ class RecoverCat {
                 break;
         }
     }
+    
+    public static function nombreSeccionIdent($numeroSeccion) {
+        switch ($numeroSeccion) {
+            case 1:
+                return "Aperitivos";
+                break;
+            case 2:
+                return "Ensaladas y verduras";
+                break;
+            case 3:
+                return "Arroces y cereales";
+                break;
+            case 4:
+                return "Sopas y cremas";
+                break;
+            case 5:
+                return "Pastas y pizzas";
+                break;
+            case 6:
+                return "Legumbres";
+                break;
+            case 7:
+                return "Carnes";
+                break;
+            case 8:
+                return "Pescados y mariscos";
+                break;
+            case 9:
+                return "Huevos";
+                break;
+            case 10:
+                return "Setas y hongos";
+                break;
+            case 11:
+                return "Salsas";
+                break;
+            case 12:
+                return "Postres";
+                break;
+        }
+    }
 
     public static function numeroSeccionBlog($nombreSec) {
         switch ($nombreSec) {
             case "blogs":
                 return 1;
                 break;
-            case "vblogs":
+            case "vlogs":
                 return 2;
                 break;
         }
