@@ -1,27 +1,43 @@
-<h1> Estas en seccion blog detalle</h1>
-
-<div class="container">
-        <div class="row">
-            <h1><?= $seccion ?></h1>
-
-            <?php
-            for ($x = 0; $x < count($blogs); $x++) {
-                ?>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="data:image/jpeg;base64,<?= $blogs[$x]->getImagen() ?>" alt="">
-                        <div class="caption">
-                            <h3><?= $blogs[$x]->getTitulo() ?></h3>
-                            <p> <?= $blogs[$x]->getValoracion() ?></p>
-                            <p> <?= $blogs[$x]->getDescripcion() ?></p>
-                            <p> añadir a favoritos </p>
-                            <p><a class="btn btn-primary" role="button" href="<?= $blogs[$x]->getLink() ?>" target="_blank"> Ir al blog </a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <?php
-            }
-            ?>   
-        </div>
+<div class="info-section blogs">
+    <div class="title-section text-blogs">
+        <h1><?= $seccion ?></h1>
     </div>
+    <div class="sort">
+        <select>
+            <option>Ordenar por</option>
+            <option value="tipo">Tipo</option>
+            <option value="fav">Favoritos</option>
+        </select>
+    </div>
+</div>
+<?php
+for ($x = 0; $x < count($blogs); $x++) {
+    ?>
+    <article class="box-vblog ">
+        <header class="blogs">
+            <h3><?= $blogs[$x]->getTitulo() ?></h3>
+        </header>
+        <section>
+            <div class="vblog-picture">
+                <figure>
+                    <a href=""><img src="data:image/jpeg;base64,<?= $blogs[$x]->getImagen() ?>" alt=""></a>
+                </figure>
+                <div class="rating-box">
+                    <div class="rateit rating" data-rateit-readonly="true" data-rateit-value="2.5"></div>
+                    <div class="heart"><span class="icon-heart"></span></div>
+                </div>
+            </div>
+            <div class="vblog-description">
+                <p><?= $blogs[$x]->getDescripcion() ?></p>
+                <a href="<?= $blogs[$x]->getLink() ?>" target="_blank">Entrar</a>
+            </div>
+        </section>
+    </article>
+    <?php
+}
+?>
+
+
+
+
+

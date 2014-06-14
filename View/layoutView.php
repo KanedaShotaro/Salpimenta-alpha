@@ -1,20 +1,26 @@
-
+<?php
+if (isset($_GET["zona"])) {
+    $zona = $_GET["zona"];
+} else {
+    $zona = "explora";
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/rateit.css">
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/offcanvas.css">
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/main.css"/>
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/icomoon.css"/>
+        <link rel="stylesheet" href="/View/css/rateit.css">
+        <!-- <link rel="stylesheet" href="/View/css/bootstrap.min.css"> -->
+        <!-- <link rel="stylesheet" href="/View/css/offcanvas.css"> -->
+        <link rel="stylesheet" href="/View/css/main.css"/>
+        <link rel="stylesheet" href="/View/css/icomoon.css"/>
 
-        <script src="/Salpimenta-backend/View/js/jquery.rateit.js"></script>
-        <script src="/Salpimenta-backend/View/js/jquery-2.1.0.min.js"></script>
-        <script src="/Salpimenta-backend/View/js/bootstrap.js"></script>
-        <script src="/Salpimenta-backend/View/js/jquery.rateit.js"></script>
-        <script src="/Salpimenta-backend/View/js/jquery-ui.js"></script>
+        <script src="/View/js/jquery.rateit.js"></script>
+        <script src="/View/js/jquery-2.1.0.min.js"></script>
+        <script src="/View/js/bootstrap.js"></script>
+        <script src="/View/js/jquery.rateit.js"></script>
+        <script src="/View/js/jquery-ui.js"></script>
 
     </head>
     <body>
@@ -23,7 +29,7 @@
             <div class="wrap-header">
                 <div class="logo">
                     <figure>
-                        <a href="#"><img src="/Salpimenta-backend/View/img/logo.png" alt="Logo Salpimenta" width="88" height="88"/></a>
+                        <a href="#"><img src="/View/img/logo.png" alt="Logo Salpimenta" width="88" height="88"/></a>
                     </figure>
                     <h1>salpi<br><span>menta</span><span class="beta">Beta</span></h1>
                 </div>
@@ -31,14 +37,14 @@
                     <div class="list-options">
                         <!--elejir colores hover.-->
                         <ul>
-                            <li><a href="/Salpimenta-backend/index.php?&url=seccionesControler&zona=misalpimenta">Mi salpimenta</a></li>
-                            <li><span></span><a href="/Salpimenta-backend/index.php?url=seccionesControler">Explorar</a><span></span></li>
-                            <li><a href="/Salpimenta-backend/index.php?url=blogsControler&zona=blogs">Blogs</a></li>
+                            <li><a href="/index.php?url=seccionesControler&zona=misalpimenta">Mi salpimenta</a></li>
+                            <li><span></span><a href="/index.php?url=seccionesControler&zona=explora">Explorar</a><span></span></li>
+                            <li><a href="/index.php?url=blogsControler&zona=blogs">Blogs</a></li>
                         </ul>
-                        <a href="/Salpimenta-backend/index.php?url=subirRecetaControler&zona=<?= $zona ?>">Subir receta...</a>
+                        <a href="/$zona/subir-receta">Subir receta...</a>
                     </div>
                     <div class="search">
-                        <form action="/Salpimenta-backend/index.php?url=buscadorControler&zona=<?= $zona ?>" method="post">
+                        <form action="/index.php?url=buscadorControler&zona=<?= $zona ?>" method="post">
                             <input type="search" name="tags" placeholder="Buscar">
                         </form>
                     </div>
@@ -51,12 +57,12 @@
                         <ul>
                             <li class="user-perfil"><a href="#"><?= $_SESSION["usuario"][0]->getNombre() ?></a>
                                 <ul class="menu-perfil">
-                                    <li><a href="/Salpimenta-backend/index.php?url=miPerfilControler&zona=<?= $zona ?>">Mi ficha</a></li>
-                                    <li><a href="/Salpimenta-backend/index.php?url=subirBlogControler&zona=<?= $zona ?>">Subir Blog</a></li>
-                                    <li><a  href="/Salpimenta-backend/index.php?url=ajustesControler&zona=<?= $zona ?>">Ajustes</a></li>
-                                    <li><a href="/Salpimenta-backend/index.php?url=editarRecetasControler&zona=<?= $zona ?>">Ver/Editar Recetas</a></li>
+                                    <li><a href="/index.php?url=miPerfilControler&zona=<?= $zona ?>">Mi ficha</a></li>
+                                    <li><a href="/index.php?url=subirBlogControler&zona=<?= $zona ?>">Subir Blog</a></li>
+                                    <li><a  href="/index.php?url=ajustesControler&zona=<?= $zona ?>">Ajustes</a></li>
+                                    <li><a href="/index.php?url=editarRecetasControler&zona=<?= $zona ?>">Ver/Editar Recetas</a></li>
                                     <li><a href="#">Ver/Editar Blogs</a></li>
-                                    <li><a href="/Salpimenta-backend/index.php?url=salirSesionControler&zona=<?= $zona ?>">salir</a></li>
+                                    <li><a href="/index.php?url=salirSesionControler&zona=<?= $zona ?>">salir</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">5 recetas</a></li>
@@ -83,7 +89,7 @@
         <?= $alerts_content ?>
 
         <?= $tpl_content ?>
-    </div>
+    </div>  <!-- este div es correcto, viende del wrap en $menu_content --> 
         <footer >
             <div class="wrap-footer">
                 <div class="wrap-social">

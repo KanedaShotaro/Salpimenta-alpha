@@ -32,9 +32,9 @@ class View {
 
         if ($this->getTemplate() == 'registroUsuarioView') {
             $this->setLayoudDefualt($this->layoutEmpty);
-            return '/var/www/Salpimenta-backend/View/' . $this->getTemplate() . '.php';
+            return './View/' . $this->getTemplate() . '.php';
         } else {
-            return '/var/www/Salpimenta-backend/View/' . $this->getTemplate() . '.php';
+            return './View/' . $this->getTemplate() . '.php';
         }
     }
 
@@ -50,12 +50,12 @@ class View {
             include $template;
             $tpl_content = ob_get_clean();
             ob_start();
-            require '/var/www/Salpimenta-backend/View/alertsView.php';
+            require './View/alertsView.php';
             $alerts_content = ob_get_clean();
             ob_start();
-            require '/var/www/Salpimenta-backend/View/menuView.php';
+            require './View/menuView.php';
             $menu_content = ob_get_clean();
-            require '/var/www/Salpimenta-backend/View/' . $layoutDefault . '.php';
+            require './View/' . $layoutDefault . '.php';
         });
     }
 

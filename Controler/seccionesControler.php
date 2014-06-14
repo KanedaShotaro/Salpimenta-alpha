@@ -2,12 +2,6 @@
 
 Block::test();
 
-if (empty($_GET['zona'])) {
-    $zonaNombre = 'Explora';
-} else {
-    $zonaNombre = 'Mi Salpimenta';
-}
-
 function recuperarSeccionesUsuario() {
     $max_secciones = 12;
     $numSecciones = array();
@@ -15,11 +9,11 @@ function recuperarSeccionesUsuario() {
     $usuarioBd = new UsuarioBd();
 
     $numSecciones = $usuarioBd->recuperarSeccionesUsuario($_SESSION["usuario"][0]->getCodigoUsuario());
-    
+
     for ($x = 0; $x < count($numSecciones); $x++) {
         $secciones[$x] = new Seccion($numSecciones[$x]);
     }
-    
+
     return $secciones;
 }
 
@@ -37,11 +31,13 @@ function recuperarSecciones() {
     return $secciones;
 }
 
-if ($zonaNombre == "Mi Salpimenta") {
+if ($_GET['zona'] == "misalpimenta") {
     $secciones = recuperarSeccionesUsuario();
+    $zonaNombre = 'Mi Salpimenta';
 } else {
     $secciones = recuperarSecciones();
+    $zonaNombre = 'Explora';
 }
 
-$view = new View("seccionesView", array("seccion" => $secciones, "zonaNombre" => $zonaNombre));
+$view = new View("seccionesView", array("seccion" => $secciones, "zonaNombre" => $zonaNombre, "zona" => $_GET["zona"]));
 $view->execute();

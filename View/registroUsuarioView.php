@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/offcanvas.css">
+        <link rel="stylesheet" href="/View/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/View/css/offcanvas.css">
     </head>
     <body>
         <h1>SalPimenta.net</h1>
@@ -22,7 +22,7 @@
         ?>
         <fieldset>
             <legend>Registro de Usuario</legend>
-            <form action="/Salpimenta-backend/index.php?url=registroUsuarioControler" enctype="multipart/form-data" method="post">
+            <form action="/index.php?url=registroUsuarioControler" enctype="multipart/form-data" method="post">
                 <label for="img">Sube tu Imagen: </label><input type="file" name="img" id="img"><br/>                
                 <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre" placeholder="Nombre de Usuario"  ><br/>
                 <label for="apellido1">Apellido1: </label><input type="text" name="apellido1" id="apellido1" placeholder="Primer Apellido"  ><br/>

@@ -10,7 +10,7 @@
             </div>
             <div class="image">
                 <figure>
-                    <a href="<?= $seccion[$x]->getLink() ?>&zona=<?= $zona ?>"><img src="/Salpimenta-backend/View/img/<?= $seccion[$x]->getImagen() ?>.jpg" alt=""></a>
+                    <a href="<?= $seccion[$x]->getLink() ?>&zona=<?= $zona ?>"><img src="/View/img/<?= $seccion[$x]->getImagen() ?>.jpg" alt=""></a>
                 </figure>
             </div>
         </article>

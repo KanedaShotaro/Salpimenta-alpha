@@ -9,8 +9,8 @@
 
         <title></title>
 
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/signin.css">
+        <link rel="stylesheet" href="/View/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/View/css/signin.css">
 
 
 
@@ -34,7 +34,7 @@
             }
             ?>
 
-            <form action="/Salpimenta-backend/index.php?url=loginUsuarioControler" method="POST" class="form-signin" role="form">
+            <form action="/index.php?url=loginUsuarioControler" method="POST" class="form-signin" role="form">
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <input type="email" class="form-control" placeholder="Email address" name="email" id="email" required autofocus>
                 <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>

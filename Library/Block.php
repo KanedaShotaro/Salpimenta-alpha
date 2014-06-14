@@ -4,7 +4,7 @@ class Block {
 
     public static function test() {
         if (!isset($_SESSION["usuario"])) {
-          header("Location: /Salpimenta-backend/index.php");
+          header("Location: /index.php");
         }
     }
 

@@ -1,7 +1,7 @@
 <?php
 Block::test();
-include_once '/var/www/Salpimenta-backend/Library/Alert.php';
-include_once '/var/www/Salpimenta-backend/Library/NewAlert.php';
+include_once '/Library/Alert.php';
+include_once '/Library/NewAlert.php';
 
 if (!empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["nombre"])) {
 
@@ -19,5 +19,5 @@ if (!empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["nomb
     $registroUsuario->execute();
 } else {
     AlertAction::create("info", "Atencion", "Rellena todos los campos");
-    include "/var/www/Salpimenta-backend/View/registroUsuarioView.php";
+    include "/View/registroUsuarioView.php";
 }

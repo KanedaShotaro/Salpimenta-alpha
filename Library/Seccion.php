@@ -65,40 +65,40 @@ class Seccion {
     function createLink($numSeccion){
         switch ($numSeccion) {
             case 1:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=aperitivos";
+                return "/index.php?url=seccionDetalleControler&seccion=aperitivos";
                 break;
             case 2:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=ensaladas-y-verduras";
+                return "/index.php?url=seccionDetalleControler&seccion=ensaladas-y-verduras";
                 break;
             case 3:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=arroces-y-cereales";
+                return "/index.php?url=seccionDetalleControler&seccion=arroces-y-cereales";
                 break;
             case 4:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=sopas-y-cremas";
+                return "/index.php?url=seccionDetalleControler&seccion=sopas-y-cremas";
                 break;
             case 5:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=pastas-y-pizzas";
+                return "/index.php?url=seccionDetalleControler&seccion=pastas-y-pizzas";
                 break;
             case 6:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=legumbres";
+                return "/index.php?url=seccionDetalleControler&seccion=legumbres";
                 break;
             case 7:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=carnes";
+                return "/index.php?url=seccionDetalleControler&seccion=carnes";
                 break;
             case 8:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=pescados-y-mariscos";
+                return "/index.php?url=seccionDetalleControler&seccion=pescados-y-mariscos";
                 break;
             case 9:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=huevos";
+                return "/index.php?url=seccionDetalleControler&seccion=huevos";
                 break;
             case 10:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=setas-y-hongos";
+                return "/index.php?url=seccionDetalleControler&seccion=setas-y-hongos";
                 break;
             case 11:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=salsas";
+                return "/index.php?url=seccionDetalleControler&seccion=salsas";
                 break;
             case 12:
-                return "/Salpimenta-backend/index.php?url=seccionDetalleControler&seccion=postres";
+                return "/index.php?url=seccionDetalleControler&seccion=postres";
                 break;
         }
     }

@@ -22,7 +22,7 @@
                                 <h3><?= $recetas[$y]->getNombreReceta() ?></h3>
                                 <p> <?= $recetas[$y]->getValoracion() ?></p>
                                 <p> añadir a favoritos </p>
-                                <p><a class="btn btn-primary" role="button" href="/Salpimenta-backend/index.php?url=recetaDetalleControler&seccion=<?= $recetas[$y]->getCategoriaReceta() ?>&urlReceta=<?= $recetas[$y]->getUrlReceta() ?>&zona=misalpimenta"> Ir a la receta </a></p>
+                                <p><a class="btn btn-primary" role="button" href="/index.php?url=recetaDetalleControler&seccion=<?= $recetas[$y]->getCategoriaReceta() ?>&urlReceta=<?= $recetas[$y]->getUrlReceta() ?>&zona=misalpimenta"> Ir a la receta </a></p>
                             </div>
                         </div>
                     </div>

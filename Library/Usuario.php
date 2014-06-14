@@ -1,6 +1,5 @@
 <?php
 
-//require_once '/var/www/Salpimenta-backend/Controlador/funcionesControlador.php';
 class Usuario extends AbstractFun {
 
     private $codigoUsuario;

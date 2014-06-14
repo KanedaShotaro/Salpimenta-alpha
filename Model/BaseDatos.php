@@ -1,6 +1,6 @@
 <?php
 
-require_once '/var/www/Salpimenta-backend/Model/poolConexion.php';
+require_once './Model/poolConexion.php';
 
 class BaseDatos {
 

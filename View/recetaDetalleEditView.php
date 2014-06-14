@@ -25,7 +25,7 @@
 
     <fieldset>
         <legend>Editar Receta</legend>
-        <form action="/Salpimenta-backend/index.php?url=registroRecetaControler" enctype="multipart/form-data" method="post" name="formReceta">
+        <form action="/index.php?url=registroRecetaControler" enctype="multipart/form-data" method="post" name="formReceta">
             <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre" value="<?= $receta->getNombreReceta() ?>"  placeholder="Titulo de tu Receta"><br/>
             <label for="ingredientes">Ingredientes: </label><textarea name="ingredientes"  id="ingredientes"  placeholder="Escribe la lista de ingredientes"> <?= $receta->getIngredientes() ?></textarea><br/>
             <label for="elaboracion">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta"><?= $receta->getElaboracion() ?></textarea><br/>
@@ -55,12 +55,12 @@
         </form>
     </fieldset>
 
-    <form action="/Salpimenta-backend/index.php?url=deleteRecetaControler&codigo=<?=$receta->getCodigo()?>&nombre=<?=$receta->getNombreReceta()?>" method="post">
+    <form action="/index.php?url=deleteRecetaControler&codigo=<?=$receta->getCodigo()?>&nombre=<?=$receta->getNombreReceta()?>" method="post">
         <label for="borrar"> Escribe el nombre de la Receta para borrarla </label><input type="text" name="borrar" id="borrar" ><br/>
         <input type="submit" value="Eliminar Receta">
     </form>
 
-    <script src="/Salpimenta-backend/View/js/nicEdit.js" type="text/javascript"></script>
+    <script src="/View/js/nicEdit.js" type="text/javascript"></script>
     <script type="text/javascript">
             bkLib.onDomLoaded(function() {
                 new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('ingredientes');

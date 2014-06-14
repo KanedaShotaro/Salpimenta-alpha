@@ -1,7 +1,7 @@
 <div class="container">
     <fieldset>
         <legend>Subir Blog</legend>
-        <form action="/Salpimenta-backend/index.php?url=registroBlogControler" enctype="multipart/form-data" method="post" name="formBlog">
+        <form action="/index.php?url=registroBlogControler" enctype="multipart/form-data" method="post" name="formBlog">
             <label for="nombre">Titulo del Blog: </label><input type="text" name="nombre" id="nombre" placeholder="Titulo del Blog"><br/>
             <label for="link">Enlace al Blog: </label><input type="text" name="link" id="link" placeholder="Escribe la dirección completa del blog"><br/>
             <label for="autor">Autor del Blog: </label><input type="text" name="autor" id="autor" placeholder="Autor del blog"><br/>
@@ -16,7 +16,7 @@
         </form>
     </fieldset>
 
-    <script src="/Salpimenta-backend/View/js/nicEdit.js" type="text/javascript"></script>
+    <script src="/View/js/nicEdit.js" type="text/javascript"></script>
     <script type="text/javascript">
                 bkLib.onDomLoaded(function() {
                     new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('descripcion');

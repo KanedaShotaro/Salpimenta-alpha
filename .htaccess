@@ -1,0 +1,26 @@
+#IfModule mod_rewrite.c>
+#RewriteEngine on
+#RewriteBase /Salpimenta-backend
+#RewriteCond %{SCRIPT_FILENAME} !-d
+#RewriteCond %{SCRIPT_FILENAME} !-f
+# deniega el acceso al arbol de direcciones
+#RewriteRule ^(cache|includes|logs|tmp)/ - [F]
+# redirecciona el error 404
+#ErrorDocument 404 /error404.php
+#RewriteRule  ([aA-zZ-]+)/secciones /index.php?url=seccionesControler&zona=$1
+#RewriteRule  ^/blogs/secciones /index.php?url=seccionesControler&zona=blogs
+
+#RewriteRule ([aA-zZ-]+)/subir-receta /index.php?url=subirRecetaControler&zona=$1
+#RewriteRule ([aA-zZ-]+)/resultados-busqueda /index.php?url=buscadorControler&zona=$1
+#RewriteRule ([aA-zZ-]+)/mi-perfil  /index.php?url=miPerfilControler&zona=$1
+#RewriteRule ([aA-zZ-]+)/subir-blog /index.php?url=subirBlogControler&zona=$1
+#RewriteRule ([aA-zZ-]+)/ajustes /index.php?url=ajustesControler&zona=$1
+#RewriteRule ([aA-zZ-]+)/editar-receta /index.php?url=editarRecetasControler&zona=$1
+#RewriteRule ([aA-zZ-]+)/editar-blog /index.php?url=editarBlogControler&zona=$1
+#RewriteRule ([aA-zZ-]+)/salir /index.php?url=salirSesionControler&zona=$1
+
+#RewriteRule ^blogs-y-vlogs-de-cocina/([aA-zZ-]+)  /index.php?url=seccionBlogDetalleControler&seccion=$1&zona=blogs
+#RewriteRule ([aA-zZ-]+)/([aA-zZ-]+)   /index.php?url=seccionDetalleControler&seccion=$2&zona=$1
+
+
+#</IfModule>

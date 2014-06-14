@@ -2,7 +2,7 @@
 <div class="container">
     <fieldset>
         <legend>Subir Receta</legend>
-        <form action="/Salpimenta-backend/index.php?url=registroRecetaControler" enctype="multipart/form-data" method="post" name="formReceta">
+        <form action="/index.php?url=registroRecetaControler" enctype="multipart/form-data" method="post" name="formReceta">
             <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre"  placeholder="Titulo de tu Receta"><br/>
             <label for="ingredientes">Ingredientes: </label><textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes"></textarea><br/>
             <label for="elaboracion">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta"></textarea><br/>
@@ -32,7 +32,7 @@
         </form>
     </fieldset>
 
-    <script src="/Salpimenta-backend/View/js/nicEdit.js" type="text/javascript"></script>
+    <script src="/View/js/nicEdit.js" type="text/javascript"></script>
     <script type="text/javascript">
                 bkLib.onDomLoaded(function() {
                     new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('ingredientes');

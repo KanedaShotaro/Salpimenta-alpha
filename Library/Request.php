@@ -25,9 +25,9 @@ class Request {
         $urlDefault = $this->getDefaultUrl();
 
         if (empty($url)) {
-            require '/var/www/Salpimenta-backend/Controler/' . $urlDefault . '.php';
+            require './Controler/' . $urlDefault . '.php';
         } else {
-            require '/var/www/Salpimenta-backend/Controler/' . $url . '.php';
+            require './Controler/' . $url . '.php';
         }
     }
 

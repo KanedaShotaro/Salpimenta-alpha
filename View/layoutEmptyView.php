@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" href="/Salpimenta-backend/View/css/alerts.css">
+        <link rel="stylesheet" href="/View/css/alerts.css">
     </head>
     <body> 
         <?= $alerts_content ?>

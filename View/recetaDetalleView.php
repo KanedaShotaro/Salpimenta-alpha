@@ -49,7 +49,7 @@
         //maybe we want to disable voting?
         //ri.rateit('readonly', true);
         $.ajax({
-            url: '/Salpimenta-backend/index.php?&url=valoracionControler', //your server side script
+            url: '/index.php?&url=valoracionControler', //your server side script
             data: {id: idreceta, value: value}, //our data
             type: 'POST',
 //            success: function(data) {
@@ -72,7 +72,7 @@
         
         $.ajax({
             type: 'POST',
-            url: '/Salpimenta-backend/index.php?&url=favoritoControler',
+            url: '/index.php?&url=favoritoControler',
             data: {id: idReceta, value: value},
             error: function(jxhr, msg, err) {
                 $('#response').append('<li style="color:red">' + jxhr + msg + err + '</li>');
