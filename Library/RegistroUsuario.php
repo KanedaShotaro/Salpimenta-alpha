@@ -26,11 +26,11 @@ class Registrousuario {
         
         if ($usuarioBd->insertarUsuario($usuario)) {
             $_SESSION['usuario'][0] = $usuario;
-            new NewAlert("success", "Bienvenido!",' '.$usuario->getNombre().', gracias por haberte registrado en SalPimenta!');
-            $request = new Request("home");
+            AlertAction::create("success", "Bienvenido!",' '.$usuario->getNombre().', gracias por haberte registrado en SalPimenta!');
+            $request = new Request("homeControler");
             $request->execute();
         } else {
-            new NewAlert("danger", "error", "El usuario ya existe!");
+            AlertAction::create("danger", "error", "El usuario ya existe!");
             include "./View/registroUsuarioView.php";
         }
     }

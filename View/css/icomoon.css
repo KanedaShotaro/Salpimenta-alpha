@@ -59,3 +59,9 @@
 	color: #B1B1B2;
 	font-size: 40px;
 }
+.icon-food:before {
+	content: "\e608";
+}
+.icon-eye:before {
+	content: "\e609";
+}

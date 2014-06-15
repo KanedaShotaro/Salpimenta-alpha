@@ -10,7 +10,7 @@ class UsuarioBd extends AbstractBD {
     }
 
     function insertarUsuario($usuario) {
-        $query1 = 'INSERT INTO USUARIO (EMAIL,CODUS,NOMUS,APUS1,APUS2,CLAVEUS,FECING,FECNAC,PLATFAV,MAXREC) VALUES("' . $usuario->getEmail() . '","' . $usuario->getCodigoUsuario() . '","' . $usuario->getNombre() . '","' . $usuario->getApellido1() . '","' . $usuario->getApellido2() . '","' . $usuario->getPassword() . '","' . $usuario->getFechaIngreso() . '","' . $usuario->getFechaNacimiento() . '","' . $usuario->getPlatoFavorito() . '","' . $usuario->getRecetasMax() . '");';
+        $query1 = 'INSERT INTO USUARIO (EMAIL,CODUS,NOMUS,APUS1,APUS2,CLAVEUS,FECING,FECNAC,PLATFAV,MAXREC,IDSES) VALUES("' . $usuario->getEmail() . '","' . $usuario->getCodigoUsuario() . '","' . $usuario->getNombre() . '","' . $usuario->getApellido1() . '","' . $usuario->getApellido2() . '","' . $usuario->getPassword() . '","' . $usuario->getFechaIngreso() . '","' . $usuario->getFechaNacimiento() . '","' . $usuario->getPlatoFavorito() . '","' . $usuario->getRecetasMax() . '","' . session_id() . '");';
         $query2 = 'INSERT INTO IMGUS (ID, NOMIMG, IMG, TIPOIMG, CODUS) VALUES("0","' . $usuario->getNombreImg() . '","' . $usuario->getImagen() . '","' . $usuario->getTipoImg() . '","' . $usuario->getCodigoUsuario() . '");';
         return $this->insertQuery(array($query1, $query2));
     }
@@ -20,7 +20,11 @@ class UsuarioBd extends AbstractBD {
          * devuelve true si existe, o false si no existe */
         $query = "SELECT CLAVEUS FROM USUARIO where EMAIL = '$email'; ";
         $resultado = $this->selectQuery($query);
-        $passDecrypt = Encryptar::decrypt($resultado[0]);
+        if (!empty($resultado)) {
+            $passDecrypt = Encryptar::decrypt($resultado[0]);
+        }else{
+            $passDecrypt = null;
+        }
         if ($passDecrypt == $password) {
             return true;
         } else {
@@ -61,18 +65,44 @@ class UsuarioBd extends AbstractBD {
         }
     }
 
-    function favoritoRecetaUsuario($codReceta, $codUsuario) {
+    function valoracionBlogUsuario($codigoBlog, $codUsuario, $valoracion) {
 
+        if ($this->comprobarValoracionBlogUsuario($codigoBlog, $codUsuario)) {
+            $query = 'UPDATE VALUSBLO SET VALUS = "' . $valoracion . '" WHERE CODUS = "' . $codUsuario . '" AND CODBLOG = "' . $codigoBlog . '";';
+            return $this->updateQuery($query);
+        } else {
+            $query = 'INSERT INTO VALUSBLO (CODBLOG,CODUS,VALUS) VALUES("' . $codigoBlog . '","' . $codUsuario . '","' . $valoracion . '");';
+            return $this->insertQuery(array($query));
+        }
+    }
+
+    function comprobarValoracionBlogUsuario($codigoBlog, $codUsuario) {
+        $query = 'SELECT * FROM VALUSBLO WHERE CODBLOG = "' . $codigoBlog . '" AND CODUS = "' . $codUsuario . '";';
+        $resultado = $this->selectQuery($query);
+        return count($resultado) > 0 ? true : false;
+    }
+
+    function favoritoRecetaUsuario($codReceta, $codUsuario) {
         if (!$this->comprobarFavoritoRecetaUsuario($codReceta, $codUsuario)) {
             $query = 'INSERT INTO RECFAV (CODRE,CODUS) VALUES("' . $codReceta . '","' . $codUsuario . '");';
             return $this->insertQuery(array($query));
         }
     }
 
+    function favoritoBlogUsuario($codBlog, $codUsuario) {
+        if (!$this->comprobarFavoritoBlogUsuario($codBlog, $codUsuario)) {
+            $query = 'INSERT INTO BLOGFAV (CODBLOG,CODUS) VALUES("' . $codBlog . '","' . $codUsuario . '");';
+            return $this->insertQuery(array($query));
+        }
+    }
+
     function quitarfavoritoRecetaUsuario($codReceta, $codUsuario) {
-
-
         $query = 'DELETE FROM RECFAV WHERE CODRE = "' . $codReceta . '" AND CODUS = "' . $codUsuario . '" ;';
+        return $this->deleteQuery($query);
+    }
+    
+    function quitarfavoritoBlogUsuario($codBlog, $codUsuario) {
+        $query = 'DELETE FROM BLOGFAV WHERE CODBLOG = "' . $codBlog . '" AND CODUS = "' . $codUsuario . '" ;';
         return $this->deleteQuery($query);
     }
 

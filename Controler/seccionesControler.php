@@ -39,5 +39,12 @@ if ($_GET['zona'] == "misalpimenta") {
     $zonaNombre = 'Explora';
 }
 
-$view = new View("seccionesView", array("seccion" => $secciones, "zonaNombre" => $zonaNombre, "zona" => $_GET["zona"]));
-$view->execute();
+if (count($secciones) == 0) {
+    $view = new View("seccionVaciaView");
+    $view->execute();
+} else {
+    $view = new View("seccionesView", array("seccion" => $secciones, "zonaNombre" => $zonaNombre, "zona" => $_GET["zona"]));
+    $view->execute();
+}
+
+

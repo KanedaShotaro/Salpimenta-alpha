@@ -12,7 +12,6 @@
     </div>
 </div>
 
-
 <div class="wrap-boxes">
 
     <?php
@@ -31,15 +30,14 @@
             </div>
             <div class="rating-box">
                 <div class="rating rateit" data-rateit-readonly="true" data-rateit-value="<?= $recetas[$x]->getValoracion() ?>" > </div>
-
                 <?php
                 if ($_SESSION["usuario"][0]->comprobarFav($recetas[$x]->getCodigo())) {
                     ?> 
-                    <div class="heart"><a href="#" data-favorito="0" data-idReceta="<?= $recetas[$x]->getCodigo() ?>" ><span class="icon-heart" ></span></a></div>
+                    <div class="heart"><a href="#" data-favorito="0" data-tipo="receta" data-idReceta="<?= $recetas[$x]->getCodigo() ?>" ><span class="icon-heart" ></span></a></div>
                     <?php
                 } else {
                     ?>
-                    <div class="heart"><a href="#" data-favorito="1" data-idReceta="<?= $recetas[$x]->getCodigo() ?>"><span class="icon-heart2" ></span></a></div>
+                    <div class="heart"><a href="#" data-favorito="1" data-tipo="receta" data-idReceta="<?= $recetas[$x]->getCodigo() ?>"><span class="icon-heart2" ></span></a></div>
                     <?php
                 }
                 ?>
@@ -51,25 +49,20 @@
     ?>   
 </div>
 
+
 <div class="pagination">
     <ul>
-        <li><a href="#">1</a></li>
-        <li><span></span></li>
-        <li><a href="#">2</a></li>
-        <li><span></span></li>
-        <li><a href="#">3</a></li>
-        <li><span></span></li>
-        <li><a href="#">4</a></li>
-        <li><span></span></li>
-        <li><a href="#">5</a></li>
-        <li><span></span></li>
-        <li><a href="#">6</a></li>
-        <li><span></span></li>
-        <li><a href="#">7</a></li>
-        <li><span></span></li>
-        <li><a href="#">8</a></li>
-        <li><span></span></li>
-        <li><a href="#">9</a></li>
+        <?php for ($x = 1; $x < $totalPaginas + 1; $x++) { ?>
+            <?php if ($x == $pagina) { ?>
+                <li><a href="/index.php?url=seccionDetalleControler&seccion=<?= $seccion->getCss() ?>&zona=<?= $zona ?>&pagina=<?= $x ?>"></a></li>
+            <?php } ?>
+            <?php if ($x != 1) {
+                ?>
+                <li><span></span></li>
+                <?php }
+            ?>
+            <li><a href="/index.php?url=seccionDetalleControler&seccion=<?= $seccion->getCss() ?>&zona=<?= $zona ?>&pagina=<?= $x ?>"><?= $x ?></a></li>
+        <?php } ?>
     </ul>
 </div>
 
@@ -79,11 +72,12 @@
 
         var value = anadir.data('favorito');
         var idReceta = anadir.data('idreceta');
+        var tipo = anadir.data('tipo');
 
         $.ajax({
             type: 'POST',
             url: '/index.php?&url=favoritoControler',
-            data: {id: idReceta, value: value},
+            data: {id: idReceta, value: value, tipo: tipo},
             error: function(jxhr, msg, err) {
                 $('#response').append('<li style="color:red">' + jxhr + msg + err + '</li>');
             }

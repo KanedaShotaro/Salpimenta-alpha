@@ -32,7 +32,7 @@ class Usuario extends AbstractFun {
         $this->fechaIngreso = date("Y-m-d");
         $this->fechaNacimiento = $this->convertirFechaAMysql($fechaNacimiento);
         $this->platoFavorito = strtoupper($platoFavorito);
-        $this->recetasMax = 5;
+        $this->recetasMax = 15;
         $this->introducirImg($datosImagen);
     }
 

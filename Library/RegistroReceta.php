@@ -39,20 +39,19 @@ class RegistroReceta {
         $tags = $this->getTags();
         $receta->setCodigoUsuario($codigoUsuario);
 
-
         if ($recetaBd->insertar_Receta($receta)) {
             if ($recetaBd->insertar_tags_receta($tags, $receta->getCodigo())) {
                 AlertAction::create("success", "Exito", "Tu receta ha sido introducida!");
-                $view = new View("seccionesView");
+                $view = new View("registroRecetaView");
                 $view->execute();
             } else {
                 AlertAction::create("warning", "Error", "Los tags no se ha introducido correctamente");
-                $view = new View("seccionesView");
+                $view = new View("registroRecetaView");
                 $view->execute();
             }
         } else {
             AlertAction::create("danger", "Error", "Receta no introducida");
-            $view = new View("seccionesView", array("alert" => $alert));
+            $view = new View("registroRecetaView");
             $view->execute();
         }
     }

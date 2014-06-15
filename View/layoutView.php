@@ -11,7 +11,7 @@ if (isset($_GET["zona"])) {
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="/View/css/rateit.css">
-        <!-- <link rel="stylesheet" href="/View/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="/View/css/alerts.css"> 
         <!-- <link rel="stylesheet" href="/View/css/offcanvas.css"> -->
         <link rel="stylesheet" href="/View/css/main.css"/>
         <link rel="stylesheet" href="/View/css/icomoon.css"/>
@@ -41,7 +41,7 @@ if (isset($_GET["zona"])) {
                             <li><span></span><a href="/index.php?url=seccionesControler&zona=explora">Explorar</a><span></span></li>
                             <li><a href="/index.php?url=blogsControler&zona=blogs">Blogs</a></li>
                         </ul>
-                        <a href="/$zona/subir-receta">Subir receta...</a>
+                        <a href="/index.php?url=subirRecetaControler&zona=<?= $zona ?>">Subir receta...</a>
                     </div>
                     <div class="search">
                         <form action="/index.php?url=buscadorControler&zona=<?= $zona ?>" method="post">
@@ -61,7 +61,7 @@ if (isset($_GET["zona"])) {
                                     <li><a href="/index.php?url=subirBlogControler&zona=<?= $zona ?>">Subir Blog</a></li>
                                     <li><a  href="/index.php?url=ajustesControler&zona=<?= $zona ?>">Ajustes</a></li>
                                     <li><a href="/index.php?url=editarRecetasControler&zona=<?= $zona ?>">Ver/Editar Recetas</a></li>
-                                    <li><a href="#">Ver/Editar Blogs</a></li>
+                                    <li><a href="/index.php?url=editarBlogControler&zona=<?= $zona ?>">Ver/Editar Blogs</a></li>
                                     <li><a href="/index.php?url=salirSesionControler&zona=<?= $zona ?>">salir</a></li>
                                 </ul>
                             </li>

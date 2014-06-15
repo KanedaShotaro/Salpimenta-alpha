@@ -48,6 +48,8 @@ class Blog extends AbstractFun {
         $x++;
         $this->setFechaEntrada($vars[$x]);
         $x++;
+        $this->setValoracion($vars[$x]);
+        $x++;
         $this->setNombreImg($vars[$x]);
         $x++;
         $this->setImagen($vars[$x]);
@@ -56,6 +58,7 @@ class Blog extends AbstractFun {
         $x++;
         $this->setCategoria($vars[$x]);
         $x++;
+        
     }
     
     public function getValoracionUsuario() {

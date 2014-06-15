@@ -5,13 +5,46 @@ class SeccionDetalle {
     protected $zona;
     protected $seccionNombre;
     protected $RecetaBd;
+    protected $paginaInicial = 0;
+    protected $numeroMaxRecetas = 12;
+    protected $paginaActual;
 
     //protected $codigoUsuario;
 
-    function __construct($zona, $seccionNombre) {
+    function __construct($zona, $seccionNombre, $paginaActual) {
         $this->zona = $zona;
         $this->seccion = $seccionNombre;
         $this->RecetaBd = new RecetaBd();
+        $this->setPaginaActual($paginaActual);
+    }
+
+    public function getPaginaInicial() {
+        return $this->paginaInicial;
+    }
+
+    public function getNumeroMaxRecetas() {
+        return $this->numeroMaxRecetas;
+    }
+
+    public function getPaginaActual() {
+        return $this->paginaActual;
+    }
+
+    public function setPaginaInicial($paginaInicial) {
+        $this->paginaInicial = $paginaInicial;
+    }
+
+    public function setNumeroMaxRecetas($numeroMaxRecetas) {
+        $this->numeroMaxOfertas = $numeroMaxRecetas;
+    }
+
+    public function setPaginaActual($paginaActual) {
+        if ($paginaActual == "") {
+            $this->paginaActual = $this->getPaginaInicial();
+        } else {
+            $paginaActual--;
+            $this->paginaActual = $paginaActual;
+        }
     }
 
     public function getZona() {
@@ -63,15 +96,34 @@ class SeccionDetalle {
     }
 
     public function execute() {
-        $recetas = $this->recuperarRecetas();
+
+        $paginaActual = $this->getPaginaActual();
         $seccionNombre = $this->getSeccion();
         $zona = $this->getZona();
-        
-        $seccion = new Seccion(RecoverCat::numeroSeccion($seccionNombre));
-        
+        $RecetasPorPaginas = array();
+        $numeroMaxRecetas = $this->getNumeroMaxRecetas();
+        $paginaSiguiente = $paginaActual + 1;
 
-        $view = new View("seccionDetalleView", array('seccion' => $seccion, 'recetas' => $recetas, 'zona' => $zona));
-        $view->execute();
+        $recetas = $this->recuperarRecetas();
+        $seccion = new Seccion(RecoverCat::numeroSeccion($seccionNombre));
+
+        $cantidadHojas = ceil(count($recetas) / $numeroMaxRecetas);
+        $y = $paginaActual * $numeroMaxRecetas;
+        $t = $y;
+
+        while ($y < ($t + $numeroMaxRecetas) & $y < count($recetas)) {
+
+            array_push($RecetasPorPaginas, $recetas[$y]);
+            $y++;
+        }
+
+        if (count($recetas) == 0) {
+            $view = new View("seccionVaciaView");
+            $view->execute();
+        } else {
+            $view = new View("seccionDetalleView", array('seccion' => $seccion, 'recetas' => $RecetasPorPaginas, 'zona' => $zona, "pagina" => $paginaSiguiente, "totalPaginas" => $cantidadHojas));
+            $view->execute();
+        }
     }
 
 }

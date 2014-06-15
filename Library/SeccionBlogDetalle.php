@@ -35,7 +35,6 @@ class SeccionBlogDetalle {
 
     public function recuperarBlogsUsuario($codigoUsuario) {
         $blogBd = $this->getBlogBd();
-        $arrayBlogs = array();
         $arrayBlogs = $blogBd->recuperarBlogFavUsuario($codigoUsuario);
         return $arrayBlogs;
     }

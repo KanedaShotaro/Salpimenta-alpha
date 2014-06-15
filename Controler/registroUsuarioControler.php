@@ -1,7 +1,7 @@
 <?php
-Block::test();
-include_once './Library/Alert.php';
-include_once './Library/NewAlert.php';
+
+//include_once './Library/Alert.php';
+//include_once './Library/NewAlert.php';
 
 if (!empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["nombre"])) {
 

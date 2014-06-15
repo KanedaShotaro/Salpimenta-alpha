@@ -3,11 +3,11 @@
     <fieldset>
         <legend>Subir Receta</legend>
         <form action="/index.php?url=registroRecetaControler" enctype="multipart/form-data" method="post" name="formReceta">
-            <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre"  placeholder="Titulo de tu Receta"><br/>
-            <label for="ingredientes">Ingredientes: </label><textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes"></textarea><br/>
-            <label for="elaboracion">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta"></textarea><br/>
-            <label for="sugerencias">Segerencias: </label><textarea name="sugerencias" id="sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="30" rows="10"></textarea><br/>
-            <label for="img">Sube tu Imagen: </label><input type="file" name="img" id="img"><br/>
+            <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre"  placeholder="Titulo de tu Receta" required><br/>
+            <label for="ingredientes">Ingredientes: </label><textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes" required></textarea><br/>
+            <label for="elaboracion">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta" required></textarea><br/>
+            <label for="sugerencias">Segerencias: </label><textarea name="sugerencias" id="sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="30" rows="10" required></textarea><br/>
+            <label for="img">Sube tu Imagen: </label><input type="file" name="img" id="img" required><br/>
             <input type="hidden" name="autor" id="autor" value="<?php echo $_SESSION["usuario"][0]->getNombre(); ?>">       
             <b> Temporada de tu Receta </b><br>
             <label for="V">Verano:</label> <input type="radio" name="temporada" id="V" value="V"><br>
@@ -27,7 +27,7 @@
             <label for="10">setas y hongos:</label> <input type="radio" name="seccion" id="10" value="10"><br>
             <label for="11">salsas:</label> <input type="radio" name="seccion" id="11" value="11"><br>
             <label for="12">postres:</label> <input type="radio" name="seccion" id="12" value="12"><br>
-            <label for="tags">introduce etiquetas </label><input type="text" name="tags" id="tags">
+            <label for="tags">introduce etiquetas </label><input type="text" name="tags" id="tags" required>
             <input type="submit" onclick="Ok();" value="Subir Recetas">
         </form>
     </fieldset>

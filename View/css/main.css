@@ -215,7 +215,8 @@ a{
     width: 100%;
 }
 .user figure img{
-    display: none;
+    border-radius: 50%;
+    height: 90px;
     margin: 0;
     padding: 0;
 }
@@ -337,7 +338,7 @@ nav>ul>li:hover a{
     text-align: center;
 }
 .wrap-main>.name-page>h1{
-    border:1px solid;
+    //border:1px solid;
     font-size: 3em;
     margin: 0;
     opacity: 0.2;
@@ -471,6 +472,7 @@ nav>ul>li:hover a{
     border:none;
     margin: 45px 0 0 0;
 }
+
 .wrap-boxes{
     //border:1px solid red;
     margin: 25px 0 0 0;
@@ -539,15 +541,13 @@ nav>ul>li:hover a{
 }
 /**DETALLE RECETA***/
 .wrap-detail{
-    border:1px solid;
-}
-.wrap-detail>.wrap-autor{
-    border:1px solid blue;
+    margin: 25px auto 90px auto;
+    width: 90%;
 }
 .image-receta{
     display: inline-block;
     vertical-align: top;
-    width: 570px;
+    width: 500px;
 }
 .image-receta figure{
     margin: 0;
@@ -555,24 +555,24 @@ nav>ul>li:hover a{
 .image-receta figure img{
     width: 100%;
 }
-.box-autor{
+.olakase{
     //border:1px solid;
     display: inline-block;
     vertical-align: top;
-    margin: 0 0 0 100px;
-    width: 310px;
+    margin: 0 0 0 90px;
 }
-.box-autor>.rating-box{
-    text-align: right;
-}
-.voto-general{
-    font-size: 1.6em;
-    margin: 3px 8px 0 0;
-}
+
 .box-autor .title-autor>span{
     color:#939598;
     display: block;
     font-size: 1.2em;
+}
+.voto-general{
+    margin: -26px 0 0 0;
+    text-align: right;
+}
+.voto-general>.voto-general-num{
+    font-size: 1.3em;
 }
 .box-autor .title-autor>h2{
     font-size: 2em;
@@ -586,9 +586,40 @@ nav>ul>li:hover a{
     margin: 5px 0 0 0;
     //width: 100%;
 }
-.wrap-autor .box-autor .image-autor figure img{
+.box-autor .image-autor figure img{
     width: 100%;
 }
+.description-receta{
+    padding: 10px;
+}
+.tab-receta h3{
+    color:#535353;
+    display: inline-block;
+    margin: 6px;
+}
+.tab-receta header>span{
+    color:#f8951d;
+    font-size: .8em;
+    margin: 0 0 0 8px;
+}
+.tab-receta p{
+    //border:1px solid;
+    text-align: justify;
+}
+.tab-receta ul{
+    padding: 0;
+}
+.tab-receta ul>li{
+    list-style: none;
+}
+.tab-receta ul>li:first-letter{
+    text-transform: uppercase;
+}
+.tab-receta section{
+    color:#6d6e71;
+    margin: 0 0 0 30px;
+}
+
 
 /******FIN DETALLE***********/
 /*MIS-RECETAS*/

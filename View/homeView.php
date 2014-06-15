@@ -11,14 +11,9 @@
 
         <link rel="stylesheet" href="/View/css/bootstrap.min.css">
         <link rel="stylesheet" href="/View/css/signin.css">
-
-
-
     </head>
 
     <body>
-
-
 
         <div class="container">
             <?php
@@ -43,6 +38,7 @@
                 </label>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
+            <a href="/View/registroUsuarioView.php">X</a>
 
         </div> 
     </body>
