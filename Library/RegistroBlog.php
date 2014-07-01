@@ -46,7 +46,7 @@ class RegistroBlog {
                 $view = new View("registroBlogView");
                 $view->execute();
             } else {
-                AlertAction::create("warning", "Error", "Los tags no se ha introducido correctamente");
+                AlertAction::create("warning", "Error", "Los tags no se han introducido correctamente");
                 $view = new View("registroBlogView");
                 $view->execute();
             }

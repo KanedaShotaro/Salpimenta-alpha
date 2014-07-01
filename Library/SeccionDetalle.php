@@ -121,7 +121,7 @@ class SeccionDetalle {
             $view = new View("seccionVaciaView");
             $view->execute();
         } else {
-            $view = new View("seccionDetalleView", array('seccion' => $seccion, 'recetas' => $RecetasPorPaginas, 'zona' => $zona, "pagina" => $paginaSiguiente, "totalPaginas" => $cantidadHojas));
+            $view = new View("seccionDetalleView", array('seccionNombre' =>$seccionNombre, 'seccion' => $seccion, 'recetas' => $RecetasPorPaginas, 'zona' => $zona, "pagina" => $paginaSiguiente, "totalPaginas" => $cantidadHojas));
             $view->execute();
         }
     }

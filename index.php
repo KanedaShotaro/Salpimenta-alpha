@@ -1,7 +1,7 @@
 <?php
 
 require './helpers.php';
-require './config.php';
+//require './config.php';
 
 include './Library/Block.php';
 include './Library/Alert.php';

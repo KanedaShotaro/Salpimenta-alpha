@@ -1,9 +1,8 @@
 
-
-<div class="info-section">
-    <div class="title-section">
+<div class="info-section <?= $seccion->getCss() ?>">
+    <div class="title-section text-<?= $seccion->getCss() ?>">
         <h1><?= $receta->getNombreReceta() ?></h1>
-        <span><?= $seccion ?></span>
+        <span><?= $seccion->getNombre() ?></span>
     </div>
 </div>
 <article class="wrap-detail">
@@ -12,15 +11,15 @@
             <figure>
                 <img src="data:image/jpeg;base64,<?= $receta->getImagen() ?>" alt="">
             </figure>
-            <div class="rating-box aperitivos">
+            <div class="rating-box <?= $seccion->getCss() ?>">
                 <?php
                 if ($_SESSION["usuario"][0]->comprobarFav($receta->getCodigo())) {
                     ?> 
-                    <div class="heart"><a href="#" data-favorito="0" data-tipo="receta" data-idReceta="<?= $receta->getCodigo() ?>" ><span class="icon-heart" ></span></a></div>
+                    <div class="heart"><a href="#" data-favorito="0" data-tipo="receta" data-idReceta="<?= $receta->getCodigo() ?>" ><span onclick="this.className='icon-heart2'; return false;" class="icon-heart" ></span></a></div>
                     <?php
                 } else {
                     ?>
-                    <div class="heart"><a href="#" data-favorito="1" data-tipo="receta" data-idReceta="<?= $receta->getCodigo() ?>"><span class="icon-heart2" ></span></a></div>
+                    <div class="heart"><a href="#" data-favorito="1" data-tipo="receta" data-idReceta="<?= $receta->getCodigo() ?>"><span onclick="this.className='icon-heart'; return false;" class="icon-heart2" ></span></a></div>
                     <?php
                 }
                 ?>
@@ -34,11 +33,11 @@
             <div class="box-autor">
                 <header class="title-autor">
                     <span>Autor:</span>
-                    <h2><a href="#"><?= $autor->getNombre() ?> <?= $autor->getApellido1() ?></a></h2>
+                    <h2><a href="/index.php?url=miPerfilControler&zona=<?= $zona ?>&codigoReceta=<?= $receta->getCodigo()?>"><?= $autor->getNombre() ?> <?= $autor->getApellido1() ?></a></h2>
                 </header>
                 <div class="image-autor aperitivos">
                     <figure>
-                        <a href="#"><img src="data:image/jpeg;base64,<?= $autor->getImagen() ?>" alt="imagen autor"></a>
+                        <a href="/index.php?url=miPerfilControler&zona=<?= $zona ?>&codigoReceta=<?= $receta->getCodigo()?>"><img src="data:image/jpeg;base64,<?= $autor->getImagen() ?>" alt="imagen autor"></a>
                     </figure>
                 </div>
             </div>

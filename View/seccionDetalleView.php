@@ -33,11 +33,11 @@
                 <?php
                 if ($_SESSION["usuario"][0]->comprobarFav($recetas[$x]->getCodigo())) {
                     ?> 
-                    <div class="heart"><a href="#" data-favorito="0" data-tipo="receta" data-idReceta="<?= $recetas[$x]->getCodigo() ?>" ><span class="icon-heart" ></span></a></div>
+                    <div class="heart"><a href="#" data-favorito="0" data-tipo="receta" data-idReceta="<?= $recetas[$x]->getCodigo() ?>"  ><span onclick="this.className='icon-heart2'; return false;" class="icon-heart" ></span></a></div>
                     <?php
                 } else {
                     ?>
-                    <div class="heart"><a href="#" data-favorito="1" data-tipo="receta" data-idReceta="<?= $recetas[$x]->getCodigo() ?>"><span class="icon-heart2" ></span></a></div>
+                    <div class="heart"><a href="#" data-favorito="1" data-tipo="receta" data-idReceta="<?= $recetas[$x]->getCodigo() ?>"  ><span onclick="this.className='icon-heart'; return false;" class="icon-heart2" ></span></a></div>
                     <?php
                 }
                 ?>
@@ -59,12 +59,26 @@
             <?php if ($x != 1) {
                 ?>
                 <li><span></span></li>
-                <?php }
+            <?php }
             ?>
             <li><a href="/index.php?url=seccionDetalleControler&seccion=<?= $seccion->getCss() ?>&zona=<?= $zona ?>&pagina=<?= $x ?>"><?= $x ?></a></li>
         <?php } ?>
     </ul>
 </div>
+<script>
+    function cambia() {
+
+
+
+        if (this.className === 'icon-heart') {
+            this.className = 'icon-heart2';
+            return false;
+        } else {
+            this.className = 'icon-heart';
+            return false;
+        }
+    }
+</script>
 
 <script>
     $("a").click(function() {

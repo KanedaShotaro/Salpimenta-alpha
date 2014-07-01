@@ -5,7 +5,7 @@
             </div>
             <div class="wrap-upload">
                 <div>
-                    <form action="/index.php?url=registroBlogControler" enctype="multipart/form-data" method="post" name="formReceta">
+                    <form action="/index.php?url=registroRecetaControler" enctype="multipart/form-data" method="post" name="formReceta">
                         <div class="style-box-input-receta">
                             <h3>Titulo del Blog</h3>
                             <input type="text"  name="nombre" id="nombre" placeholder="Titulo del Blog">
@@ -37,10 +37,10 @@
                         <div class="style-box-input-receta">
                             <h3>Tipo de Blog</h3>
                             <div class="radio">
-                                <label for="B">Blog:</label> <input type="radio" name="tipoBlog" id="B" value="1">
+                                <label for="B">Blog:</label> <input type="radio" name="tipoBlog" id="1" value="1">
                             </div >
                             <div class="radio">
-                                <label for="V">Vlog:</label> <input type="radio" name="tipoBlog" id="V" value="2">
+                                <label for="V">Vlog:</label> <input type="radio" name="tipoBlog" id="2" value="2">
                             </div>
                         </div>
                         <div class="style-box-input-receta tags">
@@ -54,22 +54,3 @@
                 </div>
 
             </div>
-
-    <script src="/View/js/nicEdit.js" type="text/javascript"></script>
-    <script type="text/javascript">
-                bkLib.onDomLoaded(function() {
-                    new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('descripcion');
-// new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('elaboracion');
-// new nicEditor({buttonList: ['hr', 'bold', 'italic', 'underline', 'strikethrough', 'left', 'center', '', 'ol', 'ul', 'removeformat', 'html']}).panelInstance('sugerencias');
-                });
-    </script>
-
-    <script type="text/javascript">
-        function Ok()
-        {
-            nicEditors.findEditor('descripcion').saveContent();
-// nicEditors.findEditor('elaboracion').saveContent();
-// nicEditors.findEditor('sugerencias').saveContent();
-            document.formBlog.submit();
-        }</script>
-</div>

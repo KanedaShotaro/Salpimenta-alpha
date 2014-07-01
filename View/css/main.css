@@ -60,11 +60,31 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+/*****ACTIVOS******/
+.activo-menu{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform : scale(1.1);
+    -o-transform : scale(1.1);
+}
+.activo-menu>a{
+    color:#333;
+}
+.activo-list-option{
+    font-weight: bold;
+}
+.activo-pagination{
+    color: #F58029;
+}
+
+/***********/
+
+
+
 .fondo-pantalla{
     background: url("../img/cocina.jpg") no-repeat fixed center center;
     background-size: cover;
-    //margin: 0;
-    //padding: 0;
     height: 100%;
 }
 html,body{height: 100%;margin: 0;padding: 0;}
@@ -154,6 +174,10 @@ a{
     display: inline-block;
     vertical-align: top;
 }
+.header .options ul>li:hover{
+    opacity: 1;
+    font-weight: bold;
+}
 .header .options ul>li:nth-child(2) span:before{
     content: "|"
 }
@@ -175,6 +199,7 @@ a{
     border: 1px solid white;
     border-radius: 5px;
     display: block;
+    outline:0;
     padding: 2px 0 2px 8px;
     width: 100%;
 }
@@ -254,7 +279,7 @@ a{
 .user .menu-perfil>li{
     border:1px solid #F58029;
     list-style: none;
-    padding: 5px 15px;
+    padding: 5px 10px;
     text-align: center;
 }
 .user .menu-perfil>li:last-child{
@@ -262,10 +287,16 @@ a{
     background:red;
     color:#fff !important;
 }
+.user .menu-perfil>li:last-child a{
+    color:#fff !important;
+}
 .user .menu-perfil a{
     display: block;
     color:#333;
-    margin: 0;
+    margin: 4px;
+}
+.user .menu-perfil a:hover{
+    font-weight: bold;
 }
 .user ul{
     margin: 0;
@@ -278,7 +309,7 @@ a{
 /*******MENU ********/
 
 nav{
-    margin: 15px auto;
+    margin: 15px auto 40px auto;
     text-align: center;
     width: 1020px;
 }
@@ -403,23 +434,81 @@ nav>ul>li:hover a{
 .aperitivos .icon-heart{color:#F58029 !important;}
 .aperitivos .icon-heart2{color:#F58029 !important;}
 /****ENSALADAS Y VERDURAS****/
-.ensaladas-y-verduras{
-    border-color: #8dc63f !important;
-}
+.ensaladas-y-verduras{border-color: #8dc63f !important;}
 .text-ensaladas-y-verduras{color:#8dc63f !important;}
-.ensaladas-y-verduras *{
-    border-color: #8dc63f !important;
-}
+.ensaladas-y-verduras *{border-color: #8dc63f !important;}
 .ensaladas-y-verduras .icon-heart{color:#8dc63f !important;}
 .ensaladas-y-verduras .icon-heart2{color:#8dc63f !important;}
-/***********/
-.arroces-y-cereales{
-    border-color: #f5ee31 !important;
-}
-/*********/
-.sopas-y-cremas{
-    border-color: #dbb570 !important;
-}
+/******Arroces y Cereales*****/
+.arroces-y-cereales{border-color: #f5ee31 !important;}
+.arroces-y-cereales *{border-color: #f5ee31 !important;}
+.text-arroces-y-cereales{color: #f5ee31 !important;}
+.arroces-y-cereales .icon-heart{color: #f5ee31 !important;}
+.arroces-y-cereales .icon-heart2{color: #f5ee31 !important;}
+/*****Sopa y Cremas****/
+.sopas-y-cremas{border-color: #dbb570 !important;}
+.sopas-y-cremas *{border-color: #dbb570 !important;}
+.text-sopas-y-cremas{color: #dbb570 !important;}
+.sopas-y-cremas .icon-heart{color: #dbb570 !important;}
+.sopas-y-cremas .icon-heart2{color: #dbb570 !important;}
+/**********/
+/******Pastas y Pizzas********/
+.pastas-y-pizzas{border-color: #ED4E5C !important;}
+.pastas-y-pizzas *{border-color: #ED4E5C !important;}
+.text-pastas-y-pizzas{color: #ED4E5C !important;}
+.pastas-y-pizzas .icon-heart{color: #ED4E5C !important;}
+.pastas-y-pizzas .icon-heart2{color: #ED4E5C !important;}
+/**************/
+/******Legumbres******/
+.legumbres{border-color: #E8C162 !important;}
+.legumbres *{border-color: #E8C162 !important;}
+.text-legumbres{color: #E8C162 !important;}
+.legumbres .icon-heart{color: #E8C162 !important;}
+.legumbres .icon-heart2{color: #E8C162 !important;}
+/*************/
+/***FALTA COLORES***/
+/******Carnes******/
+.carnes{border-color: #B06164 !important;}
+.carnes *{border-color: #B06164 !important;}
+.text-carnes{color: #B06164 !important;}
+.carnes .icon-heart{color: #B06164 !important;}
+.carnes .icon-heart2{color: #B06164 !important;}
+/************/
+/******Pescados y Mariscos******/
+.pescados-y-mariscos{border-color: #8B989B !important;}
+.pescados-y-mariscos *{border-color: #8B989B !important;}
+.text-pescados-y-mariscos{color: #8B989B !important;}
+.pescados-y-mariscos .icon-heart{color: #8B989B !important;}
+.pescados-y-mariscos .icon-heart2{color: #8B989B !important;}
+/************/
+/******Huevos******/
+.huevos{border-color: #FDB180 !important;}
+.huevos *{border-color: #FDB180 !important;}
+.text-huevos{color: #FDB180 !important;}
+.huevos .icon-heart{color: #FDB180 !important;}
+.huevos .icon-heart2{color: #FDB180 !important;}
+/************/
+/******Setas y Hongos******/
+.setas-y-hongos{border-color: #BE8944 !important;}
+.setas-y-hongos *{border-color: #BE8944 !important;}
+.text-setas-y-hongos{color: #BE8944 !important;}
+.setas-y-hongos .icon-heart{color: #BE8944 !important;}
+.setas-y-hongos .icon-heart2{color: #BE8944 !important;}
+/************/
+/******Salsa******/
+.salsas{border-color: #E5BF85 !important;}
+.salsas *{border-color: #E5BF85 !important;}
+.text-salsas{color: #E5BF85 !important;}
+.salsas .icon-heart{color: #E5BF85 !important;}
+.salsas .icon-heart2{color: #E5BF85 !important;}
+/************/
+/******Postres******/
+.postres{border-color: #F26D6E !important;}
+.postres *{border-color: #F26D6E !important;}
+.text-postres{color: #F26D6E !important;}
+.postres .icon-heart{color: #F26D6E !important;}
+.postres .icon-heart2{color: #F26D6E !important;}
+/************/
 .text-preferencia{
     color:#939598;
 }
@@ -441,6 +530,7 @@ nav>ul>li:hover a{
 /********Plantilla secciones****************/
 .info-section{
     border-left: 35px solid;
+    margin: 0 0 50px 0; 
 
 }
 .info-section .title-section{
@@ -515,9 +605,7 @@ nav>ul>li:hover a{
     width: 100%;
 }
 .rating-box{
-    //border:1px solid red;
     display: inline-block;
-    //vertical-align: top;
     width: 100%;
 }
 .rating-box .rating{
@@ -550,19 +638,21 @@ nav>ul>li:hover a{
     width: 500px;
 }
 .image-receta figure{
+    box-shadow: 2px 2px 4px #6d6e71;
     margin: 0;
 }
 .image-receta figure img{
     width: 100%;
 }
 .olakase{
-    //border:1px solid;
+
     display: inline-block;
     vertical-align: top;
     margin: 0 0 0 90px;
 }
 
 .box-autor .title-autor>span{
+
     color:#939598;
     display: block;
     font-size: 1.2em;
@@ -578,11 +668,14 @@ nav>ul>li:hover a{
     font-size: 2em;
     margin: 0 0 4px 0;
 }
+.box-autor .title-autor>h2>a{
+    color:#6d6e71;
+}
 .box-autor .image-autor{
     border-top: 1px solid ;
 }
 .box-autor .image-autor figure{
-    //border:1px solid;
+    box-shadow: 2px 2px 4px #6d6e71;
     margin: 5px 0 0 0;
     //width: 100%;
 }
@@ -661,10 +754,12 @@ nav>ul>li:hover a{
     width: 45%;
 }
 .vblog-picture figure{
+    //border:1px solid;
     height: 150px;
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 202px;
+    overflow: hidden;
 }
 .vblog-picture figure img{
     width: 100%;
@@ -833,13 +928,182 @@ nav>ul>li:hover a{
     display: none;
 }
 /*************/
-.wrap-main .pagination{
-    //border:1px solid;
+
+/****Bienvenida****/
+
+.form-login{
+    background: #FFF;
+    display: inline-block;
+    opacity: 0.9;
     text-align: center;
-    font-size: 2em;
+    width: 400px;
+}
+.form-login h1{
+    margin:0;
+}
+.form-login input[type="text"],input[type="password"]{
+    border:1px solid #777;
+    display: block;
+    margin: 0 0 8px 0;
+    opacity: 1;
+    width: 100%;
+
+}
+.form-login input[type="checkbox"]{
+    display: inline-block;
+    //margin: 0 0 0 74px;
+}
+.form-login input[type="submit"]{
+    background: #109560;
+    color:#FFF;
+    display: block;
+    margin: auto;
+}
+.form-login .submit{
+    margin: 12px 0 12px 0;
+}
+.form-login>form{
+    background: #FFF;
+    color:#535353;
+}
+.form-login>form>div{
+    //border:1px solid;
+    display: inline-block;
+}
+.bienvenida{
+    background-color: #FFF;
+    border-radius: 0 0 8px 6px;
+    //float: left;
+}
+.bienvenida h1{
+    color:#333;
+}
+.wrap-welcome{
+    //border:1px solid;
+    height: 168px;
+    left: 50%;
+    margin: -168px 0 0 -199px;
+    position: absolute;
+    top: 50%;
+    width: 400px;
+}
+/********/
+/*******PANEL PERFIL*****/
+
+.panel-perfil{
+    margin: 30px 0 40px 0 ;
+    padding: 0 0 0 30px;
+}
+.panel-perfil figure{
+    display: inline-block;
+    margin:0;
+    vertical-align: top;
+}
+.panel-perfil figure img{
+    width: 240px;
+    height: 225px;
+} 
+.panel-perfil .info-perfil{
+    display: inline-block;
+    margin: 0 0 0 20px;
+    vertical-align: top;
+    text-align: left;
+}
+.panel-perfil .info-perfil a{
+    color:#535353;
+    font-weight: bold;
+    float: right;
+}
+.panel-perfil .info-perfil>h1{
+    color: #6d6e71;
+    margin: 0;
+    padding: 0;
+}
+.logros{
+    margin: 0 0 3px 0;
+    width: 100%;
+}
+.logros>h3{
+    color: #535353;
+}
+.logro{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+.box-section-perfil header{
+    color:#535353;
+    padding: 0 0 0 30px;
+}
+/************/
+
+/****Subir receta******/
+.wrap-upload{
+    margin: auto;
+    width: 90%;
+}
+.style-box-input-receta{
+    color:#6d6e71;
+}
+.style-box-input-receta>input{
+    background: #f3f3f4;
+    border:none;
+    outline: none;
+    padding: 8px 0 8px 12px ;
+
+    width: 330px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+.style-box-input-receta>input:focus{
+    box-shadow: 1px 1px 5px #333;
+}
+.radio{
+    margin: 6px 0;
+}
+.radio label{
+    font-weight: bold;
+}
+.box-form,.box-guide{
+    //border:1px solid;
+    display: inline-block;
+    vertical-align: top;
+    height: 300px;
+    overflow: hidden;
+    width: 400px;
+}
+.box-guide>h4{
+    border-bottom: 1px solid;
+    font-size: .9em;
+    padding: 0 0 8px 0;
+}
+.box-guide{
+    opacity: 0.5;
+    height: 250px;
+}
+.align{
+    display: inline-block;
+    margin: 0 110px 0 0;
+}
+.tags>input{
+    width: 785px;
+}
+
+
+
+/**********/
+.wrap-main .pagination{
+    text-align: center;
+    font-size: 1.5em;
 }
 .wrap-main .pagination a{
     color:#333;
+}
+.wrap-main .pagination a:hover{
+    color: #F58029;
 }
 .wrap-main .pagination ul{
     //border:1px solid;
@@ -865,11 +1129,11 @@ nav>ul>li:hover a{
 footer{
     background-color: #E7E7E8;
     color: #B1B1B2;
+    height: 14%;
     display: table-footer-group;
     width: 100%;
 }
 footer>.wrap-footer{
-    //border: 1px solid;
     text-align: center;
 }
 footer>.wrap-footer>.wrap-social{
@@ -896,6 +1160,12 @@ footer>.wrap-footer>.wrap-social>.icons-social>ul>li{
 }
 footer .info-page{
     color:#939598;
+}
+.first-info{
+    font-size: .9em;
+}
+.second-info{
+    font-size: .9em;
 }
 footer .info-page>ul>li{
     display: inline-block;

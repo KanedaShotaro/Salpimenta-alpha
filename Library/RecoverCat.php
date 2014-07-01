@@ -43,6 +43,47 @@ class RecoverCat {
                 break;
         }
     }
+    
+    public static function numeroSeccionIdent($nombreSeccion) {
+        switch ($nombreSeccion) {
+            case "Aperitivos":
+                return 1;
+                break;
+            case "Ensaladas y verduras":
+                return 2;
+                break;
+            case "Arroces y cereales":
+                return 3;
+                break;
+            case "Sopas-y-cremas":
+                return 4;
+                break;
+            case "Pastas-y-pizzas":
+                return 5;
+                break;
+            case "Legumbres":
+                return 6;
+                break;
+            case "Carnes":
+                return 7;
+                break;
+            case "Pescados y mariscos":
+                return 8;
+                break;
+            case "Huevos":
+                return 9;
+                break;
+            case "Setas y hongos":
+                return 10;
+                break;
+            case "Salsas":
+                return 11;
+                break;
+            case "Postres":
+                return 12;
+                break;
+        }
+    }
 
     public static function nombreSeccion($numeroSeccion) {
         switch ($numeroSeccion) {

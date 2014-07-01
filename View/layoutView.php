@@ -1,8 +1,16 @@
 <?php
 if (isset($_GET["zona"])) {
     $zona = $_GET["zona"];
+    if ($_GET["zona"] == "misalpimenta") {
+        $misalpimenta = "activo-list-option";
+    } else if ($_GET["zona"] == "explora") {
+        $explora = "activo-list-option";
+    }else{
+        $blogs = "activo-list-option";
+    }
 } else {
     $zona = "explora";
+    $explora = "activo-list-option";
 }
 ?>
 <!DOCTYPE html>
@@ -37,9 +45,9 @@ if (isset($_GET["zona"])) {
                     <div class="list-options">
                         <!--elejir colores hover.-->
                         <ul>
-                            <li><a href="/index.php?url=seccionesControler&zona=misalpimenta">Mi salpimenta</a></li>
-                            <li><span></span><a href="/index.php?url=seccionesControler&zona=explora">Explorar</a><span></span></li>
-                            <li><a href="/index.php?url=blogsControler&zona=blogs">Blogs</a></li>
+                            <li class="<?= $misalpimenta ?>" ><a  href="/index.php?url=seccionesControler&zona=misalpimenta">Mi salpimenta</a></li>
+                            <li class="<?= $explora ?>"><span></span><a  href="/index.php?url=seccionesControler&zona=explora">Explorar</a><span></span></li>
+                            <li class="<?= $blogs ?>"><a  href="/index.php?url=blogsControler&zona=blogs">Blogs</a></li>
                         </ul>
                         <a href="/index.php?url=subirRecetaControler&zona=<?= $zona ?>">Subir receta...</a>
                     </div>
@@ -51,7 +59,7 @@ if (isset($_GET["zona"])) {
                 </div>
                 <div class="user">
                     <figure>
-                        <img src="data:image/jpeg;base64,<?= $_SESSION["usuario"][0]->getImagen()?>" alt="insert yout face here" />
+                        <img src="data:image/jpeg;base64,<?= $_SESSION["usuario"][0]->getImagen() ?>" alt="insert yout face here" />
                     </figure>
                     <div>
                         <ul>
@@ -90,44 +98,44 @@ if (isset($_GET["zona"])) {
 
         <?= $tpl_content ?>
     </div>  <!-- este div es correcto, viende del wrap en $menu_content --> 
-        <footer >
-            <div class="wrap-footer">
-                <div class="wrap-social">
-                    <div class="followus">
-                        <h3>Siguenos en</h3>
-                    </div>
-                    <div class="icons-social">
-                        <ul>
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-googleplus"></span></a></li>
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                            <li><a href="#"><span class="icon-paypal"></span></a></li>
-                            <li><a href="#"><span class="icon-tumblr"></span></a></li>
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        </ul>
-                    </div>
+    <footer >
+        <div class="wrap-footer">
+            <div class="wrap-social">
+                <div class="followus">
+                    <h3>Siguenos en</h3>
                 </div>
-                <div class="info-page">
-                    <ul class="first-info">
-                        <li>Salpimenta, S.L</li>
-                        <li><span></span></li>
-                        <li>C010203040</li>
-                        <li><span></span></li>
-                        <li>c/ Agustini 89, 1ºC</li>
-                        <li><span></span></li>
-                        <li>28009 Madrid</li>
-                    </ul>
-                    <ul class="second-info">
-                        <li>2014 © Salpimenta,S.L</li>
-                        <li><span></span></li>
-                        <li>Aviso Legal</li>
-                        <li><span></span></li>
-                        <li>Politica de Privacidad</li>
+                <div class="icons-social">
+                    <ul>
+                        <li><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li><a href="#"><span class="icon-googleplus"></span></a></li>
+                        <li><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li><a href="#"><span class="icon-paypal"></span></a></li>
+                        <li><a href="#"><span class="icon-tumblr"></span></a></li>
+                        <li><a href="#"><span class="icon-twitter"></span></a></li>
                     </ul>
                 </div>
             </div>
-        </footer>
-    </body>
+            <div class="info-page">
+                <ul class="first-info">
+                    <li>Salpimenta, S.L</li>
+                    <li><span></span></li>
+                    <li>C010203040</li>
+                    <li><span></span></li>
+                    <li>c/ Agustini 89, 1ºC</li>
+                    <li><span></span></li>
+                    <li>28009 Madrid</li>
+                </ul>
+                <ul class="second-info">
+                    <li>2014 © Salpimenta,S.L</li>
+                    <li><span></span></li>
+                    <li>Aviso Legal</li>
+                    <li><span></span></li>
+                    <li>Politica de Privacidad</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
 
 

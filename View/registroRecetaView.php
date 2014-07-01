@@ -1,36 +1,101 @@
+  <div class="info-section text-aperitivos">
+                <div class="title-section">
+                    <h1>Subir receta</h1>
+                </div>
+            </div>
+            <div class="wrap-upload">
+                <div>
+                    <form action="/index.php?url=registroRecetaControler" enctype="multipart/form-data" method="post" name="formReceta">
+                        <div class="style-box-input-receta">
+                            <input type="file" name="img">
+                        </div>
+                        <div class="style-box-input-receta">
+                            <h3>¿Cómo se llama tu receta</h3>
+                            <input type="text"  name="nombre" id="nombre" placeholder="Titulo de la receta">
+                        </div>
+                        <div class="style-box-input-receta">
+                            <h3>¿Qué ingredientes contiene tu receta?</h3>
+                            <div class="box-form">
+                                <textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes" cols="45" rows="12"></textarea>
+                            </div>
+                            <div class="box-guide">
+                                <h4>Ejemplo</h4>
+                                <span> Ingredientes 14 personas</span>
+                                <ul>
+                                    <li>600 gr. de carne picada de ternera</li>
+                                    <li>1 huevo</li>
+                                    <li>1 patata</li>
+                                    <li>1 cebolleta</li>
+                                    <li>6 dientes de ajo</li>
+                                    <li>1 cucharadita de mostaza antigua</li>
+                                    <li>harina</li>
+                                    <li>sal</li>
+                                    <li>pimienta</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="style-box-input-receta">
+                            <h3>Tu receta paso a paso</h3>
+                            <div class="box-form">
+                                <textarea name="elaboracion" id="elaboracion"  cols="45" rows="12" placeholder="Elaboracion de tu receta"></textarea>
+                            </div>
+                            <div class="box-guide">
+                                <h4>Ejemplo</h4>
+                                <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartén con un chorrito de aceite. Pica tamien las setas y añádelas Sazona y rehoga bien.</p>
+                                <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartén con un chorrito de aceite. Pica tamien las setas y añádelas Sazona y rehoga bien.Pica tamien las setas y añádelas Sazona y rehoga bien.Pica tamien las setas y añádelas Sazona y rehoga bien.</p>
+                                <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartén con un chorrito de aceite. Pica tamien las setas y añádelas Sazona y rehoga bien.Pica tamien las setas y añádelas Sazona y rehoga bien.Pica tamien las setas y añádelas Sazona y rehoga bien.</p>
+                            </div>
+                        </div>
+                        <div class="style-box-input-receta">
+                            <h3>¿Algún consejo?</h3>
+                            <div class="box-form">
+                                <textarea name="sugerencias" id="sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="45" rows="12"></textarea>
+                            </div>
+                            <div class="box-guide">
+                                <h4>Ejemplo</h4>
+                                <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartén con un chorrito de aceite. Pica tamien las setas y añádelas Sazona y rehoga bien.</p>
+                                
+                            </div>
+                        </div>
+                        <div class="style-box-input-receta align">
+                            <h3>¿De qué temporada es tu receta?</h3>
+                            <input list="temporada" name="temporada">
+                            <datalist id="temporada">
+                                <option value="Verano">
+                                <option value="Invierno">
+                                <option value="Otoño">
+                                <option value="Primavera">
+                            </datalist>
+                        </div>
+                        <div class="style-box-input-receta align">
+                            <h3>Elige una sección para tu receta</h3>
+                            <input list="seccion" name="seccion">
+                            <datalist id="seccion">
+                                <option value="Aperitivos">
+                                <option value="Ensaladas y verduras">
+                                <option value="Arroces y cereales">
+                                <option value="Sopas y crema">
+                                <option value="Pastas y pizzas">
+                                <option value="Legumbres">
+                                <option value="Carnes">
+                                <option value="Pescados y mariscos">
+                                <option value="Huevos">
+                                <option value="Setas y hongos">
+                                <option value="Salsas">
+                                <option value="Postres">
+                            </datalist>
+                        </div>
+                        <div class="style-box-input-receta tags">
+                            <h3>Introduce etiquetas para que encuentren tus recetas</h3>
+                            <input type="text" name="tags" id="tags">
+                        </div>
+                        <div class="submit">
+                            <input type="submit" onclick="Ok();" value="Subir receta">
+                        </div>
+                    </form>
+                </div>
 
-<div class="container">
-    <fieldset>
-        <legend>Subir Receta</legend>
-        <form action="/index.php?url=registroRecetaControler" enctype="multipart/form-data" method="post" name="formReceta">
-            <label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre"  placeholder="Titulo de tu Receta" required><br/>
-            <label for="ingredientes">Ingredientes: </label><textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes" required></textarea><br/>
-            <label for="elaboracion">Elaboracion: </label><textarea name="elaboracion" id="elaboracion"  cols="30" rows="10" placeholder="Elaboracion de tu receta" required></textarea><br/>
-            <label for="sugerencias">Segerencias: </label><textarea name="sugerencias" id="sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="30" rows="10" required></textarea><br/>
-            <label for="img">Sube tu Imagen: </label><input type="file" name="img" id="img" required><br/>
-            <input type="hidden" name="autor" id="autor" value="<?php echo $_SESSION["usuario"][0]->getNombre(); ?>">       
-            <b> Temporada de tu Receta </b><br>
-            <label for="V">Verano:</label> <input type="radio" name="temporada" id="V" value="V"><br>
-            <label for="I">Invierno:</label> <input type="radio" name="temporada" id="I" value="I"><br>
-            <label for="O">Otoño:</label> <input type="radio" name="temporada" id="O" value="O"><br>
-            <label for="P">Primavera:</label> <input type="radio" name="temporada" id="P" value="P"><br>
-            <b> Seccion de tu Receta </b><br>
-            <label for="1">Aperitivos:</label> <input type="radio" name="seccion" id="1" value="1"><br>
-            <label for="2">Ensaladas y Verduras:</label> <input type="radio" name="seccion" id="2" value="2"><br>
-            <label for="3">Arroces y Cereales:</label> <input type="radio" name="seccion" id="3" value="3"><br>
-            <label for="4">Sopas y crema:</label> <input type="radio" name="seccion" id="4" value="4"><br>
-            <label for="5">pastas y pizzas :</label> <input type="radio" name="seccion" id="5" value="5"><br>
-            <label for="6">legumbres:</label> <input type="radio" name="seccion" id="6" value="6"><br>
-            <label for="7">carnes:</label> <input type="radio" name="seccion" id="7" value="7"><br>
-            <label for="8">pescados y mariscos:</label> <input type="radio" name="seccion" id="8" value="8"><br>
-            <label for="9">huevos:</label> <input type="radio" name="seccion" id="9" value="9"><br>
-            <label for="10">setas y hongos:</label> <input type="radio" name="seccion" id="10" value="10"><br>
-            <label for="11">salsas:</label> <input type="radio" name="seccion" id="11" value="11"><br>
-            <label for="12">postres:</label> <input type="radio" name="seccion" id="12" value="12"><br>
-            <label for="tags">introduce etiquetas </label><input type="text" name="tags" id="tags" required>
-            <input type="submit" onclick="Ok();" value="Subir Recetas">
-        </form>
-    </fieldset>
+            </div>
 
     <script src="/View/js/nicEdit.js" type="text/javascript"></script>
     <script type="text/javascript">

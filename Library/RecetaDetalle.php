@@ -6,18 +6,18 @@ class RecetaDetalle {
     protected $recetaBd;
     protected $usuarioBd;
     protected $urlReceta;
-    protected $seccion;
+    protected $seccionNombre;
     protected $zona;
     protected $autor;
     protected $editar;
     protected $plantilla = "recetaDetalleView";
 
-    function __construct($urlReceta, $seccion, $zona, $editar) {
+    function __construct($urlReceta, $seccionNombre, $zona, $editar) {
         $this->usuario = $_SESSION['usuario'][0];
         $this->recetaBd = new RecetaBd();
         $this->usuarioBd = new UsuarioBd();
         $this->urlReceta = $urlReceta;
-        $this->seccion = $seccion;
+        $this->seccion = $seccionNombre;
         $this->zona = $zona;
         $this->editar = $editar;
     }
@@ -50,18 +50,22 @@ class RecetaDetalle {
         $editar = $this->getEditar();
         $usuario = $this->getUsuario();
         $plantilla = $this->getPlantilla();
-        $seccion = $this->getSeccion();
+        $seccionNombre = $this->getSeccion();
         $zona = $this->getZona();
         $urlReceta = $this->getUrlReceta();
         $receta = $this->obtenerDetalleReceta($urlReceta);
         $autor = $this->obtenerAutorReceta($receta->getCodigo());
         $this->obtenerValoracionUsuario($receta, $usuario);
 
+        $seccion = new Seccion(RecoverCat::numeroSeccion($seccionNombre));
+        
+        
+
         if ($editar == "activo") {
             $plantilla = "recetaDetalleEditView";
-            $checkedSeccion = RecoverCat::checkedSeccion($seccion);
+            $checkedSeccion = RecoverCat::checkedSeccion($seccionNombre);
             $checkedTemporada = RecoverCat::checkedTemporada($receta->getTemporada());
-            $view = new View($plantilla, array('checkedTemporada' => $checkedTemporada, 'checkedSeccion' => $checkedSeccion, 'seccion' => $seccion, 'autor' => $autor, 'receta' => $receta, 'zona' => $zona));
+            $view = new View($plantilla, array('checkedTemporada' => $checkedTemporada, 'checkedSeccion' => $checkedSeccion, 'seccion' => $seccionNombre, 'autor' => $autor, 'receta' => $receta, 'zona' => $zona));
             $view->execute();
         } else {
             $view = new View($plantilla, array('seccion' => $seccion, 'autor' => $autor, 'receta' => $receta, 'zona' => $zona));
@@ -81,7 +85,7 @@ class RecetaDetalle {
 
     function obtenerValoracionUsuario(&$receta, $usuario) {
         $valusuario = $this->recetaBd->recuperarValUsuario($receta->getCodigo(), $usuario->getCodigoUsuario());
-        
+
         if ($valusuario == null) {
             $valusuario = "Sin valorar";
         }

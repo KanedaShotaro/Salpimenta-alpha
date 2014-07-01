@@ -1,21 +1,60 @@
-<html lang="en">
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+        <title>SalPimenta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/View/css/alerts.css"/>
+        <link rel="stylesheet" href="/View/css/normalize.css"/>
+        <link rel="stylesheet" href="/View/css/icomoon.css"/>
+        <link rel="stylesheet" href="/View/css/rateit.css"/>
+        <link rel="stylesheet" href="/View/css/main.css"/>
 
-        <title></title>
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>-->
+        <script src="/View/js/plugins.js"></script>
+        <script src="/View/js/main.js"></script>
+        <script src="/View/js/jquery-2.1.0.min.js"></script>
+        <script src="/View/js/jquery.rateit.js" type="text/javascript"></script>
+        <style>
 
-        <link rel="stylesheet" href="/View/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/View/css/signin.css">
+        </style>
     </head>
 
-    <body>
+    <body class="fondo-pantalla">
+        <header>
+            <div class="wrap-header ">
+                <div class="logo bienvenida">
+                    <figure>
+                        <a href="#"><img src="/View/img/logo.png" alt="Logo Salpimenta" width="88" height="88"/></a>
+                    </figure>
+                    <h1>salpi<br><span>menta</span><span class="beta">Beta</span></h1>
+                </div>
+            </div>
+        </header>
+        <nav></nav>
+        <section class="wrap-main">
 
-        <div class="container">
+            <div class="wrap-welcome">
+                <div class="form-login">
+                    <h1>Bienvenido</h1>
+                    <form action="/index.php?url=loginUsuarioControler" method="POST">
+                        <div>
+                            <input type="text" name="email" placeholder="Nombre de usuario">
+                            <input type="password" name="password" placeholder="Contraseña">
+                            <input type="checkbox" id="check" name="check" ><label for="check">Recordar contraseña<a href="#">¿la has olvidado?</a></label>
+                            <div class="submit">
+                                <input type="submit" value="Entrar">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <?php
             if (isset($_SESSION["alert"])) {
                 $alert = $_SESSION["alert"][0];
@@ -29,17 +68,43 @@
             }
             ?>
 
-            <form action="/index.php?url=loginUsuarioControler" method="POST" class="form-signin" role="form">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <input type="email" class="form-control" placeholder="Email address" name="email" id="email" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
-                <label class="checkbox">
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            </form>
-            <a href="/View/registroUsuarioView.php">X</a>
-
-        </div> 
+        </section>
+        <footer>
+            <div class="wrap-footer">
+                <div class="wrap-social">
+                    <div class="followus">
+                        <h3>Siguenos en</h3>
+                    </div>
+                    <div class="icons-social">
+                        <ul>
+                            <li><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li><a href="#"><span class="icon-googleplus"></span></a></li>
+                            <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            <li><a href="#"><span class="icon-paypal"></span></a></li>
+                            <li><a href="#"><span class="icon-tumblr"></span></a></li>
+                            <li><a href="#"><span class="icon-twitter"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-page">
+                    <ul class="first-info">
+                        <li>Salpimenta, S.L</li>
+                        <li><span></span></li>
+                        <li>C010203040</li>
+                        <li><span></span></li>
+                        <li>c/ Agustini 89, 1ºC</li>
+                        <li><span></span></li>
+                        <li>28009 Madrid</li>
+                    </ul>
+                    <ul class="second-info">
+                        <li>2014 © Salpimenta,S.L</li>
+                        <li><span></span></li>
+                        <li>Aviso Legal</li>
+                        <li><span></span></li>
+                        <li>Politica de Privacidad</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
