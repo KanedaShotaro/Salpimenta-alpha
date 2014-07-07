@@ -32,6 +32,7 @@ include './Library/SeccionDetalle.php';
 include './Library/SeccionBlogDetalle.php';
 include './Library/RegistroBlog.php';
 include './Library/Buscador.php';
+include './Library/Perfil.php';
 
 
 

@@ -74,19 +74,7 @@ if (isset($_GET["zona"])) {
                                 </ul>
                             </li>
                             <li><a href="#">5 recetas</a></li>
-                        </ul>
-                        <!--Al pinchar  abrir menu panel perfil.
-                        /*
-                            
-                            Subir Blog
-                            Ajustes
-                            Mi ficha
-                            ver/editar Recetas
-                            ver/editar Blogs
-                            desconectarse
-                            seriesly.
-                        */
-                        -->
+                        </ul>       
                     </div>
                 </div>
             </div>
