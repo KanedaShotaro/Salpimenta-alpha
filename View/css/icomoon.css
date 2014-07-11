@@ -1,0 +1,67 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('/View/fonts/icomoon.eot?t9qowr');
+	src:url('/View/fonts/icomoon.eot?#iefixt9qowr') format('embedded-opentype'),
+		url('/View/fonts/icomoon.woff?t9qowr') format('woff'),
+		url('/View/fonts/icomoon.ttf?t9qowr') format('truetype'),
+		url('/View/fonts/icomoon.svg?t9qowr#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-heart:before {
+	content: "\e606";
+}
+.icon-heart2:before {
+	content: "\e607";
+}
+.icon-googleplus:before {
+	content: "\e600";
+	color: #B1B1B2;
+	font-size: 40px;
+}
+.icon-facebook:before {
+	content: "\e601";
+	color: #B1B1B2;
+	font-size: 40px;
+}
+.icon-instagram:before {
+	content: "\e602";
+	color: #B1B1B2;
+	font-size: 40px;
+}
+.icon-twitter:before {
+	content: "\e603";
+	color: #B1B1B2;
+	font-size: 40px;
+}
+.icon-tumblr:before {
+	content: "\e604";
+	color: #B1B1B2;
+	font-size: 40px;
+}
+.icon-paypal:before {
+	content: "\e605";
+	color: #B1B1B2;
+	font-size: 40px;
+}
+.icon-food:before {
+	content: "\e608";
+}
+.icon-eye:before {
+	content: "\e609";
+}
