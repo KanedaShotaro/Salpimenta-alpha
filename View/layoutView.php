@@ -26,8 +26,6 @@ if (isset($_GET["zona"])) {
         <link rel="stylesheet" href="/View/css/icomoon.css"/>
 
 
-        <!-- Test recortes imagen -->
-        <script type="text/javascript" src="/View/js/croppic.js"></script>
         <script type="text/javascript" src="/View/js/main.js"></script> 
 
         <script src="/View/js/jquery.rateit.js"></script>
@@ -36,9 +34,8 @@ if (isset($_GET["zona"])) {
         <script src="/View/js/jquery.rateit.js"></script>
         <script src="/View/js/jquery-ui.js"></script>
         <script src="/View/js/jquery.tagsinput.js"></script>
-
-
-
+        <script type="text/javascript" src="/View/js/croppic.js"></script>
+        
     </head>
     <body>
 
