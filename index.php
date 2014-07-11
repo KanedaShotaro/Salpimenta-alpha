@@ -1,6 +1,7 @@
 <?php
 
 require './helpers.php';
+/*Activar config.php para desarrollo*/
 require './config.php';
 
 include './Library/Block.php';

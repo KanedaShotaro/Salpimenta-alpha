@@ -18,7 +18,6 @@ abstract class AbstractFun {
         }
         return strrev($pass);
     }
-
     function introducirImg($img) {
         $nombre = $img['name'];
         $imagen_temporal = $img['tmp_name'];
@@ -30,11 +29,34 @@ abstract class AbstractFun {
         //escapando los caracteres
         $imagen = base64_encode($imagen);
         $imagen = mysql_real_escape_string($imagen);
-
+        
+        $this->setImagen($imagen);
+        $this->setNombreImg($nombre);
+        $this->setTipoImg($type);
+    }
+    /*Old introducir imagen*/
+    /*
+    function introducirImg($img) {
+        $nombre = $img['name'];
+        $imagen_temporal = $img['tmp_name'];
+        $type = $img['type'];
+        //archivo temporal en binario
+        $itmp = fopen($imagen_temporal, 'r+b');
+        $imagen = fread($itmp, filesize($imagen_temporal));
+        fclose($itmp);
+        //escapando los caracteres
+        $imagen = base64_encode($imagen);
+        $imagen = mysql_real_escape_string($imagen);
+        
+        print_r($img);
+        echo $nombre;
+        echo $imagen_temporal;
+        echo 'hola';
+        exit;
 
         $this->setImagen($imagen);
         $this->setNombreImg($nombre);
         $this->setTipoImg($type);
     }
-
+    */
 }

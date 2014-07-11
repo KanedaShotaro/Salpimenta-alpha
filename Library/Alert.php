@@ -45,8 +45,4 @@ class Alert {
     public function setContentAlert($contentAlert) {
         $this->contentAlert = $contentAlert;
     }
-    
-    
-
-
 }

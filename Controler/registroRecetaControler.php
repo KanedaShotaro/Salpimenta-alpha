@@ -1,9 +1,8 @@
 <?php
 Block::test();
-if (!empty($_POST["nombre"])) {
 
-    
-    
+if (!empty($_POST["nombre"])) {
+       
     $registroReceta = new RegistroReceta(
             array(
         "nombreReceta" => $_POST["nombre"],
@@ -13,10 +12,16 @@ if (!empty($_POST["nombre"])) {
         "sugerencia" => $_POST["sugerencias"],
         "temporada" => $_POST["temporada"],
         "categoriaReceta" => RecoverCat::numeroSeccionIdent($_POST["seccion"]),
-        "img" => $_FILES['img'],
+        "img" => array(
+                    name  => $_POST["name"],
+                    type => $_POST["type"],
+                    tmp_name => $_POST["img"],
+                ),
         "tags" => $_POST["tags"]
     ));
     
     $registroReceta->execute();
 
 }
+
+

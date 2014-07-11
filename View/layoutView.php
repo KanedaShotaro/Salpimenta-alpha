@@ -5,7 +5,7 @@ if (isset($_GET["zona"])) {
         $misalpimenta = "activo-list-option";
     } else if ($_GET["zona"] == "explora") {
         $explora = "activo-list-option";
-    } else {
+    }else{
         $blogs = "activo-list-option";
     }
 } else {
@@ -20,17 +20,21 @@ if (isset($_GET["zona"])) {
         <title></title>
         <link rel="stylesheet" href="/View/css/rateit.css">
         <link rel="stylesheet" href="/View/css/alerts.css"> 
+        <!-- <link rel="stylesheet" href="/View/css/offcanvas.css"> -->
         <link rel="stylesheet" href="/View/css/main.css"/>
         <link rel="stylesheet" href="/View/css/icomoon.css"/>
-
+       
 
         <script src="/View/js/jquery.rateit.js"></script>
         <script src="/View/js/jquery-2.1.0.min.js"></script>
         <script src="/View/js/bootstrap.js"></script>
         <script src="/View/js/jquery.rateit.js"></script>
         <script src="/View/js/jquery-ui.js"></script>
-        <script src="/View/js/jquery.tagsinput.js"></script>
-
+        
+        <!-- Test recortes imagen -->
+        <link type="text/css" media="screen" rel="stylesheet" href="/View/css/croppic.css">
+        <script type="text/javascript" src="/View/js/croppic.js"></script>
+        <script type="text/javascript" src="/View/js/main.js"></script>
 
     </head>
     <body>

@@ -14,6 +14,7 @@ class RegistroReceta {
         $this->tags = $tags;
         $this->receta = new Receta();
         $this->receta->newReceta($nombreReceta, $autorReceta, $elaboracion, $ingredientes, $sugerencia, $temporada, $categoriaReceta, $img);
+   
     }
 
     public function getRecetaBd() {
