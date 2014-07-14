@@ -1,3 +1,3 @@
 <?php
 
-echo "hola ke ase";
+echo 'ola k ase';
