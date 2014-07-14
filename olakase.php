@@ -1,12 +1,7 @@
 <?php
 echo 'ola k ase';
-echo  'probando o ke ase';
-echo 'me cuenta un commit o k ase';
-echo "hola";
-echo "termino el branch";
-echo "sumo uno al master";
-echo "casa mama";
-echo "abro de nuevo el branch krleza";
+echo  'otro branch o k ase';
+
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
