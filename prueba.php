@@ -1,3 +1,4 @@
 <?php
 
-echo 'ola k ase conflicto o k ase';
+echo 'ola k ase';
+
