@@ -20,3 +20,4 @@ if (!empty($_POST["nombre"])) {
     $registroReceta->execute();
 
 }
+

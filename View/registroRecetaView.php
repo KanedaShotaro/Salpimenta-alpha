@@ -1,4 +1,3 @@
-
 <script type="text/javascript">
 
     function onAddTag(tag) {
@@ -30,11 +29,11 @@
                 <input type="file" name="img">
             </div>
             <div class="style-box-input-receta">
-                <h3>¿Cómo se llama tu receta</h3>
+                <h3>Â¿CÃ³mo se llama tu receta</h3>
                 <input type="text"  name="nombre" id="nombre" placeholder="Titulo de la receta">
             </div>
             <div class="style-box-input-receta">
-                <h3>¿Qué ingredientes contiene tu receta?</h3>
+                <h3>Â¿QuÃ© ingredientes contiene tu receta?</h3>
                 <div class="box-form">
                     <textarea name="ingredientes" id="ingredientes"  placeholder="Escribe la lista de ingredientes" cols="45" rows="12"></textarea>
                 </div>
@@ -61,34 +60,34 @@
                 </div>
                 <div class="box-guide">
                     <h4>Ejemplo</h4>
-                    <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartén con un chorrito de aceite. Pica tamien las setas y añádelas Sazona y rehoga bien.</p>
-                    <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartén con un chorrito de aceite. Pica tamien las setas y añádelas Sazona y rehoga bien.Pica tamien las setas y añádelas Sazona y rehoga bien.Pica tamien las setas y añádelas Sazona y rehoga bien.</p>
-                    <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartén con un chorrito de aceite. Pica tamien las setas y añádelas Sazona y rehoga bien.Pica tamien las setas y añádelas Sazona y rehoga bien.Pica tamien las setas y añádelas Sazona y rehoga bien.</p>
+                    <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartÃ©n con un chorrito de aceite. Pica tamien las setas y aÃ±Ã¡delas Sazona y rehoga bien.</p>
+                    <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartÃ©n con un chorrito de aceite. Pica tamien las setas y aÃ±Ã¡delas Sazona y rehoga bien.Pica tamien las setas y aÃ±Ã¡delas Sazona y rehoga bien.Pica tamien las setas y aÃ±Ã¡delas Sazona y rehoga bien.</p>
+                    <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartÃ©n con un chorrito de aceite. Pica tamien las setas y aÃ±Ã¡delas Sazona y rehoga bien.Pica tamien las setas y aÃ±Ã¡delas Sazona y rehoga bien.Pica tamien las setas y aÃ±Ã¡delas Sazona y rehoga bien.</p>
                 </div>
             </div>
             <div class="style-box-input-receta">
-                <h3>¿Algún consejo?</h3>
+                <h3>Â¿AlgÃºn consejo?</h3>
                 <div class="box-form">
-                    <textarea name="sugerencias" id="sugerencias" placeholder="¿ Alguna sugerencia de preparación ?" cols="45" rows="12"></textarea>
+                    <textarea name="sugerencias" id="sugerencias" placeholder="Â¿ Alguna sugerencia de preparaciÃ³n ?" cols="45" rows="12"></textarea>
                 </div>
                 <div class="box-guide">
                     <h4>Ejemplo</h4>
-                    <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartén con un chorrito de aceite. Pica tamien las setas y añádelas Sazona y rehoga bien.</p>
+                    <p>Pica 2 dientes de ajo y la cebolleta finalmente y ponlos a ponchar en una sartÃ©n con un chorrito de aceite. Pica tamien las setas y aÃ±Ã¡delas Sazona y rehoga bien.</p>
 
                 </div>
             </div>
             <div class="style-box-input-receta align">
-                <h3>¿De qué temporada es tu receta?</h3>
+                <h3>Â¿De quÃ© temporada es tu receta?</h3>
                 <input list="temporada" name="temporada">
                 <datalist id="temporada">
                     <option value="Verano">
                     <option value="Invierno">
-                    <option value="Otoño">
+                    <option value="OtoÃ±o">
                     <option value="Primavera">
                 </datalist>
             </div>
             <div class="style-box-input-receta align">
-                <h3>Elige una sección para tu receta</h3>
+                <h3>Elige una secciÃ³n para tu receta</h3>
                 <input list="seccion" name="seccion">
                 <datalist id="seccion">
                     <option value="Aperitivos">
@@ -134,5 +133,4 @@
         nicEditors.findEditor('sugerencias').saveContent();
         document.formReceta.submit();
     }</script>
-
 

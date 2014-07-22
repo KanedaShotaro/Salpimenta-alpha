@@ -111,12 +111,12 @@ if (isset($_GET["zona"])) {
                     <li><span></span></li>
                     <li>C010203040</li>
                     <li><span></span></li>
-                    <li>c/ Agustini 89, 1ºC</li>
+                    <li>c/ Agustini 89, 1ÂºC</li>
                     <li><span></span></li>
                     <li>28009 Madrid</li>
                 </ul>
                 <ul class="second-info">
-                    <li>2014 © Salpimenta,S.L</li>
+                    <li>2014 Â© Salpimenta,S.L</li>
                     <li><span></span></li>
                     <li>Aviso Legal</li>
                     <li><span></span></li>

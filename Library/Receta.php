@@ -37,10 +37,13 @@ class Receta extends AbstractFun {
         $this->urlReceta = $this->crearUrlUnica($nombreReceta);
         $this->fechaEntrada = date("Y-m-d");
         $this->categoriaReceta = $categoriaReceta;
-
+    
         $this->introducirImg($datosImagen);
-    }
+        
 
+
+    }
+   
     function dataBaseArray($vars = array()) {
         $x = 0;
         $this->setCodigo($vars[$x]);
