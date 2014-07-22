@@ -55,16 +55,16 @@ class Usuario extends AbstractFun {
 
         $usuarioBd = new UsuarioBd();
         $codigUsuario = $this->getCodigoUsuario();
-       
-        if ($usuarioBd->comprobarFavoritoRecetaUsuario($codigo, $codigUsuario)) {
-            return true;
-        } else {
-            $favorito = false;
+      
+        if ($usuarioBd->comprobarFavoritoRecetaUsuario($codigo, $codigUsuario)) {           
+            return true;          
+        } else {       
+            $favorito = false; 
         }
 
-        if ($usuarioBd->comprobarFavoritoBlogUsuario($codigo, $codigUsuario)) {
-            return true;
-        } else {
+        if ($usuarioBd->comprobarFavoritoBlogUsuario($codigo, $codigUsuario)) {           
+            return true;         
+        } else {           
             $favorito = false;
         }
 

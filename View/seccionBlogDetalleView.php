@@ -27,11 +27,11 @@ for ($x = 0; $x < count($blogs); $x++) {
                     <?php
                     if ($_SESSION["usuario"][0]->comprobarFav($blogs[$x]->getCodigo())) {
                         ?> 
-                        <div class="heart"><a href="#" data-favorito="0" data-idBlog="<?= $blogs[$x]->getCodigo() ?>" ><span class="icon-heart" ></span></a></div>
+                        <div class="heart"><a href="#" data-favorito="0" data-tipo="blog" data-idBlog="<?= $blogs[$x]->getCodigo() ?>" ><span onclick="this.className='icon-heart2'; return false;" class="icon-heart" ></span></a></div>
                         <?php
                     } else {
                         ?>
-                        <div class="heart"><a href="#" data-favorito="1" data-idBlog="<?= $blogs[$x]->getCodigo() ?>"><span class="icon-heart2" ></span></a></div>
+                        <div class="heart"><a href="#" data-favorito="1" data-tipo="blog" data-idBlog="<?= $blogs[$x]->getCodigo() ?>"><span onclick="this.className='icon-heart'; return false;" class="icon-heart2" ></span></a></div>
                         <?php
                     }
                     ?>
@@ -46,6 +46,21 @@ for ($x = 0; $x < count($blogs); $x++) {
     <?php
 }
 ?>
+
+<script>
+    function cambia() {
+
+
+
+        if (this.className === 'icon-heart') {
+            this.className = 'icon-heart2';
+            return false;
+        } else {
+            this.className = 'icon-heart';
+            return false;
+        }
+    }
+</script>
 
 <script type ="text/javascript">
     //we bind only to the rateit controls within the products div
@@ -78,11 +93,12 @@ for ($x = 0; $x < count($blogs); $x++) {
 
         var value = anadir.data('favorito');
         var idBlog = anadir.data('idblog');
+         var tipo = anadir.data('tipo');
 
         $.ajax({
             type: 'POST',
             url: '/index.php?&url=favoritoControler',
-            data: {id: idBlog, value: value},
+            data: {id: idBlog, value: value, tipo: tipo},
             error: function(jxhr, msg, err) {
                 $('#response').append('<li style="color:red">' + jxhr + msg + err + '</li>');
             }
