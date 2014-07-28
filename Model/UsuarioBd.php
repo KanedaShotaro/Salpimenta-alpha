@@ -119,7 +119,7 @@ class UsuarioBd extends AbstractBD {
     }
 
     function comprobarFavoritoRecetaUsuario($codigo, $codigoUsuario) {
-        $query = 'SELECT * FROM FAVRE WHERE CODRE = "' . $codigo . '" AND CODUS = "' . $codigoUsuario . '";';
+        $query = 'SELECT * FROM RECFAV WHERE CODRE = "' . $codigo . '" AND CODUS = "' . $codigoUsuario . '";';
         $resultado = $this->selectQuery($query);
         return count($resultado) > 0 ? true : false;
     }
