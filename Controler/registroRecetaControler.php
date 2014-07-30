@@ -20,7 +20,10 @@ if (!empty($_POST["nombre"])) {
         "tags" => $_POST["tags"]
     ));
     
-    $registroReceta->execute();
+    print_r($_POST);
+    exit;
+    
+    //$registroReceta->execute();
 
 }
 

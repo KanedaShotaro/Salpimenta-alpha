@@ -131,12 +131,12 @@
 
 <script>
     var croppicHeaderOptions = {
-        uploadUrl: 'img_save_to_file.php',
+        uploadUrl: '/View/img_save_to_file.php',
         cropData: {
             "dummyData": 1,
             "dummyData2": "asdas"
         },
-        cropUrl: 'img_crop_to_file.php',
+        cropUrl: '/View/img_crop_to_file.php',
         customUploadButtonId: 'cropContainerHeaderButton',
         modal: false,
         imgEyecandy: false,

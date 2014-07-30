@@ -163,6 +163,7 @@
                     processData: false,
                     type: 'POST'
 				}).always(function(data){
+                             
 					response = jQuery.parseJSON(data);
 					if(response.status=='success'){
 						
@@ -174,7 +175,7 @@
 						
 						that.imgUrl=response.url;
 						
-						that.obj.append('<img src="'+response.url+'">');
+						that.obj.append('<img src="/View/'+response.url+'">');
 						that.initCropper();
 						
 						that.hideLoader();
@@ -444,13 +445,14 @@
                 processData: false,
                 type: 'POST'
 				}).always(function(data){
+                                                                          
 					response = jQuery.parseJSON(data);
-                                       
+                                        alert(JSON.stringify(response));
 					if(response.status=='success'){
 						                                             
 						that.destroy();
 						
-						that.obj.append('<img class="croppedImg" src="'+response.url+'">');
+						that.obj.append('<img class="croppedImg" src="View/'+response.url+'">');
                                                 that.obj.append('<input type="hidden" name="img" id="img" value="'+response.url+'">');
                                                 that.obj.append('<input type="hidden" name="type" id="type" value="image/'+response.type+'">');
                                                 that.obj.append('<input type="hidden" name="name" id="name" value="'+response.name+'">');
